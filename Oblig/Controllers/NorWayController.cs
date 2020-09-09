@@ -18,6 +18,13 @@ namespace Oblig.Controllers
             _db = db;
         }
 
+        public async Task<bool> SettInn(Billett BestilleBilett)
+        {
+             try
+            {
+               
+            }
+        }
 
     }
 }
