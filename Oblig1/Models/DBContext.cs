@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Oblig.Models
+namespace Oblig1.Models
 {
     
         public class Kunde

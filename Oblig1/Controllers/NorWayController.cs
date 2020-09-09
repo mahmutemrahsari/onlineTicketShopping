@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
-using Oblig.Models;
+using Oblig1.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Oblig.Controllers
+namespace Oblig1.Controllers
 {
     [Route("[controller]/[action]")]
     public class NorWayController : ControllerBase
