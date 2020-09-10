@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Kjøp Billette</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/2.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="../StyleSheet.css" rel="stylesheet" />
+    <script>
+        $(document).ready(function () {
+            $("#bekreft").click(function () {
+                window.location.href = "bestill.html";
+            });
+
+            $("#returnCheck").click(function () {
+                if ($("#returnCheck").is(":checked")) {
+                    $("#returnBox").css("display", "block");
+                }
+                else {
+                    $("#returnBox").css("display", "none");
+                }
+            });
+
+            $("#betal-btn").click(function () {
+                $("#betal").toggle();
+            });
+
+            $("#visTid").click(function () {
+                $("#infoBox").toggle();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <form>
+            <div class="containerBox">
+                <div class="title">
+                    <span>Fra : </span>
+                </div>
+                <div>
+                    <select id="avgang">
+                        <option value="avgang 1">Avang 1</option>
+                        <option value="avgang 2">Avang 2</option>
+                        <option value="avgang 3">Avang 3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="containerBox">
+                <div class="title">
+                    <span>Til : </span>
+                </div>
+                <div>
+                    <select id="destinasjon">
+                        <option value="destinasjon 1">Destinasjon 1</option>
+                        <option value="destinasjon 2">Destinasjon 2</option>
+                        <option value="destinasjon 3">Destinasjon 3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="containerBox">
+                <div class="billett">
+                    <div class="dato">
+                        <div class="title">
+                            <span>Dato</span>
+                        </div>
+                        <div class="calendar">
+                            <input type="date" id="date" name="date" />
+                        </div>
+                    </div>
+                    <div class="type">
+                        <div class="title">
+                            <span>Billettype</span>
+                        </div>
+                        <div>
+                            <select id="billettType">
+                                <option value="voksen">Voksen</option>
+                                <option value="barn">Barn</option>
+                                <option value="student">Student</option>
+                                <option value="honnor">Honnør</option>
+                            </select>
+                            <input type="button" name="plus" value="+" />
+                            <span id="antall">1</span>
+                            <input type="button" name="minus" value="-" />
+                        </div>
+                    </div>
+                    <input type="checkbox" id="returnCheck" value="return"> Jeg ønsker returreise<br>
+                </div>
+                <div id="returnBox" style="display:none">
+                    <div class="dato">
+                        <div class="title">
+                            <span>Dato</span>
+                        </div>
+                        <div class="calendar">
+                            <input type="date" id="date" name="date" />
+                        </div>
+                    </div>
+                </div>
+                <input type="button" id="visTid" value="Vis Tid Og Pris" class="btn btn-primary" />
+            </div>
+            <div class="containerBox" id="infoBox" style="display:none">
+                <div id="heading"></div>
+                <div id="avganer"></div>
+                <input type="button" id="betal-btn" value="Betal" class="btn btn-primary" />
+            </div>
+            <div id="betal" style="display:none" class="containerBox">
+                <div class="title">
+                    <span>Betalingsmåte</span>
+                </div>
+                <select id="betalMate">
+                    <option value="paypal">PayPal</option>
+                    <option value="visa">Visa</option>
+                    <option value="bankaxept">BankAxept</option>
+                    <option value="master">MasterCard</option>
+                </select>
+                <div>
+                    <div>
+                        <span>KortNummer</span>
+                        <input type="text" />
+                    </div>
+                    <div>
+                        <span>CVV</span>
+                        <input type="text" />
+                    </div>
+                </div>
+                <input type="button" id="bekreft" value="Bekreft" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</body>
+</html>
