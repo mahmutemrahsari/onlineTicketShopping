@@ -24,6 +24,7 @@ namespace Oblig.Models
         {
             [Key]
             [System.ComponentModel.DataAnnotations.Schema.DatabaseGenerated(DatabaseGeneratedOption.None)]
+            public int ReferanseID { get; set; }
             public String Billettype { get; set; }
             public int Pris { get; set; }
             public String FraSted { get; set; }

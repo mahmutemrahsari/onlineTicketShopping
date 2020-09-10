@@ -12,6 +12,7 @@ namespace Oblig.Models
         //public String Etternavn { get; set; }
         public String Epost { get; set; }
         public String Telefonnr { get; set; }
+        public int ReferanseID { get; set; }
         public String Billettype { get; set; }
         public int Pris { get; set; }
         public String FraSted { get; set; }
