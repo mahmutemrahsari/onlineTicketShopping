@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
 
 namespace Oblig.Controllers
 {
@@ -12,6 +13,7 @@ namespace Oblig.Controllers
     public class NorWayController : ControllerBase
     {
         private readonly BillettContext _db;
+     
 
         public NorWayController(BillettContext db)
         {
@@ -20,7 +22,7 @@ namespace Oblig.Controllers
 
         public List<NorWay> HentAlle()
         {
-            List<NorWay> AlleKundene = _db.NorWay.(/*Navn på variablene til de i db*/).toList();
+            List<NorWay> AlleKundene = _db.Billetter.ToList();
             return AlleKundene;
         }
 

@@ -7,7 +7,7 @@
         // noe: $("input:radio[name=noe]:checked").val(),
         priser: $("#priser").val()
     };
-    const url = /*Navn på klassen i models*//SettInn";
+    const url = "/NorWay/SettInn";
     $.post(url, reise, function () {
         window.location.href = "index.html";
     });
