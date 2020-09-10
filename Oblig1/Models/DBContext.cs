@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
@@ -7,28 +7,28 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Oblig1.Models
+namespace Oblig.Models
 {
     
         public class Kunde
         {
-            public int Id { get; set; }
+            public DbSet<Norway> Id { get; set; }
             //public String Fornavn { get; set; }
             //public String Etternavn { get; set; }
-            public String Epost { get; set; }
-            public String Telefonnr { get; set; }
+            public DbSet<Norway> Epost { get; set; }
+            public DbSet<Norway> Telefonnr { get; set; }
         }
 
         public class Billett
         {
             [Key]
             [System.ComponentModel.DataAnnotations.Schema.DatabaseGenerated(DatabaseGeneratedOption.None)]
-            public String Billettype { get; set; }
+            public DbSet<Norway> Billettype { get; set; }
             public int Pris { get; set; }
-            public String FraSted { get; set; }
-            public String AvgangersDato { get; set; }
-            public String TilSted { get; set; }
-            public String ReturDato { get; set; }
+            public DbSet<Norway> FraSted { get; set; }
+            public DbSet<Norway> AvgangersDato { get; set; }
+            public DbSet<Norway> TilSted { get; set; }
+            public DbSet<Norway> ReturDato { get; set; }
         }
 
         public class BillettContext : DbContext

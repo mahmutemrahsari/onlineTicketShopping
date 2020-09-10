@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
-using Oblig1.Models;
+using Oblig.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Oblig1.Controllers
+namespace Oblig.Controllers
 {
     [Route("[controller]/[action]")]
     public class NorWayController : ControllerBase
@@ -16,6 +16,12 @@ namespace Oblig1.Controllers
         public NorWayController(BillettContext db)
         {
             _db = db;
+        }
+
+        public List<NorWay> HentAlle()
+        {
+            List<NorWay> AlleKundene = _db.NorWay.(/*Navn på variablene til de i db*/).toList();
+            return AlleKundene;
         }
 
 

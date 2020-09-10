@@ -1,9 +1,9 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Oblig1.Models
+namespace Oblig.Models
 {
     public class NorWay
     {

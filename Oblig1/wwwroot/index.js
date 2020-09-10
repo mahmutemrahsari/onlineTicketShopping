@@ -1,4 +1,4 @@
-﻿$(function () {
+﻿﻿$(function () {
     $.get("(fyll inn med navn på klassen i models)/HentAlle", function (bestillinger) {
         formaterBestillinger(bestillinger);
     });

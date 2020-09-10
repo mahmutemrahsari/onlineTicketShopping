@@ -1,4 +1,4 @@
-﻿function lagreBestilling() {
+﻿﻿function lagreBestilling() {
     const reise = {
         navn: $("#navn").val(),
         telefonnr: $("#telfonnr").val(),
