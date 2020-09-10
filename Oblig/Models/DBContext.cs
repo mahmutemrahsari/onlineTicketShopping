@@ -38,6 +38,12 @@ namespace Oblig.Models
         {
             Database.EnsureCreated();
         }
+        public DbSet<Kunde> kunder { get; set; }
+        public DbSet<Billett> Billetter { get; set; }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseLazyLoadingProxies();
+        }
     }
     }
 
