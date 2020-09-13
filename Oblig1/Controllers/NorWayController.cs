@@ -18,10 +18,36 @@ namespace Oblig.Controllers
             _db = db;
         }
 
+        [HttpPost]
         public async Task<bool> SettInn(NorWay BestilleBillett)
         {
             try
             {
+                /*
+                var bestill = new Billett()
+                {
+                    AvgangersDato = BestilleBillett.AvgangersDato,
+                    ReturDato = BestilleBillett.ReturDato,
+                    FraSted = BestilleBillett.FraSted,
+                    TilSted = BestilleBillett.TilSted,
+                    Pris = BestilleBillett.Pris,
+                    Billettype = BestilleBillett.Billettype
+                };
+
+                var kunde = new Kunde()
+                {
+                    Epost = BestilleBillett.Epost,
+                    Telefonnr = BestilleBillett.Telefonnr
+                };
+
+                kunde.Billetter = new List<Billett>();
+                kunde.Billetter.Add(bestill);
+                _db.kunder.Add(kunde);
+                await _db.SaveChangesAsync();
+                return true;
+                */
+
+                
                 var nyKunder = new Kunde();
                 //nyKunder.Id = BestilleBillett.Id;
                 nyKunder.Epost = BestilleBillett.Epost;
@@ -40,6 +66,7 @@ namespace Oblig.Controllers
                 _db.kunder.Add(nyKunder);
                 await _db.SaveChangesAsync();
                 return true;
+                
             }
             catch
             {
@@ -49,6 +76,31 @@ namespace Oblig.Controllers
 
         public async Task<List<NorWay>> HentAlle()
         {
+            /*
+            List<Kunde> alleKunder = await _db.kunder.ToListAsync();
+            List<NorWay> alleBilletter = new List<NorWay>();
+
+            foreach (var kunde in alleKunder)
+            {
+                foreach (var bestill in kunde.Billetter)
+                {
+                    var enBestilling = new NorWay()
+                    {
+                        Epost = kunde.Epost,
+                        Telefonnr = kunde.Telefonnr,
+                        AvgangersDato = bestill.AvgangersDato,
+                        ReturDato = bestill.ReturDato,
+                        FraSted = bestill.FraSted,
+                        TilSted = bestill.TilSted,
+                        Pris = bestill.Pris,
+                        Billettype = bestill.Billettype
+                    };
+                    alleBilletter.Add(enBestilling);
+                }
+            }
+            return alleBilletter;*/
+            
+            
             List<NorWay> alleKunder = await _db.kunder.Select(k => new NorWay
             {
                 Id = k.Id,

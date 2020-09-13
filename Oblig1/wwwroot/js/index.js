@@ -2,11 +2,11 @@
     henteAlleBillett();
 });
 
-$(function henteAlleBillett() {
+function henteAlleBillett() {
     $.get("NorWay/HentAlle", function (bestillinger) {
         formaterBestillinger(bestillinger);
     });
-});
+}
 
 function formaterBestillinger(bestillinger) {
     let ut = "<table class='table table-striped'>" +
@@ -16,15 +16,15 @@ function formaterBestillinger(bestillinger) {
         "</tr>";
     for (let bestilling of bestillinger) {
         ut += "<tr>" +
-            "<td>" + bestilling.Epost+ "</td>" +
-            "<td>" + bestilling.Telefonnr + "</td>" +
-            "<td>" + bestilling.Billettype + "</td>" +
-            "<td>" + bestilling.Pris + "</td>" +
-            "<td>" + bestilling.FraSted + "</td>" +
-            "<td>" + bestilling.AvgangersDato + "</td>" +
-            "<td>" + bestilling.TilSted+ "</td>" +
-            "<td>" + bestilling.ReturDato + "</td>" +
-            "<td>" + bestilling.Antall + "</td>" +
+            "<td>" + bestilling.epost+ "</td>" +
+            "<td>" + bestilling.telefonnr + "</td>" +
+            "<td>" + bestilling.billettype + "</td>" +
+            "<td>" + bestilling.pris + "</td>" +
+            "<td>" + bestilling.fraSted + "</td>" +
+            "<td>" + bestilling.avgangersDato + "</td>" +
+            "<td>" + bestilling.tilSted+ "</td>" +
+            "<td>" + bestilling.returDato + "</td>" +
+            "<td>" + bestilling.antall + "</td>" +
             "</tr>";
     }
     ut += "</table>";

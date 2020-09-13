@@ -18,12 +18,13 @@ namespace Oblig.Models
             public string Epost { get; set; }
             public string Telefonnr { get; set; }
             virtual public Billett Billett  {get;set;}
-        }
+            //public virtual List<Billett> Billetter { get;set;}
 
-        public class Billett
+    }
+
+    public class Billett
         {
             [Key]
-            [System.ComponentModel.DataAnnotations.Schema.DatabaseGenerated(DatabaseGeneratedOption.None)]
             public int ReferanseID { get; set; }
             public string Billettype { get; set; }
             public int Pris { get; set; }
@@ -31,7 +32,7 @@ namespace Oblig.Models
             public string AvgangersDato { get; set; }
             public string TilSted { get; set; }
             public string ReturDato { get; set; }
-            virtual public List<Kunde> kunder { get; set; }
+            
             
         }
 
