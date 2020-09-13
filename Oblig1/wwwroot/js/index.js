@@ -12,7 +12,7 @@ function formaterBestillinger(bestillinger) {
     let ut = "<table class='table table-striped'>" +
         "<tr>" +
         "<th>Epost</th><th>Telefonnr</th><th>Billettype</th> <th>Pris</th><th>Frasted</th>" +
-        "<th>AvgangersDato</th><th>TilSted</th><th>ReturDato</th>" +
+        "<th>AvgangersDato</th><th>TilSted</th><th>ReturDato</th><th>Antall</th>" +
         "</tr>";
     for (let bestilling of bestillinger) {
         ut += "<tr>" +
@@ -24,6 +24,7 @@ function formaterBestillinger(bestillinger) {
             "<td>" + bestilling.AvgangersDato + "</td>" +
             "<td>" + bestilling.TilSted+ "</td>" +
             "<td>" + bestilling.ReturDato + "</td>" +
+            "<td>" + bestilling.Antall + "</td>" +
             "</tr>";
     }
     ut += "</table>";

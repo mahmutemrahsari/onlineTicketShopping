@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/2.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="../StyleSheet.css" rel="stylesheet" />
-    <script src="js/index.js"></script>
+    <script src="js/Bestilling.js"></script>
     <script>
         $(document).ready(function () {
             $("#bekreft").click(function () {
@@ -35,6 +35,18 @@
 <body>
     <div class="container">
         <form>
+            <div class="form-group">
+                <label>Epost</label>
+                <input type="text" id="Epost" />
+            </div>
+            <div class="form-group">
+                <label>Telefonnr</label>
+                <input type="text" id="Telefonnr" />
+            </div>
+            <div class="form-group">
+                <label>Pris</label>
+                <input type="text" id="Pris" />
+            </div>
             <div class="containerBox">
                 <div class="title">
                     <span>Fra : </span>
@@ -66,7 +78,7 @@
                             <span>Dato</span>
                         </div>
                         <div class="calendar">
-                            <input type="date" id="date" name="date" />
+                            <input type="date" id="date1" name="date" />
                         </div>
                     </div>
                     <div class="type">
@@ -93,38 +105,11 @@
                             <span>Dato</span>
                         </div>
                         <div class="calendar">
-                            <input type="date" id="date" name="date" />
+                            <input type="date" id="date2" name="date" />
                         </div>
                     </div>
                 </div>
-                <input type="button" id="visTid" value="Vis Tid Og Pris" class="btn btn-primary" />
-            </div>
-            <div class="containerBox" id="infoBox" style="display:none">
-                <div id="heading"></div>
-                <div id="avganer"></div>
-                <input type="button" id="betal-btn" value="Betal" class="btn btn-primary" />
-            </div>
-            <div id="betal" style="display:none" class="containerBox">
-                <div class="title">
-                    <span>Betalingsmåte</span>
-                </div>
-                <select id="betalMate">
-                    <option value="paypal">PayPal</option>
-                    <option value="visa">Visa</option>
-                    <option value="bankaxept">BankAxept</option>
-                    <option value="master">MasterCard</option>
-                </select>
-                <div>
-                    <div>
-                        <span>KortNummer</span>
-                        <input type="text" />
-                    </div>
-                    <div>
-                        <span>CVV</span>
-                        <input type="text" />
-                    </div>
-                </div>
-                <input type="button" id="bekreft" value="Bekreft" class="btn btn-primary" />
+                <input type="button" id="visTid" value="Vis Tid Og Pris" class="btn btn-primary" onclick="lagreBestilling()" />
             </div>
         </form>
     </div>

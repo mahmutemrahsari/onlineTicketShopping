@@ -23,7 +23,7 @@ namespace Oblig.Controllers
             try
             {
                 var nyKunder = new Kunde();
-                nyKunder.Id = BestilleBillett.Id;
+                //nyKunder.Id = BestilleBillett.Id;
                 nyKunder.Epost = BestilleBillett.Epost;
                 nyKunder.Telefonnr = BestilleBillett.Telefonnr;
 
@@ -35,6 +35,7 @@ namespace Oblig.Controllers
                 nyBillett.TilSted = BestilleBillett.TilSted;
                 nyBillett.Pris = BestilleBillett.Pris;
                 nyBillett.Billettype = BestilleBillett.Billettype;
+                nyKunder.Billett = nyBillett;
 
                 _db.kunder.Add(nyKunder);
                 await _db.SaveChangesAsync();
