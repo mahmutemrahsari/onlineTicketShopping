@@ -1,0 +1,15 @@
+﻿div {
+    margin: 5px;
+}
+
+.container {
+    text-align: center;
+    width: 500px;
+    left: 50%;
+    transform: translate(-50%,0);
+    position: absolute;
+}
+
+.containerBox {
+    background-color: #ebebff;
+}

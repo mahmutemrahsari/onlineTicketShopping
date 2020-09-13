@@ -1,5 +1,9 @@
-﻿﻿$(function () {
-    $.get("(fyll inn med navn på klassen i models)/HentAlle", function (bestillinger) {
+﻿$(function (){
+    henteAlleBillett();
+});
+
+$(function henteAlleBillett() {
+    $.get("NorWay/HentAlle", function (bestillinger) {
         formaterBestillinger(bestillinger);
     });
 });
@@ -7,16 +11,19 @@
 function formaterBestillinger(bestillinger) {
     let ut = "<table class='table table-striped'>" +
         "<tr>" +
-        "<th>Navn</th><th>Telefonnr</th>Strekninger<th></th><th>Avganger</th>" +
-        "<th>Priser</th>" +
+        "<th>Epost</th><th>Telefonnr</th><th>Billettype</th> <th>Pris</th><th>Frasted</th>" +
+        "<th>AvgangersDato</th><th>TilSted</th><th>ReturDato</th>" +
         "</tr>";
     for (let bestilling of bestillinger) {
         ut += "<tr>" +
-            "<td>" + bestilling.navn + "</td>" +
-            "<td>" + bestilling.telefonnr + "</td>" +
-            "<td>" + bestilling.strekning + "</td>" +
-            "<td>" + bestilling.avganger + "</td>" +
-            "<td>" + bestilling.priser + "</td>" +
+            "<td>" + bestilling.Epost+ "</td>" +
+            "<td>" + bestilling.Telefonnr + "</td>" +
+            "<td>" + bestilling.Billettype + "</td>" +
+            "<td>" + bestilling.Pris + "</td>" +
+            "<td>" + bestilling.FraSted + "</td>" +
+            "<td>" + bestilling.AvgangersDato + "</td>" +
+            "<td>" + bestilling.TilSted+ "</td>" +
+            "<td>" + bestilling.ReturDato + "</td>" +
             "</tr>";
     }
     ut += "</table>";
