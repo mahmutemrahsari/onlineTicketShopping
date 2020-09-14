@@ -23,7 +23,7 @@ namespace Oblig.Controllers
         {
             try
             {
-                /*
+                
                 var bestill = new Billett()
                 {
                     AvgangersDato = BestilleBillett.AvgangersDato,
@@ -45,9 +45,9 @@ namespace Oblig.Controllers
                 _db.kunder.Add(kunde);
                 await _db.SaveChangesAsync();
                 return true;
-                */
-
                 
+
+                /*
                 var nyKunder = new Kunde();
                 //nyKunder.Id = BestilleBillett.Id;
                 nyKunder.Epost = BestilleBillett.Epost;
@@ -65,10 +65,10 @@ namespace Oblig.Controllers
 
                 _db.kunder.Add(nyKunder);
                 await _db.SaveChangesAsync();
-                return true;
+                return true;*/
                 
             }
-            catch
+            catch(Exception e)
             {
                 return false;
             }
@@ -76,7 +76,7 @@ namespace Oblig.Controllers
 
         public async Task<List<NorWay>> HentAlle()
         {
-            /*
+            
             List<Kunde> alleKunder = await _db.kunder.ToListAsync();
             List<NorWay> alleBilletter = new List<NorWay>();
 
@@ -98,9 +98,9 @@ namespace Oblig.Controllers
                     alleBilletter.Add(enBestilling);
                 }
             }
-            return alleBilletter;*/
+            return alleBilletter;
             
-            
+            /*
             List<NorWay> alleKunder = await _db.kunder.Select(k => new NorWay
             {
                 Id = k.Id,
@@ -115,7 +115,7 @@ namespace Oblig.Controllers
                 Billettype = k.Billett.Billettype
 
             }).ToListAsync();
-            return alleKunder;
+            return alleKunder;*/
         }
 
         public async Task<bool> Slett(int id)
