@@ -18,8 +18,8 @@ namespace Oblig.Controllers
             _db = db;
         }
 
-        [HttpPost]
-        public async Task<bool> SettInn(NorWay BestilleBillett)
+        //[HttpPost]
+        public async Task<bool> Lagre(NorWay BestilleBillett)
         {
             try
             {
@@ -36,8 +36,7 @@ namespace Oblig.Controllers
 
                 var kunde = new Kunde()
                 {
-                    Epost = BestilleBillett.Epost,
-                    Telefonnr = BestilleBillett.Telefonnr
+                    Epost = BestilleBillett.Epost
                 };
 
                 kunde.Billetter = new List<Billett>();
@@ -46,29 +45,8 @@ namespace Oblig.Controllers
                 await _db.SaveChangesAsync();
                 return true;
                 
-
-                /*
-                var nyKunder = new Kunde();
-                //nyKunder.Id = BestilleBillett.Id;
-                nyKunder.Epost = BestilleBillett.Epost;
-                nyKunder.Telefonnr = BestilleBillett.Telefonnr;
-
-                var nyBillett = new Billett();
-               // nyBillett.ReferanseID = BestilleBillett.ReferanseID;
-                nyBillett.AvgangersDato = BestilleBillett.AvgangersDato;
-                nyBillett.ReturDato = BestilleBillett.ReturDato;
-                nyBillett.FraSted = BestilleBillett.FraSted;
-                nyBillett.TilSted = BestilleBillett.TilSted;
-                nyBillett.Pris = BestilleBillett.Pris;
-                nyBillett.Billettype = BestilleBillett.Billettype;
-                nyKunder.Billett = nyBillett;
-
-                _db.kunder.Add(nyKunder);
-                await _db.SaveChangesAsync();
-                return true;*/
-                
             }
-            catch(Exception e)
+            catch
             {
                 return false;
             }
@@ -87,7 +65,6 @@ namespace Oblig.Controllers
                     var enBestilling = new NorWay()
                     {
                         Epost = kunde.Epost,
-                        Telefonnr = kunde.Telefonnr,
                         AvgangersDato = bestill.AvgangersDato,
                         ReturDato = bestill.ReturDato,
                         FraSted = bestill.FraSted,
@@ -99,23 +76,6 @@ namespace Oblig.Controllers
                 }
             }
             return alleBilletter;
-            
-            /*
-            List<NorWay> alleKunder = await _db.kunder.Select(k => new NorWay
-            {
-                Id = k.Id,
-                Epost = k.Epost,
-                Telefonnr = k.Telefonnr,
-                //ReferanseID=k.Billett.ReferanseID,
-                AvgangersDato = k.Billett.AvgangersDato,
-                ReturDato = k.Billett.ReturDato,
-                FraSted = k.Billett.FraSted,
-                TilSted = k.Billett.TilSted,
-                Pris = k.Billett.Pris,
-                Billettype = k.Billett.Billettype
-
-            }).ToListAsync();
-            return alleKunder;*/
         }
 
         public async Task<bool> Slett(int id)
@@ -139,8 +99,7 @@ namespace Oblig.Controllers
             var hentetKunde = new Kunde()
             {
                 Id = enKunde.Id,
-                Epost = enKunde.Epost,
-                Telefonnr = enKunde.Telefonnr,
+                Epost = enKunde.Epost
                 
             };
             return hentetKunde;

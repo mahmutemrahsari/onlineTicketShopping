@@ -17,7 +17,7 @@ namespace Oblig.Models
         //public String Fornavn { get; set; }
         //public String Etternavn { get; set; }
         public string Epost { get; set; }
-        public string Telefonnr { get; set; }
+        //public string Telefonnr { get; set; }
         //virtual public Billett Billett  {get;set;}
         public virtual List<Billett> Billetter { get; set; }
     }
