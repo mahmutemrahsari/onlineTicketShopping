@@ -20,6 +20,8 @@ namespace Oblig.Models
         //public string Telefonnr { get; set; }
         //virtual public Billett Billett  {get;set;}
         public virtual List<Billett> Billetter { get; set; }
+        public virtual List<reiseRundt_Fra> reiserFra { get; set; }
+        public virtual List<reiseRundt_Til> reiserTil { get; set }
     }
 
     public class Billett
@@ -29,11 +31,27 @@ namespace Oblig.Models
         public int ReferanseID { get; set; }
         public string Billettype { get; set; }
         public int Pris { get; set; }
-        public string FraSted { get; set; }
+       // public string FraSted { get; set; }
         public string AvgangersDato { get; set; }
-        public string TilSted { get; set; }
+        //public string TilSted { get; set; }
         public string ReturDato { get; set; }
     }
+
+    public class reiseRundt_Fra
+    {
+        [Key]
+
+        public string FraSted { get; set; }
+
+    }
+
+    public class reiseRundt_Til
+    {
+        [Key]
+
+        public string TilSted { get; set; }
+    }
+
 
     public class BillettContext : DbContext
     {
@@ -43,6 +61,8 @@ namespace Oblig.Models
     }
         public DbSet<Kunde> kunder { get; set; }
         public DbSet<Billett> Billetter { get; set; }
+        public DbSet<reiseRundt_Fra> reiserFra { get; set; }
+        public DbSet<reiseRundt_Til> reiserTil { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseLazyLoadingProxies();
