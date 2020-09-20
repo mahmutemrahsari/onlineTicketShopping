@@ -6,72 +6,88 @@
     <title>Kjøp Billette</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/2.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link href="../StyleSheet.css" rel="stylesheet" />
+
     <script src="js/index.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#bekreft").click(function () {
-                window.location.href = "bestill.html";
-            });
+    <script src="js/webRun.js"></script>
+    <style>
+        .container ul {
+            width: 350px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+        .container li {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+        }
+        .container li:not(.disabled):hover {
+            background: rgb(255, 174, 208);
+        }
+        li.disabled {
+            background: rgb(252, 238, 238);
+            cursor: not-allowed;
+            color: rgb(206, 206, 206);
+        }
 
-            $("#returnCheck").click(function () {
-                if ($("#returnCheck").is(":checked")) {
-                    $("#returnBox").css("display", "block");
-                }
-                else {
-                    $("#returnBox").css("display", "none");
-                }
-            });
+        li.active {
+            background: rgb(255, 206, 214);
+        }
 
-            $("#betal-btn").click(function () {
-                $("#betal").toggle();
-            });
-
-            $("#visTid").click(function () {
-                $("#infoBox").toggle();
-            });
-        });
-    </script>
+    </style>
 </head>
 <body>
     <div class="container">
         <form>
-            <!--
-            <div class="form-group">
-                <label>Epost</label>
-                <input type="text" id="Epost" />
-            </div>
-            <div class="form-group">
-                <label>Telefonnr</label>
-                <input type="text" id="Telefonnr" />
-            </div>
-            <div class="form-group">
-                <label>Pris</label>
-                <input type="text" id="Pris" />
-            </div>
-                -->
             <div class="containerBox">
-                <div class="title">
-                    <span>Fra : </span>
+                <div id="fra-org" style="display:none">
+                    <div class="title">
+                        <span>Fra : </span>
+                        <a href="#fra-valg" id="endreF">Endre</a>
+                    </div>
+                    <div id="fraUt"></div>
                 </div>
-                <div>
-                    <select id="avgang">
-                        <option value="avgang 1">Avang 1</option>
-                        <option value="avgang 2">Avang 2</option>
-                        <option value="avgang 3">Avang 3</option>
-                    </select>
+                <div id="fra-valg" style="display:block">
+                    <div class="title">
+                        <span>Jeg skal reise fra</span>
+                    </div>
+                    <div>
+                        <input list="stops" class="input-stop" name="input-stop" onchange="fraStop()" placeholder="Skriv inn sted" />
+                        <datalist id="stops">
+                            <option value="Sandefjord lufthavn"></option>
+                            <option value="Oslo bussterminal"></option>
+                            <option value="Oslo lufthavn"></option>
+                            <option value="Sandvika bussterminal"></option>
+                            <option value="Lysaker"></option>
+                        </datalist>
+                    </div>
                 </div>
             </div>
             <div class="containerBox">
-                <div class="title">
-                    <span>Til : </span>
+                <div id="til-org" style="display:none">
+                    <div class="title">
+                        <span>Til : </span>
+                        <a href="#til-valg" id="endreT">Endre</a>
+                    </div>
+                    <div id="tilUt"></div>
                 </div>
-                <div>
-                    <select id="destinasjon">
-                        <option value="destinasjon 1">Destinasjon 1</option>
-                        <option value="destinasjon 2">Destinasjon 2</option>
-                        <option value="destinasjon 3">Destinasjon 3</option>
-                    </select>
+                <div id="til-valg" style="display:block">
+                    <div class="title">
+                        <span>Jeg skal reise til</span>
+                    </div>
+                    <div>
+                        <input list="stops" class="input-stop" name="input-stop" onchange="tilStop()" placeholder="Skriv inn sted" />
+                        <datalist id="stops">
+                            <option>Sandefjord lufthavn</option>
+                            <option>Oslo bussterminal</option>
+                            <option>Oslo lufthavn</option>
+                            <option>Sandvika bussterminal</option>
+                            <option>Lysaker</option>
+                        </datalist>
+                    </div>
                 </div>
             </div>
             <div class="containerBox">
@@ -118,33 +134,25 @@
             <div class="containerBox" id="infoBox" style="display:none">
                 <div id="heading"></div>
                 <div id="avganer"></div>
-                <input type="button" id="betal-btn" value="Betal" class="btn btn-primary" />
+                <input type="button" id="betal-btn" value="Betal"  onclick="lagreBestilling()"  class="btn btn-primary"  />
             </div>
-            <div id="betal" style="display:none" class="containerBox">
-                <div class="title">
-                    <span>Betalingsmåte</span>
+
+            <div>
+                <button class="prev">Prev</button>
+                <p class="calendar"></p>
+                <button class="next">next</button>
+                <div class="calandar-con">
+                    <ul>
+                        <li>Sø</li>
+                        <li>Man</li>
+                        <li>Tir</li>
+                        <li>Ons</li>
+                        <li>Tor</li>
+                        <li>Fre</li>
+                        <li>Lør</li>
+                    </ul>
+                    <ul class="content"></ul>
                 </div>
-                <select id="betalMate">
-                    <option value="paypal">PayPal</option>
-                    <option value="visa">Visa</option>
-                    <option value="bankaxept">BankAxept</option>
-                    <option value="master">MasterCard</option>
-                </select>
-                <div>
-                    <div>
-                        <span>KortNummer</span>
-                        <input type="text" />
-                    </div>
-                    <div>
-                        <span>CVV</span>
-                        <input type="text" />
-                    </div>
-                    <div>
-                        <span>Epost</span>
-                        <input type="text" id="Epost" />
-                    </div>
-                </div>
-                <input type="button" id="bekreft" value="Bekreft" class="btn btn-primary" onclick="lagreBestilling()" />
             </div>
         </form>
     </div>

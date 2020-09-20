@@ -18,7 +18,7 @@ namespace Oblig.Controllers
             _db = db;
         }
 
-        //[HttpPost]
+        [HttpPost]
         public async Task<bool> Lagre(NorWay BestilleBillett)
         {
             try
