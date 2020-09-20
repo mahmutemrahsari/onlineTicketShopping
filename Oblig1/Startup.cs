@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Oblig.Models;
+using Oblig1.Models;
 
 namespace Oblig
 {
@@ -29,6 +30,8 @@ namespace Oblig
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                //fjernes deresom vi vil beholde dataene i db og ikke initialisere
+                Dbinit.Initialize(app);
             }
 
             app.UseRouting();

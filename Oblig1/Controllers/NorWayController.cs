@@ -78,68 +78,11 @@ namespace Oblig.Controllers
             return alleBilletter;
         }
 
-        public async Task<bool> Slett(int id)
+        //Hente ut til og fra stedene
+        public async Task<List<Sted>> HentStop()
         {
-            try
-            {
-                Kunde enDbKunde = await _db.kunder.FindAsync(id);
-                _db.kunder.Remove(enDbKunde);
-                await _db.SaveChangesAsync();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            List<Sted> alleSteder = await _db.steder.ToListAsync();
+            return alleSteder;
         }
-
-        public async Task<Kunde> HentEn(int id)
-        {
-            Kunde enKunde = await _db.kunder.FindAsync(id);
-            var hentetKunde = new Kunde()
-            {
-                Id = enKunde.Id,
-                Epost = enKunde.Epost
-                
-            };
-            return hentetKunde;
-        }
-
-        /*public async Task<bool> Endre (NorWay endreBillett)
-        {
-            try
-            {
-                var endreObjekt = await _db.kunder.FindAsync(endreBillett.Id);
-                if(endreObjekt.Billett.ReferanseID != endreBillett.ReferanseID)
-                {
-                    var sjekkReferanse = _db.Billetter.Find(endreBillett.ReferanseID);
-                    if(sjekkReferanse == null)
-                    {
-                        var referanseRad= new Billett();
-                        referanseRad.ReferanseID = endreBillett.ReferanseID;
-                        referanseRad.AvgangersDato = endreBillett.AvgangersDato;
-                        referanseRad.ReturDato = endreBillett.ReturDato;
-                        referanseRad.FraSted = endreBillett.FraSted;
-                        referanseRad.TilSted = endreBillett.TilSted;
-                        referanseRad.Pris = endreBillett.Pris;
-                        referanseRad.Billettype = endreBillett.Billettype;
-                        endreObjekt.Billett = referanseRad;
-
-                    }
-                    else
-                    {
-                        endreObjekt.Billett.ReferanseID = endreBillett.ReferanseID;
-                    }
-                }
-                endreObjekt.Epost = endreBillett.Epost;
-                endreObjekt.Telefonnr = endreBillett.Telefonnr;
-                await _db.SaveChangesAsync();
-            }
-            catch
-            {
-                return false;
-            }
-            return true;
-        }*/
     }
 }

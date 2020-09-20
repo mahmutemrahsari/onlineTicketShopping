@@ -9,35 +9,6 @@
 
     <script src="js/index.js"></script>
     <script src="js/webRun.js"></script>
-    <style>
-        .container ul {
-            width: 350px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            text-align: center;
-        }
-        .container li {
-            width: 50px;
-            height: 50px;
-            text-align: center;
-            line-height: 50px;
-            cursor: pointer;
-        }
-        .container li:not(.disabled):hover {
-            background: rgb(255, 174, 208);
-        }
-        li.disabled {
-            background: rgb(252, 238, 238);
-            cursor: not-allowed;
-            color: rgb(206, 206, 206);
-        }
-
-        li.active {
-            background: rgb(255, 206, 214);
-        }
-
-    </style>
 </head>
 <body>
     <div class="container">
@@ -56,13 +27,7 @@
                     </div>
                     <div>
                         <input list="stops" class="input-stop" name="input-stop" onchange="fraStop()" placeholder="Skriv inn sted" />
-                        <datalist id="stops">
-                            <option value="Sandefjord lufthavn"></option>
-                            <option value="Oslo bussterminal"></option>
-                            <option value="Oslo lufthavn"></option>
-                            <option value="Sandvika bussterminal"></option>
-                            <option value="Lysaker"></option>
-                        </datalist>
+                        <datalist id="stops" class="avgang"></datalist>
                     </div>
                 </div>
             </div>
@@ -80,13 +45,7 @@
                     </div>
                     <div>
                         <input list="stops" class="input-stop" name="input-stop" onchange="tilStop()" placeholder="Skriv inn sted" />
-                        <datalist id="stops">
-                            <option>Sandefjord lufthavn</option>
-                            <option>Oslo bussterminal</option>
-                            <option>Oslo lufthavn</option>
-                            <option>Sandvika bussterminal</option>
-                            <option>Lysaker</option>
-                        </datalist>
+                        <datalist id="stops" class="destinasjon"></datalist>
                     </div>
                 </div>
             </div>
@@ -135,24 +94,6 @@
                 <div id="heading"></div>
                 <div id="avganer"></div>
                 <input type="button" id="betal-btn" value="Betal"  onclick="lagreBestilling()"  class="btn btn-primary"  />
-            </div>
-
-            <div>
-                <button class="prev">Prev</button>
-                <p class="calendar"></p>
-                <button class="next">next</button>
-                <div class="calandar-con">
-                    <ul>
-                        <li>Sø</li>
-                        <li>Man</li>
-                        <li>Tir</li>
-                        <li>Ons</li>
-                        <li>Tor</li>
-                        <li>Fre</li>
-                        <li>Lør</li>
-                    </ul>
-                    <ul class="content"></ul>
-                </div>
             </div>
         </form>
     </div>

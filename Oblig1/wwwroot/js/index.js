@@ -1,5 +1,5 @@
 ﻿$(function () {
-    //hent ut alle stops i db
+    //hent ut alle stops i db til html
     settStop();
 });
 
@@ -9,11 +9,10 @@ function settStop() {
     });
 }
 
-function formaterBestillinger(bestillinger) {
-    //<option value="Sandefjord lufthavn"></option>
+function formaterBestillinger(stops) {
     let ut = "";
     for (let stop of stops) {
-        ut += "<option>" + stop.avgang + "</option>";
+        ut += "<option>" + stop.stedNavn + "</option>";
     }
     $("#stops").html(ut);
 }
@@ -24,8 +23,8 @@ function lagreBestilling() {
         Epost: $("#Epost").val(),
         Pris: $("#Pris").val(),
         Billettype: $("#billettType").val(),
-        FraSted: $("#avgang").val(),
-        TilSted: $("#destinasjon").val(),
+        FraSted: $(".avgang").val(),
+        TilSted: $(".destinasjon").val(),
         AvgangersDato: $("#date1").val(),
         ReturDato: $("#date2").val(),
         Antall: $("#antall").val()
