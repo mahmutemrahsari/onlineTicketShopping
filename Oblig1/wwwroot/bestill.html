@@ -17,10 +17,38 @@
 </head>
 <body>
     <div class="container">
-        <h1>Her er billett informasjon :</h1>
-        <div id="heading"></div>
-        <div id="avganger"></div>
-        <input type="button" id="nyBestill" value="Ny Bestilling" class="btn btn-primary" />
+        <div class="containerBox">
+            <div class="title">
+                <span>Betalingsmåte</span>
+            </div>
+            <select id="betalMate">
+                <option value="paypal">PayPal</option>
+                <option value="visa">Visa</option>
+                <option value="bankaxept">BankAxept</option>
+                <option value="master">MasterCard</option>
+            </select>
+            <div>
+                <div>
+                    <span>KortNummer</span>
+                    <input type="text" />
+                </div>
+                <div>
+                    <span>CVV</span>
+                    <input type="text" />
+                </div>
+                <div>
+                    <span>Epost</span>
+                    <input type="text" id="Epost" />
+                </div>
+                <input type="button" id="bekreft" value="Bekreft" class="btn btn-primary"/>
+            </div>
+        </div>
+        <div class="containerBox">
+            <h1>Her er billett informasjon :</h1>
+            <div id="heading"></div>
+            <div id="avganger"></div>
+            <input type="button" id="nyBestill" value="Ny Bestilling" class="btn btn-primary" />
+        </div>
     </div>
 </body>
 </html>
