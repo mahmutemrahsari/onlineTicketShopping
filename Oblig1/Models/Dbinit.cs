@@ -38,6 +38,8 @@ namespace Oblig1.Models
                 context.ruter.Add(rute3);
                 context.ruter.Add(rute4);
 
+
+
                 context.SaveChanges();
 
             }
