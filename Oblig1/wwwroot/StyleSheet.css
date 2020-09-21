@@ -1,0 +1,62 @@
+﻿body {
+    background-image: url("../bilder/kar1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 100%;
+    max-height: 100%;
+    animation: slide 20s infinite;    
+}
+
+@keyframes slide{
+    25% {
+        background: url("../bilder/kar2.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    50% {
+        background: url("../bilder/kar3.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    75% {
+        background: url("../bilder/kar4.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    100% {
+        background: url("../bilder/kar1.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
+
+
+
+.containerBox {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.top {
+    background-image: url("../bilder/lastned.png");
+    background-repeat: no-repeat;
+    background-size: 70%;
+    width: 50%;
+    height: 100px;
+    position: relative;
+    margin-top: 17px;
+    margin-left: 250px;
+    margin-bottom: 10px;
+    transition: opacity 2s;
+}
