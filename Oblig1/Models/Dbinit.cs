@@ -21,11 +21,22 @@ namespace Oblig1.Models
                 context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
 
-                var sted1 = new Sted {StedNavn = "Oslo", Zone ="1" };
-                var sted2 = new Sted { StedNavn = "Sandvika", Zone = "2v" };
+                //initialiserer fra og til steder
+                var sted1 = new Sted {StedNavn = "Oslo"};
+                var sted2 = new Sted { StedNavn = "Sandvika"};
 
                 context.steder.Add(sted1);
                 context.steder.Add(sted2);
+
+                //initialiserer rute 
+                var rute1 = new Rute { FraRute = "Oslo", TilRute = "Sandvika", Time = "14:00", Dato= "2020-09-30"};
+                var rute2 = new Rute { FraRute = "Oslo", TilRute = "Sandvika", Time = "17:00", Dato = "2020-09-30" };
+                var rute3 = new Rute { FraRute = "Sandvika", TilRute = "Sandvika", Time = "13:00", Dato = "2020-09-30" };
+                var rute4 = new Rute { FraRute = "Oslo", TilRute = "Sandvika", Time = "17:00", Dato = "2020-10-02" };
+                context.ruter.Add(rute1);
+                context.ruter.Add(rute2);
+                context.ruter.Add(rute3);
+                context.ruter.Add(rute4);
 
                 context.SaveChanges();
 

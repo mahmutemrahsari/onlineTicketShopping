@@ -34,10 +34,20 @@ namespace Oblig.Models
     public class Sted
     {
         [Key]
-        public int RId { get; set; }
+        public int SId { get; set; }
         public string StedNavn { get; set; }
-        public string Zone { get; set; }
+    }
 
+    public class Rute
+    {
+        [Key]
+        public int RId { get; set; }
+        public string FraRute { get; set; }
+        public string TilRute { get; set; }
+        public string Dato { get; set; }
+        public string Time { get; set; }
+        //public virtual List<Sted> Steder { get; set; }
+        //public virtual List<Billett> Billetter { get; set; }
     }
 
     public class BillettContext : DbContext
@@ -49,6 +59,7 @@ namespace Oblig.Models
         public DbSet<Kunde> kunder { get; set; }
         public DbSet<Billett> Billetter { get; set; }
         public DbSet<Sted> steder { get; set; }
+        public DbSet<Rute> ruter { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseLazyLoadingProxies();

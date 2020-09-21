@@ -5,16 +5,38 @@
 
 function settStop() {
     $.get("NorWay/HentStop", function (stops) {
-        formaterBestillinger(stops);
+        formaterStop(stops);
     });
 }
 
-function formaterBestillinger(stops) {
+function formaterStop(stops) {
     let ut = "";
     for (let stop of stops) {
         ut += "<option>" + stop.stedNavn + "</option>";
     }
-    $("#stops").html(ut);
+    $("#avgang").html(ut);
+    $("#destinasjon").html(ut);
+}
+
+
+//hent ut tilpasse rute info
+function settRute() {
+    const dato = $("#date1").val();
+    //const fra = $("#destinasjon").val();
+    console.log(dato);
+    const url = "NorWay/HentRute?dato=" + dato;
+    //const url = "NorWay/HentRute?" + dato + fra + til;
+    $.get(url, function (rutes) {
+        formaterRute(rutes);
+    });
+}
+
+function formaterRute(rutes) {
+    let utHeading = "";
+    for (let rute of rutes) {
+        utHeading += "<span>" + rute.fraRute + "-->" + rute.tilRute + "<span>";
+    }
+    $("#heading").html(utHeading);
 }
 
 //lagering bestilling informasjon
@@ -23,8 +45,8 @@ function lagreBestilling() {
         Epost: $("#Epost").val(),
         Pris: $("#Pris").val(),
         Billettype: $("#billettType").val(),
-        FraSted: $(".avgang").val(),
-        TilSted: $(".destinasjon").val(),
+        FraSted: $("#avgang").val(),
+        TilSted: $("#destinasjon").val(),
         AvgangersDato: $("#date1").val(),
         ReturDato: $("#date2").val(),
         Antall: $("#antall").val()

@@ -26,8 +26,10 @@
                         <span>Jeg skal reise fra</span>
                     </div>
                     <div>
+                        <select id="avgang"></select>
+                        <!--
                         <input list="stops" class="input-stop" name="input-stop" onchange="fraStop()" placeholder="Skriv inn sted" />
-                        <datalist id="stops" class="avgang"></datalist>
+                        <datalist id="stops" class="avgang"></datalist>-->
                     </div>
                 </div>
             </div>
@@ -44,8 +46,10 @@
                         <span>Jeg skal reise til</span>
                     </div>
                     <div>
-                        <input list="stops" class="input-stop" name="input-stop" onchange="tilStop()" placeholder="Skriv inn sted" />
-                        <datalist id="stops" class="destinasjon"></datalist>
+                        <select id="destinasjon"></select>
+                        <!--
+                        <input list="stops" id="destinasjon" class="input-stop" name="input-stop" onchange="tilStop()" placeholder="Skriv inn sted" />
+                        <datalist id="stops"></datalist>-->
                     </div>
                 </div>
             </div>
@@ -88,9 +92,9 @@
                         </div>
                     </div>
                 </div>
-                <input type="button" id="visTid" value="Vis Tid Og Pris" class="btn btn-primary" />
+                <input type="button" id="visTid" onclick="settRute()" value="Vis Tid Og Pris" class="btn btn-primary" />
             </div>
-            <div class="containerBox" id="infoBox" style="display:none">
+            <div class="containerBox" id="infoBox" style="display:block">
                 <div id="heading"></div>
                 <div id="avganer"></div>
                 <input type="button" id="betal-btn" value="Betal"  onclick="lagreBestilling()"  class="btn btn-primary"  />

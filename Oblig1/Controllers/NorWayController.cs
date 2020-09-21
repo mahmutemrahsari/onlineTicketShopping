@@ -84,5 +84,33 @@ namespace Oblig.Controllers
             List<Sted> alleSteder = await _db.steder.ToListAsync();
             return alleSteder;
         }
+
+        //Hente ut tilpasset ruter info 
+        public async Task<List<Rute>> HentRute(string dato)
+        {
+            try
+            {
+                List<Rute> alleRuter = await _db.ruter.ToListAsync();
+                List<Rute> passerRuter = new List<Rute>();
+                //Finn tilpasset rute som har sammen dato 
+                foreach (var rute in alleRuter)
+                {
+                    Rute finnRute = await _db.ruter.FindAsync(dato);
+                    var enRute = new Rute()
+                    {
+                        FraRute = finnRute.FraRute,
+                        TilRute = finnRute.TilRute,
+                        Dato = finnRute.Dato,
+                        Time = finnRute.Time
+                    };
+                    passerRuter.Add(enRute);
+                }
+                return passerRuter;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }
