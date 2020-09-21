@@ -78,6 +78,7 @@ namespace Oblig.Controllers
             return alleBilletter;
         }
 
+        /*
         //Hente ut til og fra stedene
         public async Task<List<Sted>> HentStop()
         {
@@ -111,6 +112,6 @@ namespace Oblig.Controllers
             {
                 return null;
             }
-        }
+        }*/
     }
 }
