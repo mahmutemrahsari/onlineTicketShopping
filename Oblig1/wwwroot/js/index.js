@@ -22,10 +22,22 @@ function formaterStop(stops) {
 //hent ut tilpasse rute info
 function settRute() {
     const dato = $("#date1").val();
-    //const fra = $("#destinasjon").val();
-    console.log(dato);
+    const fSted = $("#avgang").val();
+    const tSted = $("#destinasjon").val();
     const url = "NorWay/HentRute?dato=" + dato;
-    //const url = "NorWay/HentRute?" + dato + fra + til;
+    /*
+    $.ajax({
+        type: 'POST',
+        url: 'NorWay/HentStop',
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify({ dato: dato, fSted: fSted, tSted: tSted }),
+        dataType: 'json',
+        success: function (rutes) {
+            formaterRute(rutes);
+        },
+        error: 'console.log("feil")'
+    });*/
+    
     $.get(url, function (rutes) {
         formaterRute(rutes);
     });

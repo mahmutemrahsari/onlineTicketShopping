@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Oblig.Models;
+using Oblig1.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -78,7 +79,6 @@ namespace Oblig.Controllers
             return alleBilletter;
         }
 
-        /*
         //Hente ut til og fra stedene
         public async Task<List<Sted>> HentStop()
         {
@@ -87,10 +87,35 @@ namespace Oblig.Controllers
         }
 
         //Hente ut tilpasset ruter info 
-        public async Task<List<Rute>> HentRute(string dato)
+        public async Task<List<Rute>> HentRute(string dato, string fSted, string tSted)
         {
             try
             {
+                List<Rute> alleRuter = await _db.ruter.ToListAsync();
+                //List<Rute> passerRuter = new List<Rute>();
+
+                var finnRute = (from passRute in alleRuter
+                                       where passRute.Dato == dato
+                                       select passRute).ToList();
+
+                //Finn tilpasset rute som har sammen dato 
+                /*foreach (var rute in finnRute)
+                {
+                    // Rute finnRute = await _db.ruter.FindAsync(dato);
+                    //Rute finnRute = await _db.ruter.FirstOrDefault(k => k.Dato == dato);
+                    
+                    var enRute = new Rute()
+                    {
+                        FraRute = finnRute.FraRute,
+                        TilRute = finnRute.TilRute,
+                        Dato = finnRute.Dato,
+                        Time = finnRute.Time
+                    };
+                    passerRuter.Add(enRute);
+            }*/
+                return finnRute;
+
+                /*
                 List<Rute> alleRuter = await _db.ruter.ToListAsync();
                 List<Rute> passerRuter = new List<Rute>();
                 //Finn tilpasset rute som har sammen dato 
@@ -106,12 +131,13 @@ namespace Oblig.Controllers
                     };
                     passerRuter.Add(enRute);
                 }
-                return passerRuter;
+                return passerRuter;*/
+
             }
             catch
             {
                 return null;
             }
-        }*/
+        }
     }
 }

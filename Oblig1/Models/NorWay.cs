@@ -15,7 +15,5 @@ namespace Oblig.Models
         public string AvgangersDato { get; set; }
         public string TilSted { get; set; }
         public string ReturDato { get; set; }
-        //public string StedNavn { get; set; }
-        //public string Zone { get; set; }
     }
 }
