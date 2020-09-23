@@ -1,6 +1,7 @@
 ﻿$(function () {
     //hent ut alle stops i db til html
     settStop();
+    settPris();
 });
 
 function settStop() {
@@ -16,6 +17,20 @@ function formaterStop(stops) {
     }
     $("#avgang").html(ut);
     $("#destinasjon").html(ut);
+}
+
+function settPris() {
+    $.get("Norway/HentPrisType", function (pris) {
+        formaterPris(pris);
+    });
+}
+
+function formaterPris(pris) {
+    let ut = "";
+    for (let priser of pris) {
+        ut += "<option>" + priser.type + "</option>";
+    }
+    $("#billettType").html(ut);
 }
 
 

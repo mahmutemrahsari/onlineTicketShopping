@@ -19,7 +19,7 @@ namespace Oblig.Models
         //public string Zone { get; set; }
     }
 
-    public class Pristype
+    public class BillettPris
     {
         public int Id { get; set; }
         public int Voksenpris { get; set; }
@@ -30,4 +30,6 @@ namespace Oblig.Models
         public int Vernepliktpris { get; set; }
         public int Ledsagerpris { get; set; }
     }
+
+    
 }

@@ -69,7 +69,7 @@ namespace Oblig.Controllers
                         ReturDato = bestill.ReturDato,
                         FraSted = bestill.FraSted,
                         TilSted = bestill.TilSted,
-                        Pris = bestill.Pris,
+                        //Pris = bestill.Pris,
                         Billettype = bestill.Billettype
                     };
                     alleBilletter.Add(enBestilling);
@@ -78,13 +78,37 @@ namespace Oblig.Controllers
             return alleBilletter;
         }
 
-        /*
+        
         //Hente ut til og fra stedene
         public async Task<List<Sted>> HentStop()
         {
             List<Sted> alleSteder = await _db.steder.ToListAsync();
             return alleSteder;
         }
+
+        public async Task<List<PrisType>> HentPrisType(string type)
+        {
+            try
+            {
+                List<PrisType> allePris = await _db.pristype.ToListAsync();
+                List<PrisType> typePris = new List<PrisType>();
+                foreach (var pris in allePris)
+                {
+                    var enprisType = new PrisType()
+                    {
+                        type = pris.type
+                    };
+                    typePris.Add(enprisType);
+                }
+                return typePris;
+            }
+            catch
+            {
+                return null;
+            }
+            
+        }
+
 
         //Hente ut tilpasset ruter info 
         public async Task<List<Rute>> HentRute(string dato)
@@ -112,6 +136,6 @@ namespace Oblig.Controllers
             {
                 return null;
             }
-        }*/
+        }
     }
 }

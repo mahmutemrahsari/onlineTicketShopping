@@ -39,6 +39,22 @@ namespace Oblig1.Models
                 context.ruter.Add(rute4);
 
 
+               
+
+                var Voksen = new PrisType { type = "Voksen" };
+                var Barn = new PrisType { type = "Barn" };
+                var Student = new PrisType { type = "Student" };
+                var Ungdom = new PrisType { type = "Ungdom" };
+                var Honnor = new PrisType { type = "Honnor" };
+                var Verneplikt = new PrisType { type = "Verneplikt" };
+                var Ledsager = new PrisType { type = "Ledsager" };
+                context.pristype.Add(Voksen);
+                context.pristype.Add(Barn);
+                context.pristype.Add(Student);
+                context.pristype.Add(Ungdom);
+                context.pristype.Add(Honnor);
+                context.pristype.Add(Verneplikt);
+                context.pristype.Add(Ledsager);
 
                 context.SaveChanges();
 

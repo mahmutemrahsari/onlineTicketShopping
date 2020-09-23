@@ -29,7 +29,7 @@ namespace Oblig.Models
         public string AvgangersDato { get; set; }
         public string TilSted { get; set; }
         public string ReturDato { get; set; }
-        public virtual List<Pristype> Pristypes { get; set; }
+        public virtual List<PrisType> Pristypes { get; set; }
     }
 
     public class Sted
@@ -51,17 +51,14 @@ namespace Oblig.Models
         //public virtual List<Billett> Billetter { get; set; }
     }
 
-    public class Pristype
+    
+
+    public class PrisType
     {
         [Key]
-        public int PId { get; set; }
-        public int Voksenpris { get; set; }
-        public int Studentpris { get; set; }
-        public int Barnepris { get; set; }
-        public int Ungdompris { get; set; }
-        public int Honnorpris { get; set; }
-        public int Vernepliktpris { get; set; }
-        public int Ledsagerpris { get; set; }
+        public int TId { get; set; }
+        public int pris { get; set; }
+        public String type { get; set; }
     }
 
     public class BillettContext : DbContext
@@ -74,7 +71,7 @@ namespace Oblig.Models
         public DbSet<Billett> Billetter { get; set; }
         public DbSet<Sted> steder { get; set; }
         public DbSet<Rute> ruter { get; set; }
-        public DbSet<Pristype> pristype { get; set; }
+        public DbSet<PrisType> pristype { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseLazyLoadingProxies();
