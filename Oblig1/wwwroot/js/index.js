@@ -71,3 +71,23 @@ function lagreBestilling() {
         window.location.href = "bestill.html";
     });
 };
+
+//Antall billet kan endres + og - buttonner
+function antallBillet() {
+    let antall = parseInt($("#antall").html());
+
+    $('#plus').click(function () {
+        antall += 1;
+        $('#antall').html(antall);
+    });
+
+    $('#minus').click(function () {
+        while (antall > 0) {
+            antall -= 1;
+        }
+
+        $('#antall').html(antall);
+    });
+
+
+};

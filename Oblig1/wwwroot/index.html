@@ -70,10 +70,19 @@
                         <div>
                             <select id="billettType">
                             </select>
+
+                            <!--
                             <input type="button" name="plus" value="+" />
                             <span id="antall">1</span>
                             <input type="text" id="Pris" />
                             <input type="button" name="minus" value="-" />
+                             -->
+
+                            <input type="button" name="minus" value="-" id="minus" onclick="antallBillet()" />
+                            <span id="antall">0</span>
+                            <input type="button" name="plus" value="+" id="plus" onclick="antallBillet()" />
+                            <input type="text" value="Pris" id="Pris" />
+
                         </div>
                     </div>
                     <input type="checkbox" id="returnCheck" value="return"> Jeg ønsker returreise<br>
