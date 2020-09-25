@@ -87,32 +87,17 @@ namespace Oblig.Controllers
         }
 
         //Hente ut tilpasset ruter info 
-        public async Task<List<Rute>> HentRute(string dato, string fSted, string tSted)
+        public async Task<List<Rute>> HentRute(InfoMedRute info)
         {
             try
             {
                 List<Rute> alleRuter = await _db.ruter.ToListAsync();
-                //List<Rute> passerRuter = new List<Rute>();
 
+                //Finn tilpasset rute som har sammen dato ved bruk av LINQ
                 var finnRute = (from passRute in alleRuter
-                                       where passRute.Dato == dato
-                                       select passRute).ToList();
+                                       where passRute.Dato == info.dato && passRute.FraRute == info.fSted && passRute.TilRute == info.tSted
+                                select passRute).ToList();
 
-                //Finn tilpasset rute som har sammen dato 
-                /*foreach (var rute in finnRute)
-                {
-                    // Rute finnRute = await _db.ruter.FindAsync(dato);
-                    //Rute finnRute = await _db.ruter.FirstOrDefault(k => k.Dato == dato);
-                    
-                    var enRute = new Rute()
-                    {
-                        FraRute = finnRute.FraRute,
-                        TilRute = finnRute.TilRute,
-                        Dato = finnRute.Dato,
-                        Time = finnRute.Time
-                    };
-                    passerRuter.Add(enRute);
-            }*/
                 return finnRute;
 
                 /*

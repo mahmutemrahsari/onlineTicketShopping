@@ -21,24 +21,35 @@ function formaterStop(stops) {
 
 //hent ut tilpasse rute info
 function settRute() {
+    
+    const info = {
+        dato: $("#date1").val(),
+        fSted: $("#avgang").val(),
+        tSted: $("#destinasjon").val()
+    }
+    const url = "NorWay/HentRute";
+    //const url = "NorWay/HentRute?info=" + info;
+    /*
     const dato = $("#date1").val();
     const fSted = $("#avgang").val();
     const tSted = $("#destinasjon").val();
-    const url = "NorWay/HentRute?dato=" + dato;
-    /*
+    //console.log(dato, fSted, tSted);
+    
     $.ajax({
         type: 'POST',
-        url: 'NorWay/HentStop',
+        url: 'NorWay/HentRute',
         contentType: "application/json; charset=utf-8",
+        //data: '{ "dato":' + dato + ', "fSted":' + fSted + '"}',
         data: JSON.stringify({ dato: dato, fSted: fSted, tSted: tSted }),
         dataType: 'json',
         success: function (rutes) {
             formaterRute(rutes);
+            console.log("success" + dato + fSted + tSted);
         },
         error: 'console.log("feil")'
     });*/
     
-    $.get(url, function (rutes) {
+    $.get(url, info, function (rutes) {
         formaterRute(rutes);
     });
 }
@@ -47,6 +58,7 @@ function formaterRute(rutes) {
     let utHeading = "";
     for (let rute of rutes) {
         utHeading += "<span>" + rute.fraRute + "-->" + rute.tilRute + "<span>";
+        break;
     }
     $("#heading").html(utHeading);
 }
