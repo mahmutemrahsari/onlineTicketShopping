@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Oblig.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -23,14 +24,13 @@ namespace Oblig.Controllers
         {
             try
             {
-                
+
                 var bestill = new Billett()
                 {
                     AvgangersDato = BestilleBillett.AvgangersDato,
                     ReturDato = BestilleBillett.ReturDato,
                     FraSted = BestilleBillett.FraSted,
                     TilSted = BestilleBillett.TilSted,
-                    Pris = BestilleBillett.Pris,
                     Billettype = BestilleBillett.Billettype
                 };
 
@@ -44,7 +44,7 @@ namespace Oblig.Controllers
                 _db.kunder.Add(kunde);
                 await _db.SaveChangesAsync();
                 return true;
-                
+
             }
             catch
             {
@@ -54,7 +54,7 @@ namespace Oblig.Controllers
 
         public async Task<List<NorWay>> HentAlle()
         {
-            
+
             List<Kunde> alleKunder = await _db.kunder.ToListAsync();
             List<NorWay> alleBilletter = new List<NorWay>();
 
@@ -69,8 +69,8 @@ namespace Oblig.Controllers
                         ReturDato = bestill.ReturDato,
                         FraSted = bestill.FraSted,
                         TilSted = bestill.TilSted,
-                        //Pris = bestill.Pris,
                         Billettype = bestill.Billettype
+                        //Pris = bestill.Pris,
                     };
                     alleBilletter.Add(enBestilling);
                 }
@@ -78,7 +78,7 @@ namespace Oblig.Controllers
             return alleBilletter;
         }
 
-        
+
         //Hente ut til og fra stedene
         public async Task<List<Sted>> HentStop()
         {
@@ -86,27 +86,17 @@ namespace Oblig.Controllers
             return alleSteder;
         }
 
-        public async Task<List<PrisType>> HentPrisType(string type)
+        public async Task<List<PrisType>> HentPrisType()
         {
-            try
-            {
-                List<PrisType> allePris = await _db.pristype.ToListAsync();
-                List<PrisType> typePris = new List<PrisType>();
-                foreach (var pris in allePris)
-                {
-                    var enprisType = new PrisType()
-                    {
-                        type = pris.type
-                    };
-                    typePris.Add(enprisType);
-                }
-                return typePris;
-            }
-            catch
-            {
-                return null;
-            }
-            
+
+            List<PrisType> allePrisType = await _db.pristype.ToListAsync();
+            return allePrisType;
+        }
+
+        public async Task<List<Pris>> HentPris()
+        {
+            List<Pris> allePris = await _db.pris.ToListAsync();
+            return allePris;
         }
 
 
@@ -139,3 +129,4 @@ namespace Oblig.Controllers
         }
     }
 }
+
