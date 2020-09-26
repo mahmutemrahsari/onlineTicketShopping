@@ -1,5 +1,5 @@
 ﻿$(function () {
-    //hent ut alle stops i db til html
+    //hent ut alle stops og pris i db til html
     settStop();
     settPris();
 });
@@ -28,7 +28,11 @@ function settPris() {
 function formaterPris(pris) {
     let ut = "";
     for (let priser of pris) {
-        ut += "<option>" + priser.type + "</option>";
+        ut += "<span>" + priser.type + "</span>"
+        ut += '<input type="button" name="minus" value="-" id="minus" onclick="antallBillet()" />'
+        ut += ' <span id="antall">0</span>'
+        ut += ' <input type="button" name="plus" value="+" id="plus" onclick="antallBillet()" />'
+        ut += '</br>'
     }
     $("#billettType").html(ut);
 }
@@ -87,7 +91,23 @@ function antallBillet() {
         }
 
         $('#antall').html(antall);
+
     });
-
-
 };
+
+//Sett BillettType
+function typeBillett() {
+    $("#billett").on("click", function (e) {
+        $("#BillettType").show();
+
+        $(document).one("click", function () {
+            $("#BillettType").hide();
+        });
+
+        e.stopPropagation();
+    });
+    $("#BillettType").on("click", function (e) {
+        e.stopPropagation();
+    });
+}
+
