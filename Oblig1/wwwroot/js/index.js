@@ -32,7 +32,7 @@ function formaterPris(pris) {
         ut += '<input type="button" name="minus" value="-" id="minus" onclick="antallBillet()" />'
         ut += ' <span id="antall">0</span>'
         ut += ' <input type="button" name="plus" value="+" id="plus" onclick="antallBillet()" />'
-        ut += '<br>'
+        ut += '</br>'
     }
     $("#billettType").html(ut);
 }
