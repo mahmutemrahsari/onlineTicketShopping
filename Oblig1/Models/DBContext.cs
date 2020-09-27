@@ -23,21 +23,51 @@ namespace Oblig.Models
     {
         [Key]
         public int ReferanseID { get; set; }
-        public string Billettype { get; set; }
-        public int Pris { get; set; }
         public string FraSted { get; set; }
         public string AvgangersDato { get; set; }
         public string TilSted { get; set; }
         public string ReturDato { get; set; }
+        public string Billettype { get; set; }
+        //public virtual List<PrisType> Pristypes { get; set; }
     }
 
     public class Sted
     {
         [Key]
-        public int RId { get; set; }
+        public int SId { get; set; }
         public string StedNavn { get; set; }
-        public string Zone { get; set; }
+    }
 
+    public class Rute
+    {
+        [Key]
+        public int RId { get; set; }
+        public string BussNR { get; set; }
+        public string FraRute { get; set; }
+        public string TilRute { get; set; }
+        public string Dato { get; set; }
+        public string AvgangsTid { get; set; }
+        public string AnkomstTid { get; set; }
+
+        //public virtual List<Sted> Steder { get; set; }
+        //public virtual List<Billett> Billetter { get; set; }
+    }
+
+
+
+    public class PrisType
+    {
+        [Key]
+        public int TId { get; set; }
+        public int pris { get; set; }
+        public string type { get; set; }
+    }
+
+    public class Pris
+    {
+        [Key]
+        public int PId { get; set; }
+        public int prisAvType { get; set; }
     }
 
     public class BillettContext : DbContext
@@ -49,6 +79,9 @@ namespace Oblig.Models
         public DbSet<Kunde> kunder { get; set; }
         public DbSet<Billett> Billetter { get; set; }
         public DbSet<Sted> steder { get; set; }
+        public DbSet<Rute> ruter { get; set; }
+        public DbSet<PrisType> pristype { get; set; }
+        public DbSet<Pris> pris { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseLazyLoadingProxies();

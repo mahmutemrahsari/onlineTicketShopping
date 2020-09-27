@@ -46,9 +46,9 @@ function fraStop() {
 
 
 function tilStop() {
-    var stop = $(".input-stop").val();
+    var stop = $("#destinasjon").val();
     $("#tilUt").html("<span>" + stop + "</span>");
-    $(".input-stop").val("");
+    $("#destinasjon").val("");
     $("#til-org").css("display", "block");
     $("#til-valg").css("display", "none");
 }

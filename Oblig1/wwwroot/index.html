@@ -9,61 +9,59 @@
 
     <script src="js/index.js"></script>
     <script src="js/webRun.js"></script>
-    <link href="StyleSheet.css" rel="stylesheet" />
+    <style>
+        tr:focus {
+            background-color: #0094ff;
+        }
+    </style>
 </head>
 <body>
-    <div class="top">
-        <a class="klikk" href="index.html"></a>
-    </div>
-
-    <div class=" container">
+    <div class="container">
         <form>
             <div class="containerBox">
-                <div id="fra" style="display:none">
-                    <div id="fra-org" style="display:none">
-                        <div class="title">
-                            <span>Fra : </span>
-                            <a href="#fra-valg" id="endreF">Endre</a>
-                        </div>
-                        <div id="fraUt"></div>
+                <div id="fra-org" style="display:none">
+                    <div class="title">
+                        <span>Fra : </span>
+                        <a href="#fra-valg" id="endreF">Endre</a>
                     </div>
-                    <div id="fra-valg" style="display:block">
-                        <div class="inputTittel">
-                            <span>Jeg skal reise fra</span>
-                        </div>
-                        <div>
-                            <div class="input"><input list="stops" class="input-stop" name="input-stop" onchange="fraStop()" placeholder="Skriv inn sted" /></div>
-                            <datalist id="stops" class="avgang"></datalist>
-                        </div>
+                    <div id="fraUt"></div>
+                </div>
+                <div id="fra-valg" style="display:block">
+                    <div class="title">
+                        <span>Jeg skal reise fra</span>
+                    </div>
+                    <div>
+                        <select id="avgang"></select>
+                        <!--
+                        <input list="stops" class="input-stop" name="input-stop" onchange="fraStop()" placeholder="Skriv inn sted" />
+                        <datalist id="stops" class="avgang"></datalist>-->
                     </div>
                 </div>
             </div>
-
             <div class="containerBox">
-                <div id="til" style="display:none">
-                    <div id="til-org" style="display:none">
-                        <div class="title">
-                            <span>Til : </span>
-                            <a href="#til-valg" id="endreT">Endre</a>
-                        </div>
-                        <div id="tilUt"></div>
+                <div id="til-org" style="display:none">
+                    <div class="title">
+                        <span>Til : </span>
+                        <a href="#til-valg" id="endreT">Endre</a>
                     </div>
-                    <div id="til-valg" style="display:block">
-                        <div class="inputTittel">
-                            <span>Jeg skal reise til</span>
-                        </div>
-                        <div>
-                            <div class="input"><input list="stops" class="input-stop" name="input-stop" onchange="tilStop()" placeholder="Skriv inn sted" /></div>
-                            <datalist id="stops" class="destinasjon"></datalist>
-                        </div>
+                    <div id="tilUt"></div>
+                </div>
+                <div id="til-valg" style="display:block">
+                    <div class="title">
+                        <span>Jeg skal reise til</span>
+                    </div>
+                    <div>
+                        <select id="destinasjon"></select>
+                        <!--
+                        <input list="stops" id="destinasjon" class="input-stop" name="input-stop" onchange="tilStop()" placeholder="Skriv inn sted" />
+                        <datalist id="stops"></datalist>-->
                     </div>
                 </div>
             </div>
-
-            <div class="containerBillett">
+            <div class="containerBox">
                 <div class="billett">
-                    <div class="dato" onchange="visBillett()">
-                        <div class="inputTittel">
+                    <div class="dato">
+                        <div class="title">
                             <span>Dato</span>
                         </div>
                         <div class="calendar">
@@ -71,7 +69,7 @@
                         </div>
                     </div>
                     <div class="type">
-                        <div class="inputTittel">
+                        <div class="title">
                             <span>Billettype</span>
                         </div>
                         <div>
@@ -99,16 +97,18 @@
                         </div>
                     </div>
                 </div>
-                <div class="knapp">
-                    <input type="button" id="visTid" value="Vis Tid Og Pris" class="btn btn-primary" />
-                </div>
+                <input type="button" id="visTid" onclick="settRute()" value="Vis Tid Og Pris" class="btn btn-primary" />
             </div>
-
-
             <div class="containerBox" id="infoBox" style="display:none">
-                <div id="heading"></div>
-                <div id="avganer"></div>
-                <input type="button" id="betal-btn" value="Betal"  onclick="lagreBestilling()"  class="btn btn-primary"  />
+                <div class="rute">
+                    <div id="heading"></div>
+                    <div id="avganger"></div>
+                </div>
+                <div class="rute">
+                    <div id="headingRE"></div>
+                    <div id="avgangerRE"></div>
+                </div>
+                <input type="button" id="betal-btn" value="Betal" onclick="lagreBestilling()" class="btn btn-primary" />
             </div>
         </form>
     </div>
