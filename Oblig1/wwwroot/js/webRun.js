@@ -33,13 +33,17 @@
     });
 });
 
+
+
 function fraStop() {
     var stop = $(".input-stop").val();
     $("#fraUt").html("<span>" + stop + "</span>");
     $(".input-stop").val("");
     $("#fra-org").css("display", "block");
     $("#fra-valg").css("display", "none");
+    $("#til").css("display", "block");
 }
+
 
 function tilStop() {
     var stop = $("#destinasjon").val();

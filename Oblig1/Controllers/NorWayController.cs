@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Oblig.Models;
+using Oblig1.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -24,13 +24,14 @@ namespace Oblig.Controllers
         {
             try
             {
-
+                
                 var bestill = new Billett()
                 {
                     AvgangersDato = BestilleBillett.AvgangersDato,
                     ReturDato = BestilleBillett.ReturDato,
                     FraSted = BestilleBillett.FraSted,
                     TilSted = BestilleBillett.TilSted,
+                    Pris = BestilleBillett.Pris,
                     Billettype = BestilleBillett.Billettype
                 };
 
@@ -44,7 +45,7 @@ namespace Oblig.Controllers
                 _db.kunder.Add(kunde);
                 await _db.SaveChangesAsync();
                 return true;
-
+                
             }
             catch
             {
@@ -54,7 +55,7 @@ namespace Oblig.Controllers
 
         public async Task<List<NorWay>> HentAlle()
         {
-
+            
             List<Kunde> alleKunder = await _db.kunder.ToListAsync();
             List<NorWay> alleBilletter = new List<NorWay>();
 
@@ -69,15 +70,14 @@ namespace Oblig.Controllers
                         ReturDato = bestill.ReturDato,
                         FraSted = bestill.FraSted,
                         TilSted = bestill.TilSted,
+                        Pris = bestill.Pris,
                         Billettype = bestill.Billettype
-                        //Pris = bestill.Pris,
                     };
                     alleBilletter.Add(enBestilling);
                 }
             }
             return alleBilletter;
         }
-
 
         //Hente ut til og fra stedene
         public async Task<List<Sted>> HentStop()
@@ -86,25 +86,21 @@ namespace Oblig.Controllers
             return alleSteder;
         }
 
-        public async Task<List<PrisType>> HentPrisType()
-        {
-
-            List<PrisType> allePrisType = await _db.pristype.ToListAsync();
-            return allePrisType;
-        }
-
-        public async Task<List<Pris>> HentPris()
-        {
-            List<Pris> allePris = await _db.pris.ToListAsync();
-            return allePris;
-        }
-
-
         //Hente ut tilpasset ruter info 
-        public async Task<List<Rute>> HentRute(string dato)
+        public async Task<List<Rute>> HentRute(InfoMedRute info)
         {
             try
             {
+                List<Rute> alleRuter = await _db.ruter.ToListAsync();
+
+                //Finn tilpasset rute som har sammen dato ved bruk av LINQ
+                var finnRute = (from passRute in alleRuter
+                                       where passRute.Dato == info.dato && passRute.FraRute == info.fSted && passRute.TilRute == info.tSted
+                                select passRute).ToList();
+
+                return finnRute;
+
+                /*
                 List<Rute> alleRuter = await _db.ruter.ToListAsync();
                 List<Rute> passerRuter = new List<Rute>();
                 //Finn tilpasset rute som har sammen dato 
@@ -120,7 +116,8 @@ namespace Oblig.Controllers
                     };
                     passerRuter.Add(enRute);
                 }
-                return passerRuter;
+                return passerRuter;*/
+
             }
             catch
             {
@@ -129,4 +126,3 @@ namespace Oblig.Controllers
         }
     }
 }
-

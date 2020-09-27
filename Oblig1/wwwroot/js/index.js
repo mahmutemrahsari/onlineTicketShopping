@@ -44,22 +44,38 @@ function formaterPris(pris) {
 
 //hent ut tilpasse rute info
 function settRute() {
-    const dato = $("#date1").val();
-    //const fra = $("#destinasjon").val();
-    console.log(dato);
-    const url = "NorWay/HentRute?dato=" + dato;
-    //const url = "NorWay/HentRute?" + dato + fra + til;
-    $.get(url, function (rutes) {
+    const info = {
+        dato: $("#date1").val(),
+        fSted: $("#avgang").val(),
+        tSted: $("#destinasjon").val()
+    }
+
+    const url = "NorWay/HentRute";
+
+    let utHeading = "<span>" + info.fSted + "-->" + info.tSted + "<span>" + "<br>" +
+        "<span>" + info.dato + "<span>";
+    $("#returnRute heading").html(utHeading);
+    
+    $.get(url, info, function (rutes) {
         formaterRute(rutes);
     });
 }
 
 function formaterRute(rutes) {
-    let utHeading = "";
+    let utMain = "<table class='table table-striped' id='ruteTB'>" +
+        "<tr>" +
+        "<th>BussNR</th><th>Avgangstid</th><th>Ankomsttid</th>" +
+        "</tr>";
     for (let rute of rutes) {
-        utHeading += "<span>" + rute.fraRute + "-->" + rute.tilRute + "<span>";
+        utMain += "<tr>" +
+            "<td>" + rute.bussNR + "</td>" +
+            "<td>" + rute.avgangsTid + "</td>" +
+            "<td>" + rute.ankomstTid + "</td>" +
+            "</tr>";
     }
-    $("#heading").html(utHeading);
+
+    utMain += "</table>";
+    $("#avganger").html(utMain);
 }
 
 //lagering bestilling informasjon

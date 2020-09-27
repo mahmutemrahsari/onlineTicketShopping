@@ -42,10 +42,13 @@ namespace Oblig.Models
     {
         [Key]
         public int RId { get; set; }
+        public string BussNR { get; set; }
         public string FraRute { get; set; }
         public string TilRute { get; set; }
         public string Dato { get; set; }
-        public string Time { get; set; }
+        public string AvgangsTid { get; set; }
+        public string AnkomstTid { get; set; }
+
         //public virtual List<Sted> Steder { get; set; }
         //public virtual List<Billett> Billetter { get; set; }
     }
