@@ -7,6 +7,8 @@
     animation: slide 20s infinite;    
 }
 
+
+
 @keyframes slide{
     25% {
         background: url("../bilder/kar2.png");
@@ -41,11 +43,28 @@
     }
 }
 
+.input * {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.58);
+    padding: 12px 20px;
+    border-radius: 25px;
+    border-color: navy;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
 
+.inputTittel * {
+    font-size: 16px;
+    color: navy;
+    margin-left: 2%;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 
-.containerBox {
-    display: inline-block;
-    vertical-align: middle;
+.container {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 10px 15px 10px 15px;
+    border-radius: 25px;
 }
 
 .top {
@@ -60,3 +79,41 @@
     margin-bottom: 10px;
     transition: opacity 2s;
 }
+
+.knapp * {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 10px 15px 10px 15px;
+    border-radius: 25px;
+}
+
+.calendar {
+    background-color: rgba(255, 255, 255, 0.58);
+    padding: 12px 20px;
+    border-radius: 25px;
+    border-color: navy;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+
+.tilAnimasjon {
+    top: -400px;
+    animation: drop 0.5s ease forwards;
+}
+
+@keyframes drop {
+    0% {
+        opacity: 0
+    }
+
+    70% {
+        transform: translate(700px)
+    }
+
+    100% {
+        transform: translate(650px);
+        opacity: 1;
+    }
+}
+
