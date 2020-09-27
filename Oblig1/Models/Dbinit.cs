@@ -29,10 +29,10 @@ namespace Oblig1.Models
                 context.steder.Add(sted2);
 
                 //initialiserer rute 
-                var rute1 = new Rute { FraRute = "Oslo", TilRute = "Sandvika", Time = "14:00", Dato= "2020-09-30"};
-                var rute2 = new Rute { FraRute = "Oslo", TilRute = "Sandvika", Time = "17:00", Dato = "2020-09-30" };
-                var rute3 = new Rute { FraRute = "Sandvika", TilRute = "Sandvika", Time = "13:00", Dato = "2020-09-30" };
-                var rute4 = new Rute { FraRute = "Oslo", TilRute = "Sandvika", Time = "17:00", Dato = "2020-10-02" };
+                var rute1 = new Rute { BussNR = "230", FraRute = "Oslo", TilRute = "Sandvika", AvgangsTid = "14:00", AnkomstTid = "15:00", Dato = "2020-09-30"};
+                var rute2 = new Rute { BussNR = "150", FraRute = "Oslo", TilRute = "Sandvika", AvgangsTid = "17:00", AnkomstTid = "19:30", Dato = "2020-09-30" };
+                var rute3 = new Rute { BussNR = "100", FraRute = "Sandvika", TilRute = "Lillehamme", AvgangsTid = "13:00", AnkomstTid = "16:00", Dato = "2020-09-30" };
+                var rute4 = new Rute { BussNR = "230", FraRute = "Oslo", TilRute = "Sandvika", AvgangsTid = "09:30", AnkomstTid = "15:00", Dato = "2020-10-02" };
                 context.ruter.Add(rute1);
                 context.ruter.Add(rute2);
                 context.ruter.Add(rute3);

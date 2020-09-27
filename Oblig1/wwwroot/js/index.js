@@ -21,33 +21,17 @@ function formaterStop(stops) {
 
 //hent ut tilpasse rute info
 function settRute() {
-    
     const info = {
         dato: $("#date1").val(),
         fSted: $("#avgang").val(),
         tSted: $("#destinasjon").val()
     }
+
     const url = "NorWay/HentRute";
-    //const url = "NorWay/HentRute?info=" + info;
-    /*
-    const dato = $("#date1").val();
-    const fSted = $("#avgang").val();
-    const tSted = $("#destinasjon").val();
-    //console.log(dato, fSted, tSted);
-    
-    $.ajax({
-        type: 'POST',
-        url: 'NorWay/HentRute',
-        contentType: "application/json; charset=utf-8",
-        //data: '{ "dato":' + dato + ', "fSted":' + fSted + '"}',
-        data: JSON.stringify({ dato: dato, fSted: fSted, tSted: tSted }),
-        dataType: 'json',
-        success: function (rutes) {
-            formaterRute(rutes);
-            console.log("success" + dato + fSted + tSted);
-        },
-        error: 'console.log("feil")'
-    });*/
+
+    let utHeading = "<span>" + info.fSted + "-->" + info.tSted + "<span>" + "<br>" +
+        "<span>" + info.dato + "<span>";
+    $("#returnRute heading").html(utHeading);
     
     $.get(url, info, function (rutes) {
         formaterRute(rutes);
@@ -55,12 +39,20 @@ function settRute() {
 }
 
 function formaterRute(rutes) {
-    let utHeading = "";
+    let utMain = "<table class='table table-striped' id='ruteTB'>" +
+        "<tr>" +
+        "<th>BussNR</th><th>Avgangstid</th><th>Ankomsttid</th>" +
+        "</tr>";
     for (let rute of rutes) {
-        utHeading += "<span>" + rute.fraRute + "-->" + rute.tilRute + "<span>";
-        break;
+        utMain += "<tr>" +
+            "<td>" + rute.bussNR + "</td>" +
+            "<td>" + rute.avgangsTid + "</td>" +
+            "<td>" + rute.ankomstTid + "</td>" +
+            "</tr>";
     }
-    $("#heading").html(utHeading);
+
+    utMain += "</table>";
+    $("#avganger").html(utMain);
 }
 
 //lagering bestilling informasjon

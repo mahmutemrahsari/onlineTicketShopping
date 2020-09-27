@@ -9,6 +9,11 @@
 
     <script src="js/index.js"></script>
     <script src="js/webRun.js"></script>
+    <style>
+        tr:focus {
+            background-color: #0094ff;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -95,9 +100,15 @@
                 <input type="button" id="visTid" onclick="settRute()" value="Vis Tid Og Pris" class="btn btn-primary" />
             </div>
             <div class="containerBox" id="infoBox" style="display:none">
-                <div id="heading"></div>
-                <div id="avganer"></div>
-                <input type="button" id="betal-btn" value="Betal"  onclick="lagreBestilling()"  class="btn btn-primary"  />
+                <div class="rute">
+                    <div id="heading"></div>
+                    <div id="avganger"></div>
+                </div>
+                <div class="rute">
+                    <div id="headingRE"></div>
+                    <div id="avgangerRE"></div>
+                </div>
+                <input type="button" id="betal-btn" value="Betal" onclick="lagreBestilling()" class="btn btn-primary" />
             </div>
         </form>
     </div>
