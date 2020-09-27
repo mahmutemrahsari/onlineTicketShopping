@@ -44,8 +44,13 @@
 
 
 .containerBox {
-    display: inline-block;
     vertical-align: middle;
+}
+
+#BillettType{
+    height:200px;
+    width:200px;
+    display:none;
 }
 
 .top {
