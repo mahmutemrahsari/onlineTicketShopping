@@ -48,9 +48,23 @@
 }
 
 #BillettType{
-    height:200px;
+    height:100%;
     width:200px;
     display:none;
+}
+
+#minus1, #plus1, #minus2, #plus2, #minus3, #plus3, #minus4, #plus4, #minus5, #plus5, #minus6, #plus6, #minus7, #plus7{
+    font-size:2px;
+    height:17px;
+    width:17px;
+    padding:2%;
+}
+
+#Plass_1 {
+    display: inline-block;
+}
+#Plass_2{
+    display:inline-block;
 }
 
 .top {
