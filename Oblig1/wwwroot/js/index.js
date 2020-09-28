@@ -29,12 +29,9 @@ function formaterPris(pris) {
     let ut = "";
     for (let priser of pris) {
         ut += "<span>" + priser.type + "</span>"
-        ut += '<input type="button" name="minus" value="-" id="minus" onclick="antallBillet()" />'
-        ut += ' <span id="antall">0</span>'
-        ut += ' <input type="button" name="plus" value="+" id="plus" onclick="antallBillet()" />'
-        ut += '</br>'
+        ut += '<br>'
     }
-    $("#billettType").html(ut);
+    $("#Plass_1").html(ut);
 }
 
 
@@ -50,7 +47,7 @@ function settRute() {
 
     let utHeading = "<span>" + info.fSted + "-->" + info.tSted + "<span>" + "<br>" +
         "<span>" + info.dato + "<span>";
-    $("#returnRute heading").html(utHeading);
+    $("#heading").html(utHeading);
     
     $.get(url, info, function (rutes) {
         formaterRute(rutes);
@@ -58,21 +55,34 @@ function settRute() {
 }
 
 function formaterRute(rutes) {
+    /*
     let utMain = "<table class='table table-striped' id='ruteTB'>" +
         "<tr>" +
-        "<th>BussNR</th><th>Avgangstid</th><th>Ankomsttid</th>" +
-        "</tr>";
+        "<th>BussNR</th><th>Avgangstid</th><th>Ankomsttid</th><th>Velge</th>" +
+        "</tr>";*/
+    let utMain = "<thead>" + "<tr>" +
+        "<th>BussNR</th><th>Avgangstid</th><th>Ankomsttid</th><th>Velge</th>" +
+        "</tr>" + "</thead>" + "<tbody>";
     for (let rute of rutes) {
         utMain += "<tr>" +
             "<td>" + rute.bussNR + "</td>" +
             "<td>" + rute.avgangsTid + "</td>" +
             "<td>" + rute.ankomstTid + "</td>" +
+            "<td><input type='checkbox' calss='checkRute'/></td>" +
             "</tr>";
     }
 
-    utMain += "</table>";
-    $("#avganger").html(utMain);
+    //utMain += "</table>";
+    utMain += "</tbody>";
+    $("#ruteTB").html(utMain);
 }
+
+$(function () {
+    $('#ruteTB').on('click', 'tr', function () {
+        alert($(this).html());
+        $($(this)).css("background-color", "#0094ff");
+    });
+});
 
 //lagering bestilling informasjon
 function lagreBestilling() {
@@ -94,22 +104,21 @@ function lagreBestilling() {
 
 //Antall billet kan endres + og - buttonner
 function antallBillet() {
-    let antall = parseInt($("#antall").html());
+    let antall = parseInt($("#antall1").html());
 
-    $('#plus').click(function () {
+    $('#plus1').click(function () {
         antall += 1;
-        $('#antall').html(antall);
+        $('#antall1').html(antall);
     });
 
-    $('#minus').click(function () {
-        while (antall > 0) {
+    $('#minus1').click(function () {
+        if (antall > 0) {
             antall -= 1;
         }
-
-        $('#antall').html(antall);
-
+        $('#antall1').html(antall);
     });
 };
+
 
 //Sett BillettType
 function typeBillett() {
@@ -124,6 +133,112 @@ function typeBillett() {
     });
     $("#BillettType").on("click", function (e) {
         e.stopPropagation();
+    });
+}
+
+function antallBillet2() {
+    let antall = parseInt($("#antall2").html());
+
+    $('#plus2').click(function () {
+        antall += 1;
+        $('#antall2').html(antall);
+    });
+
+    $('#minus2').click(function () {
+        if (antall > 0) {
+            antall -= 1;
+        }
+
+        $('#antall2').html(antall);
+
+    });
+};
+function antallBillet3() {
+    let antall = parseInt($("#antall3").html());
+
+    $('#plus3').click(function () {
+        antall += 1;
+        $('#antall3').html(antall);
+    });
+
+    $('#minus3').click(function () {
+        if (antall > 0) {
+            antall -= 1;
+        }
+
+        $('#antall3').html(antall);
+
+    });
+};
+function antallBillet4() {
+    let antall = parseInt($("#antall4").html());
+
+    $('#plus4').click(function () {
+        antall += 1;
+        $('#antall4').html(antall);
+    });
+
+    $('#minus4').click(function () {
+        if (antall > 0) {
+            antall -= 1;
+        }
+
+        $('#antall4').html(antall);
+
+    });
+};
+
+function antallBillet5() {
+    let antall = parseInt($("#antall5").html());
+
+    $('#plus5').click(function () {
+        antall += 1;
+        $('#antall5').html(antall);
+    });
+
+    $('#minus5').click(function () {
+        if (antall > 0) {
+            antall -= 1;
+        }
+
+        $('#antall5').html(antall);
+
+    });
+};
+
+function antallBillet6() {
+    let antall = parseInt($("#antall6").html());
+
+    $('#plus6').click(function () {
+        antall += 1;
+        $('#antall6').html(antall);
+    });
+
+    $('#minus6').click(function () {
+        if (antall > 0) {
+            antall -= 1;
+        }
+
+        $('#antall6').html(antall);
+
+    });
+};
+
+function antallBillet7() {
+    let antall = parseInt($("#antall7").html());
+
+    $('#plus7').click(function () {
+        antall += 1;
+        $('#antall7').html(antall);
+    });
+
+    $('#minus7').click(function () {
+        if (antall > 0) {
+            antall -= 1;
+        }
+
+        $('#antall7').html(antall);
+
     });
 }
 

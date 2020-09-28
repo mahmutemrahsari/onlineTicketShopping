@@ -31,7 +31,6 @@ namespace Oblig.Controllers
                     ReturDato = BestilleBillett.ReturDato,
                     FraSted = BestilleBillett.FraSted,
                     TilSted = BestilleBillett.TilSted,
-                    Pris = BestilleBillett.Pris,
                     Billettype = BestilleBillett.Billettype
                 };
 
@@ -70,7 +69,6 @@ namespace Oblig.Controllers
                         ReturDato = bestill.ReturDato,
                         FraSted = bestill.FraSted,
                         TilSted = bestill.TilSted,
-                        Pris = bestill.Pris,
                         Billettype = bestill.Billettype
                     };
                     alleBilletter.Add(enBestilling);
@@ -84,6 +82,19 @@ namespace Oblig.Controllers
         {
             List<Sted> alleSteder = await _db.steder.ToListAsync();
             return alleSteder;
+        }
+
+        public async Task<List<PrisType>> HentPrisType()
+        {
+
+            List<PrisType> allePrisType = await _db.pristype.ToListAsync();
+            return allePrisType;
+        }
+
+        public async Task<List<Pris>> HentPris()
+        {
+            List<Pris> allePris = await _db.pris.ToListAsync();
+            return allePris;
         }
 
         //Hente ut tilpasset ruter info 
