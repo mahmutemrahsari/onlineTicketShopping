@@ -21,21 +21,32 @@ function formaterStop(stops) {
 
 function settPris() {
     $.get("Norway/HentPrisType", function (pris) {
+        formaterPrisType(pris);
         formaterPris(pris);
     });
 }
 
+function formaterPrisType(pristype) {
+    let ut = "";
+    for (let pristyper of pristype) {
+        ut += "<span>" + pristyper.type + "</span>"
+        ut += '<br>'
+    }
+    $("#Plass_1").html(ut);
+}
+
 function formaterPris(pris) {
     let ut = "";
+    
     for (let priser of pris) {
-        ut += "<span>" + priser.type + "</span>"
-        ut += '<input type="button" name="minus" value="-" id="minus" onclick="antallBillet()" />'
-        ut += ' <span id="antall">0</span>'
-        ut += ' <input type="button" name="plus" value="+" id="plus" onclick="antallBillet()" />'
-        ut += '</br>'
+            ut += "<span" + " " +"class=" +'"'+"pris"+'"'+ ">" + priser.pris + "</span>"
+            ut += "<br>"
     }
-    $("#billettType").html(ut);
+    $("#Pris").html(ut);
 }
+
+
+
 
 
 //hent ut tilpasse rute info
@@ -76,15 +87,16 @@ function formaterRute(rutes) {
 
 //lagering bestilling informasjon
 function lagreBestilling() {
+    antall();
     const reise = {
         Epost: $("#Epost").val(),
-        Pris: $("#Pris").val(),
+        Pris: $("#TotalPris").val(),
         Billettype: $("#billettType").val(),
         FraSted: $("#avgang").val(),
         TilSted: $("#destinasjon").val(),
         AvgangersDato: $("#date1").val(),
         ReturDato: $("#date2").val(),
-        Antall: $("#antall").val()
+        //Antall: $("#antall").val()
     }
     const url = "NorWay/Lagre";
     $.post(url, reise, function () {
@@ -92,39 +104,6 @@ function lagreBestilling() {
     });
 };
 
-//Antall billet kan endres + og - buttonner
-function antallBillet() {
-    let antall = parseInt($("#antall").html());
 
-    $('#plus').click(function () {
-        antall += 1;
-        $('#antall').html(antall);
-    });
-
-    $('#minus').click(function () {
-        while (antall > 0) {
-            antall -= 1;
-        }
-
-        $('#antall').html(antall);
-
-    });
-};
-
-//Sett BillettType
-function typeBillett() {
-    $("#billett").on("click", function (e) {
-        $("#BillettType").show();
-
-        $(document).one("click", function () {
-            $("#BillettType").hide();
-        });
-
-        e.stopPropagation();
-    });
-    $("#BillettType").on("click", function (e) {
-        e.stopPropagation();
-    });
-}
 
 
