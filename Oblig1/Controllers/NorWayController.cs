@@ -86,6 +86,14 @@ namespace Oblig.Controllers
             return alleSteder;
         }
 
+        public async Task<List<PrisType>> HentPrisType()
+        {
+
+            List<PrisType> allePrisType = await _db.pristype.ToListAsync();
+            return allePrisType;
+        }
+
+
         //Hente ut tilpasset ruter info 
         public async Task<List<Rute>> HentRute(InfoMedRute info)
         {
@@ -95,29 +103,10 @@ namespace Oblig.Controllers
 
                 //Finn tilpasset rute som har sammen dato ved bruk av LINQ
                 var finnRute = (from passRute in alleRuter
-                                       where passRute.Dato == info.dato && passRute.FraRute == info.fSted && passRute.TilRute == info.tSted
+                                where passRute.Dato == info.dato && passRute.FraRute == info.fSted && passRute.TilRute == info.tSted
                                 select passRute).ToList();
 
                 return finnRute;
-
-                /*
-                List<Rute> alleRuter = await _db.ruter.ToListAsync();
-                List<Rute> passerRuter = new List<Rute>();
-                //Finn tilpasset rute som har sammen dato 
-                foreach (var rute in alleRuter)
-                {
-                    Rute finnRute = await _db.ruter.FindAsync(dato);
-                    var enRute = new Rute()
-                    {
-                        FraRute = finnRute.FraRute,
-                        TilRute = finnRute.TilRute,
-                        Dato = finnRute.Dato,
-                        Time = finnRute.Time
-                    };
-                    passerRuter.Add(enRute);
-                }
-                return passerRuter;*/
-
             }
             catch
             {

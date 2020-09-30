@@ -1,5 +1,5 @@
 ﻿body {
-    background-image: url("../bilder/kar1.png");
+    /*background-image: url("../bilder/kar1.png");*/
     background-repeat: no-repeat;
     background-size: cover;
     max-width: 100%;
@@ -7,7 +7,7 @@
     animation: slide 20s infinite;    
 }
 
-@keyframes slide{
+/*/@keyframes slide{
     25% {
         background: url("../bilder/kar2.png");
         background-repeat: no-repeat;
@@ -39,13 +39,18 @@
         max-width: 100%;
         max-height: 100%;
     }
+}*/
+
+#total{
+    height:100%;
+    width:100%;
 }
-
-
 
 .containerBox {
     vertical-align: middle;
 }
+
+
 
 #BillettType{
     height:100%;
@@ -65,6 +70,10 @@
 }
 #Plass_2{
     display:inline-block;
+}
+
+#Pris, #Voksen, #Barn, #Student, #Honnor, #Verneplikt, #Ledsager,#button1,#TotalPris {
+    display: none;
 }
 
 .top {
