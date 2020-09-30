@@ -36,9 +36,9 @@
 
 
 function fraStop() {
-    var stop = $(".input-stop").val();
-    $("#fraUt").html("<span>" + stop + "</span>");
-    $(".input-stop").val("");
+    var fra = $("#avgang").val();
+    $("#fraUt").html("<span>" + fra + "</span>");
+    $("#avgang").val(fra);
     $("#fra-org").css("display", "block");
     $("#fra-valg").css("display", "none");
     $("#til").css("display", "block");
@@ -46,9 +46,25 @@ function fraStop() {
 
 
 function tilStop() {
-    var stop = $("#destinasjon").val();
-    $("#tilUt").html("<span>" + stop + "</span>");
-    $("#destinasjon").val("");
+    var til = $("#destinasjon").val();
+    $("#tilUt").html("<span>" + til + "</span>");
+    $("#destinasjon").val(til);
     $("#til-org").css("display", "block");
     $("#til-valg").css("display", "none");
 }
+
+
+
+$(function () {
+    var liste = document.getElementById(destinasjon);
+    $("#test").autocomplete({
+        source: liste
+    });
+});
+
+function blurSelect() {
+    var element = $("destinasjon").find("option:selected").text();
+    $("#test").val(element);
+}
+
+
