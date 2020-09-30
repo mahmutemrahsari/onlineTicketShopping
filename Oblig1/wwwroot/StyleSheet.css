@@ -43,18 +43,47 @@
     }
 }
 
-.input * {
+#avgang {
     width: 100%;
     background-color: rgba(255, 255, 255, 0.58);
-    padding: 12px 20px;
+    border-width: 1px;
     border-radius: 25px;
     border-color: navy;
     font-size: 16px;
     letter-spacing: 1px;
     font-weight: bold;
+    height: 40px;
+    animation: border-width 0.6s ease-out;
+    animation: height 0.6s ease-out;
 }
 
-.inputTittel * {
+    #avgang:hover {
+        border-width: 2px;
+        height: 43px;
+    }
+
+
+#destinasjon {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.58);
+    border-width: 1px;
+    border-radius: 25px;
+    border-color: navy;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    height: 40px;
+    animation: border-width 0.6s ease-out;
+    animation: height 0.6s ease-out;
+}
+
+    #destinasjon:hover{
+        border-width: 2px;
+        height: 43px;
+    }
+
+
+.title {
     font-size: 16px;
     color: navy;
     margin-left: 2%;
@@ -117,3 +146,16 @@
     }
 }
 
+#stil{
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.58);
+    border-width: 1px;
+    border-radius: 25px;
+    border-color: navy;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    height: 40px;
+    animation: border-width 0.6s ease-out;
+    animation: height 0.6s ease-out;
+}

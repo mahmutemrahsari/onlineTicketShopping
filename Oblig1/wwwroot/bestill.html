@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/2.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/Bestilling.js"></script>
-    <link href="styles.css" rel="stylesheet" />
+    <link href="StyleSheet.css" rel="stylesheet" />
     <script>
         $(document).ready(function () {
             $("#nyBestill").click(function () {
@@ -16,6 +16,7 @@
     </script>
 </head>
 <body>
+    <div class="top"></div>
     <div class="container">
         <div class="containerBox">
             <div class="title">
@@ -29,19 +30,25 @@
             </select>
             <div>
                 <div>
-                    <span>KortNummer</span>
-                    <input type="text" />
-                </div>
+                    <div class="title">
+                        <span>KortNummer</span>
+                    </div>
+                        <input type="text" id="stil" />
+                    </div>
                 <div>
-                    <span>CVV</span>
-                    <input type="text" />
-                </div>
+                    <div class="title">
+                        <span>CVV</span>
+                    </div>
+                        <input type="text" id="stil" />
+                    </div>
                 <div>
-                    <span>Epost</span>
-                    <input type="text" id="Epost" />
+                    <div class="title">
+                        <span>Epost</span>
+                    </div>
+                        <input type="text" id="Epost" />
+                    </div>
+                    <input type="button" id="bekreft" value="Bekreft" class="btn btn-primary" />
                 </div>
-                <input type="button" id="bekreft" value="Bekreft" class="btn btn-primary"/>
-            </div>
         </div>
         <div class="containerBox">
             <h1>Her er billett informasjon :</h1>
