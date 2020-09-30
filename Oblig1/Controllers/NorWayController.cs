@@ -24,7 +24,7 @@ namespace Oblig.Controllers
         {
             try
             {
-                
+
                 var bestill = new Billett()
                 {
                     AvgangersDato = BestilleBillett.AvgangersDato,
@@ -32,7 +32,14 @@ namespace Oblig.Controllers
                     FraSted = BestilleBillett.FraSted,
                     TilSted = BestilleBillett.TilSted,
                     Pris = BestilleBillett.Pris,
-                    Billettype = BestilleBillett.Billettype
+                    Billettype = BestilleBillett.Billettype,
+                    Antall = BestilleBillett.Antall,
+                    Avgangstid = BestilleBillett.Avgangstid,
+                    Ankomsttid = BestilleBillett.Ankomsttid,
+                    BussNr = BestilleBillett.BussNr,
+                    AvgangstidR = BestilleBillett.AvgangstidR,
+                    AnkomsttidR = BestilleBillett.AnkomsttidR,
+                    BussNrR = BestilleBillett.BussNrR
                 };
 
                 var kunde = new Kunde()
@@ -71,13 +78,21 @@ namespace Oblig.Controllers
                         FraSted = bestill.FraSted,
                         TilSted = bestill.TilSted,
                         Pris = bestill.Pris,
-                        Billettype = bestill.Billettype
+                        Billettype = bestill.Billettype,
+                        Antall = bestill.Antall,
+                        Avgangstid = bestill.Avgangstid,
+                        Ankomsttid = bestill.Ankomsttid,
+                        BussNr = bestill.BussNr,
+                        AvgangstidR = bestill.AvgangstidR,
+                        AnkomsttidR = bestill.AnkomsttidR,
+                        BussNrR = bestill.BussNrR
                     };
                     alleBilletter.Add(enBestilling);
                 }
             }
             return alleBilletter;
         }
+
 
         //Hente ut til og fra stedene
         public async Task<List<Sted>> HentStop()
@@ -101,7 +116,7 @@ namespace Oblig.Controllers
             {
                 List<Rute> alleRuter = await _db.ruter.ToListAsync();
 
-                //Finn tilpasset rute som har sammen dato ved bruk av LINQ
+                //Finn tilpasset rute som har sammen dato og stedene ved bruk av LINQ
                 var finnRute = (from passRute in alleRuter
                                 where passRute.Dato == info.dato && passRute.FraRute == info.fSted && passRute.TilRute == info.tSted
                                 select passRute).ToList();

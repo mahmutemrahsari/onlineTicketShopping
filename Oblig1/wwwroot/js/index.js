@@ -46,48 +46,36 @@ function formaterPris(pris) {
 }
 
 
-
-
-
-//hent ut tilpasse rute info
-function settRute() {
-    const info = {
-        dato: $("#date1").val(),
-        fSted: $("#avgang").val(),
-        tSted: $("#destinasjon").val()
-    }
-
-    const url = "NorWay/HentRute";
-
-    let utHeading = "<span>" + info.fSted + "-->" + info.tSted + "<span>" + "<br>" +
-        "<span>" + info.dato + "<span>";
-    $("#returnRute heading").html(utHeading);
-    
-    $.get(url, info, function (rutes) {
-        formaterRute(rutes);
-    });
-}
-
-function formaterRute(rutes) {
-    let utMain = "<table class='table table-striped' id='ruteTB'>" +
-        "<tr>" +
-        "<th>BussNR</th><th>Avgangstid</th><th>Ankomsttid</th>" +
-        "</tr>";
-    for (let rute of rutes) {
-        utMain += "<tr>" +
-            "<td>" + rute.bussNR + "</td>" +
-            "<td>" + rute.avgangsTid + "</td>" +
-            "<td>" + rute.ankomstTid + "</td>" +
-            "</tr>";
-    }
-
-    utMain += "</table>";
-    $("#avganger").html(utMain);
-}
-
 //lagering bestilling informasjon
 function lagreBestilling() {
     antall();
+
+    //var bussNr = "";
+    //var avgangstid = "";
+    //var ankomsttid = "";
+
+    if ($("#ruteTB tr").hasClass("highlight")) {
+        var bussNr = $(".highlight").find("td").eq(0).text();
+        var avgangstid = $(".highlight").find("td").eq(1).text();
+        var ankomsttid = $(".highlight").find("td").eq(2).text();
+    } else {
+        alert("Du må velge en buss ! ");
+        return;
+    }
+
+   
+
+    if ($("#returnCheck").is(':checked')) {
+        if ($("#ruteReturnTB tr").hasClass("returnHighlight")) {
+            var bussNrR = $(".returnHighlight").find("td").eq(0).text();
+            var avgangstidR = $(".returnHighlight").find("td").eq(1).text();
+            var ankomsttidR = $(".returnHighlight").find("td").eq(2).text();
+        } else {
+            alert("Du må velge en return buss ! ");
+            return;
+        }
+    }
+    
     const reise = {
         Epost: $("#Epost").val(),
         Pris: $("#TotalPris").val(),
@@ -96,7 +84,13 @@ function lagreBestilling() {
         TilSted: $("#destinasjon").val(),
         AvgangersDato: $("#date1").val(),
         ReturDato: $("#date2").val(),
-        //Antall: $("#antall").val()
+        BussNr: bussNr,
+        Avgangstid: avgangstid,
+        Ankomsttid: ankomsttid,
+        BussNrR: bussNrR,
+        AvgangstidR: avgangstidR,
+        AnkomsttidR: ankomsttidR
+
     }
     const url = "NorWay/Lagre";
     $.post(url, reise, function () {

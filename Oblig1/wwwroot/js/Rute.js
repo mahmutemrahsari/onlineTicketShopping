@@ -23,7 +23,7 @@ function formaterRute(rutes) {
         "<th>BussNR</th><th>Avgangstid</th><th>Ankomsttid</th><th>Velge</th>" +
         "</tr>" + "</thead>" + "<tbody>";
     for (let rute of rutes) {
-        utMain += "<tr onclick='Test()'>" +
+        utMain += "<tr>" +
             "<td>" + rute.bussNR + "</td>" +
             "<td>" + rute.avgangsTid + "</td>" +
             "<td>" + rute.ankomstTid + "</td>" +
