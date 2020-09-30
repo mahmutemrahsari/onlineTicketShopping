@@ -31,7 +31,8 @@ namespace Oblig.Controllers
                     ReturDato = BestilleBillett.ReturDato,
                     FraSted = BestilleBillett.FraSted,
                     TilSted = BestilleBillett.TilSted,
-                    Billettype = BestilleBillett.Billettype
+                    Billettype = BestilleBillett.Billettype,
+                    BussTil = BestilleBillett.BussTil
                 };
 
                 var kunde = new Kunde()

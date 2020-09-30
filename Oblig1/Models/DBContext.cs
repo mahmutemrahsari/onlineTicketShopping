@@ -24,11 +24,17 @@ namespace Oblig.Models
         [Key]
         public int ReferanseID { get; set; }
         public string FraSted { get; set; }
-        public string AvgangersDato { get; set; }
         public string TilSted { get; set; }
+        public string AvgangersDato { get; set; }
         public string ReturDato { get; set; }
         public string Billettype { get; set; }
-        //public virtual List<PrisType> Pristypes { get; set; }
+        public string Pris { get; set; }
+        public string BussTil { get; set; }
+        public string BussFra { get; set; }
+        public string AvgangsTidTil { get; set; }
+        public string AnkomstTidTil { get; set; }
+        public string AvgangsTidFra { get; set; }
+        public string AnkomstTidFra { get; set; }
     }
 
     public class Sted
