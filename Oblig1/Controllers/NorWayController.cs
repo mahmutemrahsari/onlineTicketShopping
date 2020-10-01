@@ -32,13 +32,19 @@ namespace Oblig.Controllers
                     FraSted = BestilleBillett.FraSted,
                     TilSted = BestilleBillett.TilSted,
                     Pris = BestilleBillett.Pris,
-                    Billettype = BestilleBillett.Billettype
+                    Billettype = BestilleBillett.Billettype,
+                    Antall = BestilleBillett.Antall,
+                    Avgangstid = BestilleBillett.Avgangstid,
+                    Ankomsttid = BestilleBillett.Ankomsttid,
+                    BussNr = BestilleBillett.BussNr,
+                    AvgangstidR = BestilleBillett.AvgangstidR,
+                    AnkomsttidR = BestilleBillett.AnkomsttidR,
+                    BussNrR = BestilleBillett.BussNrR
                 };
 
                 var kunde = new Kunde()
                 {
-                    Epost = BestilleBillett.Epost,
-                    Antall = BestilleBillett.Antall
+                    Epost = BestilleBillett.Epost
                 };
 
                 kunde.Billetter = new List<Billett>();
@@ -60,6 +66,7 @@ namespace Oblig.Controllers
             List<Kunde> alleKunder = await _db.kunder.ToListAsync();
             List<NorWay> alleBilletter = new List<NorWay>();
 
+                
             foreach (var kunde in alleKunder)
             {
                 foreach (var bestill in kunde.Billetter)
@@ -73,11 +80,18 @@ namespace Oblig.Controllers
                         TilSted = bestill.TilSted,
                         Pris = bestill.Pris,
                         Billettype = bestill.Billettype,
-                        Antall=kunde.Antall
+                        Antall = bestill.Antall,
+                        Avgangstid = bestill.Avgangstid,
+                        Ankomsttid = bestill.Ankomsttid,
+                        BussNr = bestill.BussNr,
+                        AvgangstidR = bestill.AvgangstidR,
+                        AnkomsttidR = bestill.AnkomsttidR,
+                        BussNrR = bestill.BussNrR
                     };
                     alleBilletter.Add(enBestilling);
                 }
             }
+
             return alleBilletter;
         }
 

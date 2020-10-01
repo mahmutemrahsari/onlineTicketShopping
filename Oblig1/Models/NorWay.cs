@@ -15,7 +15,13 @@ namespace Oblig.Models
         public string AvgangersDato { get; set; }
         public string TilSted { get; set; }
         public string ReturDato { get; set; }
-        public int Antall{ get; set; }
+        public int Antall { get; set; }
+        public string Avgangstid { get; set; }
+        public string Ankomsttid { get; set; }
+        public string BussNr { get; set; }
+        public string AvgangstidR { get; set; }
+        public string AnkomsttidR { get; set; }
+        public string BussNrR { get; set; }
     }
 
 
