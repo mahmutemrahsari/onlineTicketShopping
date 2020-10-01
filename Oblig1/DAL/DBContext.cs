@@ -56,9 +56,6 @@ namespace Oblig.Models
         public string Dato { get; set; }
         public string AvgangsTid { get; set; }
         public string AnkomstTid { get; set; }
-
-        //public virtual List<Sted> Steder { get; set; }
-        //public virtual List<Billett> Billetter { get; set; }
     }
 
 
