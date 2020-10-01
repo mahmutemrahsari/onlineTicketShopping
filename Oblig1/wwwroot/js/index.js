@@ -48,11 +48,8 @@ function formaterPris(pris) {
 
 //lagering bestilling informasjon
 function lagreBestilling() {
+    hentTypeOgAntall();
     antall();
-
-    //var bussNr = "";
-    //var avgangstid = "";
-    //var ankomsttid = "";
 
     if ($("#ruteTB tr").hasClass("highlight")) {
         var bussNr = $(".highlight").find("td").eq(0).text();
@@ -79,18 +76,18 @@ function lagreBestilling() {
     const reise = {
         Epost: $("#Epost").val(),
         Pris: $("#TotalPris").val(),
-        Billettype: $("#billettType").val(),
+        Billettype: $("#antallType").val(),
         FraSted: $("#avgang").val(),
         TilSted: $("#destinasjon").val(),
         AvgangersDato: $("#date1").val(),
         ReturDato: $("#date2").val(),
+        Antall: $("#antallTicket").val(),
         BussNr: bussNr,
         Avgangstid: avgangstid,
         Ankomsttid: ankomsttid,
         BussNrR: bussNrR,
         AvgangstidR: avgangstidR,
         AnkomsttidR: ankomsttidR
-
     }
     const url = "NorWay/Lagre";
     $.post(url, reise, function () {

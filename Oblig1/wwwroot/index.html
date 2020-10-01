@@ -28,47 +28,49 @@
 <body>
     <div class="container">
         <form>
-            <div class="containerBox_1">
-                <div id="fra-org" style="display:none">
-                    <div class="title">
-                        <span>Fra : </span>
-                        <a href="#fra-valg" id="endreF">Endre</a>
+            <div onchange="fraStop()">
+                <div class="containerBox">
+                    <div id="fra-org" style="display:none">
+                        <div class="title">
+                            <span>Fra : </span>
+                            <a href="#fra-valg" id="endreF">Endre</a>
+                        </div>
+                        <div id="fraUt"></div>
                     </div>
-                    <div id="fraUt"></div>
-                </div>
-                <div id="fra-valg" style="display:block">
-                    <div class="title">
-                        <span>Jeg skal reise fra</span>
-                    </div>
-                    <div>
-                        <select id="avgang"></select>
-                        <!--
-                <input list="stops" class="input-stop" name="input-stop" onchange="fraStop()" placeholder="Skriv inn sted" />
-                <datalist id="stops" class="avgang"></datalist>-->
-                    </div>
-                </div>
-            </div>
-            <div class="containerBox_2">
-                <div id="til-org" style="display:none">
-                    <div class="title">
-                        <span>Til : </span>
-                        <a href="#til-valg" id="endreT">Endre</a>
-                    </div>
-                    <div id="tilUt"></div>
-                </div>
-                <div id="til-valg" style="display:block">
-                    <div class="title">
-                        <span>Jeg skal reise til</span>
-                    </div>
-                    <div>
-                        <select id="destinasjon"></select>
-                        <!--
-                <input list="stops" id="destinasjon" class="input-stop" name="input-stop" onchange="tilStop()" placeholder="Skriv inn sted" />
-                <datalist id="stops"></datalist>-->
+                    <div id="fra-valg" style="display:block">
+                        <div class="title">
+                            <span>Jeg skal reise fra</span>
+                        </div>
+                        <div>
+                            <form name="formen">
+                                <select name="avgang" id="avgang"></select>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="containerBox_3">
+            <div onchange="tilStop()">
+                <div class="containerBox">
+                    <div id="til-org" style="display:none">
+                        <div class="title">
+                            <span>Til : </span>
+                            <a href="#til-valg" id="endreT">Endre</a>
+                        </div>
+                        <div id="tilUt"></div>
+                    </div>
+                    <div id="til-valg" style="display:block">
+                        <div class="title">
+                            <span>Jeg skal reise til</span>
+                        </div>
+                        <div>
+                            <form name="formen">
+                                <select name="destinasjon" id="destinasjon"></select>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="containerBox">
                 <div class="billett">
                     <div class="dato">
                         <div class="title">
@@ -83,7 +85,27 @@
                             <span>Billettype</span>
                         </div>
                         <div>
-                            <span id="billett" onclick="typeBillett()"><span id="tall"></span><span id="typeAv">Velg type av billett</span></span>
+                            <span id="billett" onclick="typeBillett()">
+                                <span id="title">Velg type av billett</span>
+                                <span id="tall"></span>
+                                <span id="typeAv"></span>
+                                <span id="tall1"></span>
+                                <span id="typeAv1"></span>
+                                <span id="tall2"></span>
+                                <span id="typeAv2"></span>
+                                <span id="tall3"></span>
+                                <span id="typeAv3"></span>
+                                <span id="tall4"></span>
+                                <span id="typeAv4"></span>
+                                <span id="tall5"></span>
+                                <span id="typeAv5"></span>
+                                <span id="tall6"></span>
+                                <span id="typeAv6"></span>
+                            </span>
+                            <div id="an">
+                                <input id="antallType" />
+                                <input id="antallTicket" />
+                            </div>
                             <div id="BillettType">
                                 <div id="Plass_1"></div>
                                 <div id="Plass_2">
@@ -140,20 +162,6 @@
                             </div>
                         </div>
                         <div>
-                            <!--<select id="billettType">
-                    </select>-->
-                            <!--
-                    <input type="button" name="plus" value="+" />
-                    <span id="antall">1</span>
-                    <input type="text" id="Pris" />
-                    <input type="button" name="minus" value="-" />
-
-
-                    <input type="button" name="minus" value="-" id="minus" onclick="antallBillet()" />
-                    <span id="antall">0</span>
-                    <input type="button" name="plus" value="+" id="plus" onclick="antallBillet()" />
-                    <!--<input type="text" value="Pris" id="Pris" />-->
-
                         </div>
                     </div>
                     <input type="checkbox" id="returnCheck" value="return"> Jeg ønsker returreise<br>
@@ -180,9 +188,9 @@
                     <div id="headingRE"></div>
                     <table class="table" id="ruteReturnTB"></table>
                 </div>
-                </div>
-                <input type="button" id="betal-btn" value="Betal" onclick="lagreBestilling()" class="btn btn-primary" />
-</form>
+            </div>
+            <input type="button" id="betal-btn" value="Betal" onclick="lagreBestilling()" class="btn btn-primary" />
+        </form>
     </div>
 </body>
 </html>
