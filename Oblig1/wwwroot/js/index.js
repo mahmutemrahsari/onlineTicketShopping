@@ -29,8 +29,8 @@ function settPris() {
 function formaterPrisType(pristype) {
     let ut = "";
     for (let pristyper of pristype) {
-        ut += "<span>" + pristyper.type + "</span>"
-        ut += '<br>'
+        ut += "<span" + " " + "class=" + '"' + "pristype" + '"' + ">" + pristyper.type + "</span>"
+        ut += "<br>"
     }
     $("#Plass_1").html(ut);
 }
@@ -46,10 +46,12 @@ function formaterPris(pris) {
 }
 
 
+
+
 //lagering bestilling informasjon
 function lagreBestilling() {
+    hentTypeOgAntall();
     antall();
-
     //var bussNr = "";
     //var avgangstid = "";
     //var ankomsttid = "";
@@ -63,7 +65,7 @@ function lagreBestilling() {
         return;
     }
 
-   
+
 
     if ($("#returnCheck").is(':checked')) {
         if ($("#ruteReturnTB tr").hasClass("returnHighlight")) {
@@ -75,29 +77,27 @@ function lagreBestilling() {
             return;
         }
     }
-    
     const reise = {
         Epost: $("#Epost").val(),
         Pris: $("#TotalPris").val(),
-        Billettype: $("#billettType").val(),
+        Billettype: $("#antallType").val(),
         FraSted: $("#avgang").val(),
         TilSted: $("#destinasjon").val(),
         AvgangersDato: $("#date1").val(),
         ReturDato: $("#date2").val(),
+        Antall: $("#antallTicket").val(),
         BussNr: bussNr,
         Avgangstid: avgangstid,
         Ankomsttid: ankomsttid,
         BussNrR: bussNrR,
         AvgangstidR: avgangstidR,
         AnkomsttidR: ankomsttidR
-
     }
     const url = "NorWay/Lagre";
     $.post(url, reise, function () {
         window.location.href = "bestill.html";
     });
 };
-
 
 
 

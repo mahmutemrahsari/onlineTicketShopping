@@ -30,7 +30,7 @@ function formaterBestillinger(bestillinger) {
 
         if ((bestilling.returDato) != null) {
             formaterReturnBestillinger(bestillinger);
-        } 
+        }
     }
     ut += "</table>";
     $("#BillettInfo").html(ut);

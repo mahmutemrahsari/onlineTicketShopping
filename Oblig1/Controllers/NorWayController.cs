@@ -24,13 +24,16 @@ namespace Oblig.Controllers
 
         public async Task<bool> Lagre(NorWay BestilleBillett)
         {
+
             return await _db.Lagre(BestilleBillett);
+
         }
 
         public async Task<List<NorWay>> HentAlle()
         {
+
             return await _db.HentAlle();
-        }
+        } 
 
         public async Task<List<Sted>> HentStop()
         {
@@ -44,7 +47,9 @@ namespace Oblig.Controllers
 
         public async Task<List<Rute>> HentRute(InfoMedRute info)
         {
+
             return await _db.HentRute(info);
+
         }
     }
 }
