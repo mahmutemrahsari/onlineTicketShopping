@@ -1,4 +1,6 @@
-﻿function antall() {
+﻿
+
+function antall() {
     //Hente pris fra database
     var p = document.getElementsByClassName("pris");
     var VoksenPris = p[0].innerHTML;
@@ -59,15 +61,15 @@ function hentTypeOgAntall() {
     var cont_6 = document.getElementById("tall5").innerHTML;
     var cont_7 = document.getElementById("tall6").innerHTML;
     if (cont1 != "" || cont2 != "" || cont3 != "" || cont4 != "" || cont5 != "" || cont6 != "" || cont7 != "") {
-        var total = cont_1 + "" + cont1 + " " + cont_2 + "" + cont2 + " " + cont_3 + "" + cont3 + " " +
+        var total = cont_1 + "" + cont1 + " " + cont_2 + "" + cont2 + " " + cont_3+""+cont3 + " " +
             cont_4 + "" + cont4 + " " + cont_5 + "" + cont5 + " " + cont_6 + "" + cont6 + " " + cont_7 + "" + cont7;
         var totalBillett = Number(cont_1) + Number(cont_2) + Number(cont_3) +
             Number(cont_4) + Number(cont_5) + Number(cont_6) + Number(cont_7);
         $("#antallType").val(total);
         $("#antallTicket").val(totalBillett);
     }
-
-}
+    
+    }
 
 
 function hentypefeilhåntering() {

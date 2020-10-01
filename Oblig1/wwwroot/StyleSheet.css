@@ -1,5 +1,5 @@
 ﻿body {
-    background-image: url("../bilder/kar1.png");
+    /*background-image: url("../bilder/kar1.png");*/
     background-repeat: no-repeat;
     background-size: cover;
     max-width: 100%;
@@ -7,9 +7,7 @@
     animation: slide 20s infinite;    
 }
 
-
-
-@keyframes slide{
+/*@keyframes slide{
     25% {
         background: url("../bilder/kar2.png");
         background-repeat: no-repeat;
@@ -41,27 +39,16 @@
         max-width: 100%;
         max-height: 100%;
     }
+}*/
+
+#total{
+    height:100%;
+    width:100%;
 }
 
-#avgang {
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.58);
-    border-width: 1px;
-    border-radius: 25px;
-    border-color: navy;
-    font-size: 16px;
-    letter-spacing: 1px;
-    font-weight: bold;
-    height: 40px;
-    animation: border-width 0.6s ease-out;
-    animation: height 0.6s ease-out;
+.containerBox {
+    vertical-align: middle;
 }
-
-    #avgang:hover {
-        border-width: 2px;
-        height: 43px;
-    }
-
 
 #destinasjon {
     width: 100%;
@@ -77,24 +64,56 @@
     animation: height 0.6s ease-out;
 }
 
-    #destinasjon:hover{
-        border-width: 2px;
-        height: 43px;
-    }
-
+#destinasjon:hover {
+    border-width: 2px;
+    height: 43px;
+}
 
 .title {
     font-size: 16px;
     color: navy;
     margin-left: 2%;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.container {
-    background-color: rgba(255, 255, 255, 0.5);
-    padding: 10px 15px 10px 15px;
+#stil {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.58);
+    border-width: 1px;
     border-radius: 25px;
+    border-color: navy;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    height: 40px;
+    animation: border-width 0.6s ease-out;
+    animation: height 0.6s ease-out;
 }
+
+
+#BillettType{
+    height:100%;
+    width:200px;
+    display:none;
+}
+
+#minus1, #plus1, #minus2, #plus2, #minus3, #plus3, #minus4, #plus4, #minus5, #plus5, #minus6, #plus6, #minus7, #plus7{
+    font-size:2px;
+    height:17px;
+    width:17px;
+    padding:2%;
+}
+
+#Plass_1 {
+    display: inline-block;
+}
+#Plass_2{
+    display:inline-block;
+}
+
+#Pris, #Voksen, #Barn, #Student, #Honnor, #Verneplikt, #Ledsager, #button1, #TotalPris, #an {
+    display: none;
+}
+
 
 .top {
     background-image: url("../bilder/lastned.png");
@@ -109,44 +128,7 @@
     transition: opacity 2s;
 }
 
-.knapp * {
-    background-color: rgba(255, 255, 255, 0.5);
-    padding: 10px 15px 10px 15px;
-    border-radius: 25px;
-}
-
-.calendar {
-    background-color: rgba(255, 255, 255, 0.58);
-    padding: 12px 20px;
-    border-radius: 25px;
-    border-color: navy;
-    font-size: 16px;
-    letter-spacing: 1px;
-    font-weight: bold;
-}
-
-
-.tilAnimasjon {
-    top: -400px;
-    animation: drop 0.5s ease forwards;
-}
-
-@keyframes drop {
-    0% {
-        opacity: 0
-    }
-
-    70% {
-        transform: translate(700px)
-    }
-
-    100% {
-        transform: translate(650px);
-        opacity: 1;
-    }
-}
-
-#stil{
+#avgang {
     width: 100%;
     background-color: rgba(255, 255, 255, 0.58);
     border-width: 1px;

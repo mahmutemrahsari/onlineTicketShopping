@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Oblig.Models;
+using Oblig1.DAL;
 using Oblig1.Models;
 
 namespace Oblig
@@ -22,6 +23,7 @@ namespace Oblig
             services.AddControllers();
             services.AddDbContext<BillettContext>(options =>
                             options.UseSqlite("Data Source=Billett.db"));
+            services.AddScoped<INorwayReposatory, NorwayReposatory>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
