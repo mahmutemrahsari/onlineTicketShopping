@@ -20,9 +20,7 @@ function antall() {
     var cont6 = document.getElementById("antall6").innerHTML;
     var cont7 = document.getElementById("antall7").innerHTML;
     //Feilhåntering
-    if (cont1 == 0 && cont2 == 0 && cont3 == 0 && cont4 == 0 && cont5 == 0 && cont6 == 0 && cont7 == 0) {
-        alert("Du må valge antall billett")
-    } else {
+
         $("#Voksen").html(VoksenPris * cont1);
         $("#Barn").html(BarnPris * cont2);
         $("#Student").html(StudentPris * cont3);
@@ -41,7 +39,7 @@ function antall() {
             Number(cont_4) + Number(cont_5) + Number(cont_6) + Number(cont_7);
         $("#TotalPris").val(total)
 
-    }
+    
 }
 
 //function som skal hente alle type til database.
@@ -268,7 +266,7 @@ function antallBillet6() {
             hentypefeilhåntering()
         } else {
             $('#tall5').html(antall);
-            $('#typeAv5').html(" " + Honnor);
+            $('#typeAv5').html(" " + Verneplikt);
         }
     });
 };

@@ -51,6 +51,11 @@ function lagreBestilling() {
     hentTypeOgAntall();
     antall();
 
+    if ($("#antallTicket").val() == 0) {
+        alert("Du må valge antall billett");
+        return;
+    }
+
     if ($("#ruteTB tr").hasClass("highlight")) {
         var bussNr = $(".highlight").find("td").eq(0).text();
         var avgangstid = $(".highlight").find("td").eq(1).text();
