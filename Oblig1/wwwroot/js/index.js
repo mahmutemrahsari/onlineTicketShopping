@@ -29,8 +29,8 @@ function settPris() {
 function formaterPrisType(pristype) {
     let ut = "";
     for (let pristyper of pristype) {
-        ut += "<span" + " " + "class=" + '"' + "pristype" + '"' + ">" + pristyper.type + "</span>"
-        ut += "<br>"
+        ut += "<span>" + pristyper.type + "</span>"
+        ut += '<br>'
     }
     $("#Plass_1").html(ut);
 }
@@ -46,15 +46,10 @@ function formaterPris(pris) {
 }
 
 
-
-
 //lagering bestilling informasjon
 function lagreBestilling() {
     hentTypeOgAntall();
     antall();
-    //var bussNr = "";
-    //var avgangstid = "";
-    //var ankomsttid = "";
 
     if ($("#ruteTB tr").hasClass("highlight")) {
         var bussNr = $(".highlight").find("td").eq(0).text();
@@ -65,7 +60,7 @@ function lagreBestilling() {
         return;
     }
 
-
+   
 
     if ($("#returnCheck").is(':checked')) {
         if ($("#ruteReturnTB tr").hasClass("returnHighlight")) {
@@ -77,6 +72,7 @@ function lagreBestilling() {
             return;
         }
     }
+    
     const reise = {
         Epost: $("#Epost").val(),
         Pris: $("#TotalPris").val(),
@@ -98,6 +94,7 @@ function lagreBestilling() {
         window.location.href = "bestill.html";
     });
 };
+
 
 
 
