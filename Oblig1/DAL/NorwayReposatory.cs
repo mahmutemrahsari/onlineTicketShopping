@@ -7,14 +7,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Oblig.Controllers
+namespace Oblig1.DAL
 {
-    [Route("[controller]/[action]")]
-    public class NorWayController : ControllerBase
+    public class NorwayReposatory : INorwayReposatory
     {
         private readonly BillettContext _db;
 
-        public NorWayController(BillettContext db)
+        public NorwayReposatory(BillettContext db)
         {
             _db = db;
         }
@@ -24,7 +23,7 @@ namespace Oblig.Controllers
         {
             try
             {
-                
+
                 var bestill = new Billett()
                 {
                     AvgangersDato = BestilleBillett.AvgangersDato,
@@ -52,7 +51,7 @@ namespace Oblig.Controllers
                 _db.kunder.Add(kunde);
                 await _db.SaveChangesAsync();
                 return true;
-                
+
             }
             catch
             {
@@ -62,11 +61,10 @@ namespace Oblig.Controllers
 
         public async Task<List<NorWay>> HentAlle()
         {
-            
+
             List<Kunde> alleKunder = await _db.kunder.ToListAsync();
             List<NorWay> alleBilletter = new List<NorWay>();
 
-                
             foreach (var kunde in alleKunder)
             {
                 foreach (var bestill in kunde.Billetter)
@@ -91,9 +89,9 @@ namespace Oblig.Controllers
                     alleBilletter.Add(enBestilling);
                 }
             }
-
             return alleBilletter;
         }
+
 
         //Hente ut til og fra stedene
         public async Task<List<Sted>> HentStop()
@@ -117,7 +115,7 @@ namespace Oblig.Controllers
             {
                 List<Rute> alleRuter = await _db.ruter.ToListAsync();
 
-                //Finn tilpasset rute som har sammen dato ved bruk av LINQ
+                //Finn tilpasset rute som har sammen dato og stedene ved bruk av LINQ
                 var finnRute = (from passRute in alleRuter
                                 where passRute.Dato == info.dato && passRute.FraRute == info.fSted && passRute.TilRute == info.tSted
                                 select passRute).ToList();

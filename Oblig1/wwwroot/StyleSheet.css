@@ -114,6 +114,10 @@
     display: none;
 }
 
+#t{
+    display:none;
+}
+
 
 .top {
     background-image: url("../bilder/lastned.png");
