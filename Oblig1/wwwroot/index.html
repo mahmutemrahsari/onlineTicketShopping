@@ -26,9 +26,11 @@
     </style>
 </head>
 <body>
+    <div class="top">
+    </div>
     <div class="container">
         <form>
-            <div class="containerBox_1">
+            <div class="containerBox_1" onchange="fraStop()">
                 <div id="fra-org" style="display:none">
                     <div class="title">
                         <span>Fra : </span>
@@ -48,7 +50,7 @@
                     </div>
                 </div>
             </div>
-            <div class="containerBox_2">
+            <div class="containerBox_2" onchange="tilStop()">
                 <div id="til-org" style="display:none">
                     <div class="title">
                         <span>Til : </span>
@@ -83,7 +85,28 @@
                             <span>Billettype</span>
                         </div>
                         <div>
-                            <span id="billett" onclick="typeBillett()"><span id="tall"></span><span id="typeAv">Velg type av billett</span></span>
+                            <span id="billett" onclick="typeBillett()">
+                                <span id="title">Velg type av billett</span>
+                                <span id="tall"></span>
+                                <span id="typeAv"></span>
+                                <span id="tall1"></span>
+                                <span id="typeAv1"></span>
+                                <span id="tall2"></span>
+                                <span id="typeAv2"></span>
+                                <span id="tall3"></span>
+                                <span id="typeAv3"></span>
+                                <span id="tall4"></span>
+                                <span id="typeAv4"></span>
+                                <span id="tall5"></span>
+                                <span id="typeAv5"></span>
+                                <span id="tall6"></span>
+                                <span id="typeAv6"></span>
+                            </span>
+                            <div id="an">
+                                <input id="antallType" />
+                                <input id="antallTicket" />
+                            </div>
+
                             <div id="BillettType">
                                 <div id="Plass_1"></div>
                                 <div id="Plass_2">
