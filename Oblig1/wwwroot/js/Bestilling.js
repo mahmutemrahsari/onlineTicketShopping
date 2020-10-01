@@ -28,5 +28,5 @@ function formaterBestillinger(bestillinger) {
             "</tr>";
     }
     ut += "</table>";
-    $("#avganger").html(ut);
+    $("#BillettInfo").html(ut);
 }

@@ -37,7 +37,8 @@ namespace Oblig.Controllers
 
                 var kunde = new Kunde()
                 {
-                    Epost = BestilleBillett.Epost
+                    Epost = BestilleBillett.Epost,
+                    Antall = BestilleBillett.Antall
                 };
 
                 kunde.Billetter = new List<Billett>();
@@ -71,7 +72,8 @@ namespace Oblig.Controllers
                         FraSted = bestill.FraSted,
                         TilSted = bestill.TilSted,
                         Pris = bestill.Pris,
-                        Billettype = bestill.Billettype
+                        Billettype = bestill.Billettype,
+                        Antall=kunde.Antall
                     };
                     alleBilletter.Add(enBestilling);
                 }

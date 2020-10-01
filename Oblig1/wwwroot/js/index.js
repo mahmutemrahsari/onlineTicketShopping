@@ -29,8 +29,8 @@ function settPris() {
 function formaterPrisType(pristype) {
     let ut = "";
     for (let pristyper of pristype) {
-        ut += "<span>" + pristyper.type + "</span>"
-        ut += '<br>'
+        ut += "<span" + " " + "class=" + '"' + "pristype" + '"' + ">" + pristyper.type + "</span>"
+        ut += "<br>"
     }
     $("#Plass_1").html(ut);
 }
@@ -87,16 +87,17 @@ function formaterRute(rutes) {
 
 //lagering bestilling informasjon
 function lagreBestilling() {
+    hentTypeOgAntall();
     antall();
     const reise = {
         Epost: $("#Epost").val(),
         Pris: $("#TotalPris").val(),
-        Billettype: $("#billettType").val(),
+        Billettype: $("#antallType").val(),
         FraSted: $("#avgang").val(),
         TilSted: $("#destinasjon").val(),
         AvgangersDato: $("#date1").val(),
         ReturDato: $("#date2").val(),
-        //Antall: $("#antall").val()
+        Antall: $("#antallTicket").val()
     }
     const url = "NorWay/Lagre";
     $.post(url, reise, function () {

@@ -15,6 +15,7 @@ namespace Oblig.Models
         public string AvgangersDato { get; set; }
         public string TilSted { get; set; }
         public string ReturDato { get; set; }
+        public int Antall{ get; set; }
     }
 
 
