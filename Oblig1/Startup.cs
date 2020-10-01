@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Oblig.Controllers;
 using Oblig.Models;
 using Oblig1.DAL;
 using Oblig1.Models;

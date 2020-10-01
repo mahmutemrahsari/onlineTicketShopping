@@ -22,4 +22,3 @@ namespace Oblig1.DAL
 
     }
 }
-
