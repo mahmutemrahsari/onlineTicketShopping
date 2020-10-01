@@ -62,56 +62,10 @@
     height: 43px;
 }
 
-
-#destinasjon {
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.58);
-    border-width: 1px;
-    border-radius: 25px;
-    border-color: navy;
-    font-size: 16px;
-    letter-spacing: 1px;
-    font-weight: bold;
-    height: 40px;
-    animation: border-width 0.6s ease-out;
-    animation: height 0.6s ease-out;
-}
-
-#destinasjon:hover{
-    border-width: 2px;
-    height: 43px;
-
-}
-
-
-.title {
-    font-size: 16px;
-    color: navy;
-    margin-left: 2%;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
 .container {
     background-color: rgba(255, 255, 255, 0.5);
     padding: 10px 15px 10px 15px;
     border-radius: 25px;
-}
-
-.containerBox {
-    vertical-align: middle;
-}
-
-.top {
-    background-image: url("../bilder/lastned.png");
-    background-repeat: no-repeat;
-    background-size: 70%;
-    width: 50%;
-    height: 100px;
-    position: relative;
-    margin-top: 17px;
-    margin-left: 250px;
-    margin-bottom: 10px;
-    transition: opacity 2s;
 }
 
 .knapp * {
@@ -151,7 +105,16 @@
     }
 }
 
-#stil{
+#total {
+    height: 100%;
+    width: 100%;
+}
+
+.containerBox {
+    vertical-align: middle;
+}
+
+#destinasjon {
     width: 100%;
     background-color: rgba(255, 255, 255, 0.58);
     border-width: 1px;
@@ -165,10 +128,31 @@
     animation: height 0.6s ease-out;
 }
 
-#total {
-    height: 100%;
-    width: 100%;
+    #destinasjon:hover {
+        border-width: 2px;
+        height: 43px;
+    }
+
+.title {
+    font-size: 16px;
+    color: navy;
+    margin-left: 2%;
 }
+
+#stil {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.58);
+    border-width: 1px;
+    border-radius: 25px;
+    border-color: navy;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    height: 40px;
+    animation: border-width 0.6s ease-out;
+    animation: height 0.6s ease-out;
+}
+
 
 #BillettType {
     height: 100%;
@@ -191,6 +175,34 @@
     display: inline-block;
 }
 
-#Pris, #Voksen, #Barn, #Student, #Honnor, #Verneplikt, #Ledsager, #button1, #TotalPris {
+#Pris, #Voksen, #Barn, #Student, #Honnor, #Verneplikt, #Ledsager, #button1, #TotalPris, #an {
     display: none;
+}
+
+
+.top {
+    background-image: url("../bilder/lastned.png");
+    background-repeat: no-repeat;
+    background-size: 70%;
+    width: 50%;
+    height: 100px;
+    position: relative;
+    margin-top: 17px;
+    margin-left: 250px;
+    margin-bottom: 10px;
+    transition: opacity 2s;
+}
+
+#avgang {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.58);
+    border-width: 1px;
+    border-radius: 25px;
+    border-color: navy;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    height: 40px;
+    animation: border-width 0.6s ease-out;
+    animation: height 0.6s ease-out;
 }

@@ -1,45 +1,47 @@
-﻿/function antall() {
-//Hente pris fra database
-var p = document.getElementsByClassName("pris");
-var VoksenPris = p[0].innerHTML;
-var BarnPris = p[1].innerHTML;
-var StudentPris = p[2].innerHTML;
-var UngdomPris = p[3].innerHTML;
-var HonnorPris = p[4].innerHTML;
-var VernepliktPris = p[5].innerHTML;
-var LedsagerPris = p[6].innerHTML;
+﻿
 
-//regne ut total pris
-var cont1 = document.getElementById("antall1").innerHTML;
-var cont2 = document.getElementById("antall2").innerHTML;
-var cont3 = document.getElementById("antall3").innerHTML;
-var cont4 = document.getElementById("antall4").innerHTML;
-var cont5 = document.getElementById("antall5").innerHTML;
-var cont6 = document.getElementById("antall6").innerHTML;
-var cont7 = document.getElementById("antall7").innerHTML;
-//Feilhåntering
-if (cont1 == 0 && cont2 == 0 && cont3 == 0 && cont4 == 0 && cont5 == 0 && cont6 == 0 && cont7 == 0) {
-    alert("Du må valge antall billett")
-} else {
-    $("#Voksen").html(VoksenPris * cont1);
-    $("#Barn").html(BarnPris * cont2);
-    $("#Student").html(StudentPris * cont3);
-    $("#Ungdom").html(UngdomPris * cont4);
-    $("#Honnor").html(HonnorPris * cont5);
-    $("#Verneplikt").html(VernepliktPris * cont6);
-    $("#Ledsager").html(LedsagerPris * cont7);
-    var cont_1 = document.getElementById("Voksen").innerHTML;
-    var cont_2 = document.getElementById("Barn").innerHTML;
-    var cont_3 = document.getElementById("Student").innerHTML;
-    var cont_4 = document.getElementById("Ungdom").innerHTML;
-    var cont_5 = document.getElementById("Honnor").innerHTML;
-    var cont_6 = document.getElementById("Verneplikt").innerHTML;
-    var cont_7 = document.getElementById("Ledsager").innerHTML;
-    var total = Number(cont_1) + Number(cont_2) + Number(cont_3) +
-        Number(cont_4) + Number(cont_5) + Number(cont_6) + Number(cont_7);
-    $("#TotalPris").val(total)
+function antall() {
+    //Hente pris fra database
+    var p = document.getElementsByClassName("pris");
+    var VoksenPris = p[0].innerHTML;
+    var BarnPris = p[1].innerHTML;
+    var StudentPris = p[2].innerHTML;
+    var UngdomPris = p[3].innerHTML;
+    var HonnorPris = p[4].innerHTML;
+    var VernepliktPris = p[5].innerHTML;
+    var LedsagerPris = p[6].innerHTML;
 
-}
+    //regne ut total pris
+    var cont1 = document.getElementById("antall1").innerHTML;
+    var cont2 = document.getElementById("antall2").innerHTML;
+    var cont3 = document.getElementById("antall3").innerHTML;
+    var cont4 = document.getElementById("antall4").innerHTML;
+    var cont5 = document.getElementById("antall5").innerHTML;
+    var cont6 = document.getElementById("antall6").innerHTML;
+    var cont7 = document.getElementById("antall7").innerHTML;
+    //Feilhåntering
+    if (cont1 == 0 && cont2 == 0 && cont3 == 0 && cont4 == 0 && cont5 == 0 && cont6 == 0 && cont7 == 0) {
+        alert("Du må valge antall billett")
+    } else {
+        $("#Voksen").html(VoksenPris * cont1);
+        $("#Barn").html(BarnPris * cont2);
+        $("#Student").html(StudentPris * cont3);
+        $("#Ungdom").html(UngdomPris * cont4);
+        $("#Honnor").html(HonnorPris * cont5);
+        $("#Verneplikt").html(VernepliktPris * cont6);
+        $("#Ledsager").html(LedsagerPris * cont7);
+        var cont_1 = document.getElementById("Voksen").innerHTML;
+        var cont_2 = document.getElementById("Barn").innerHTML;
+        var cont_3 = document.getElementById("Student").innerHTML;
+        var cont_4 = document.getElementById("Ungdom").innerHTML;
+        var cont_5 = document.getElementById("Honnor").innerHTML;
+        var cont_6 = document.getElementById("Verneplikt").innerHTML;
+        var cont_7 = document.getElementById("Ledsager").innerHTML;
+        var total = Number(cont_1) + Number(cont_2) + Number(cont_3) +
+            Number(cont_4) + Number(cont_5) + Number(cont_6) + Number(cont_7);
+        $("#TotalPris").val(total)
+
+    }
 }
 
 //function som skal hente alle type til database.

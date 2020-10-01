@@ -29,8 +29,8 @@ function settPris() {
 function formaterPrisType(pristype) {
     let ut = "";
     for (let pristyper of pristype) {
-        ut += "<span>" + pristyper.type + "</span>"
-        ut += '<br>'
+        ut += "<span" + " " + "class=" + '"' + "pristype" + '"' + ">" + pristyper.type + "</span>"
+        ut += "<br>"
     }
     $("#Plass_1").html(ut);
 }
