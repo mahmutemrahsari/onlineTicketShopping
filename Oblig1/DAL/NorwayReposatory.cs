@@ -65,13 +65,14 @@ namespace Oblig1.DAL
             List<Kunde> alleKunder = await _db.kunder.ToListAsync();
             List<NorWay> alleBilletter = new List<NorWay>();
 
-            foreach (var kunde in alleKunder)
-            {
-                foreach (var bestill in kunde.Billetter)
+            //Hente bare den nyeste billett informasjon
+            Kunde last = alleKunder.OrderByDescending(k => k.Id).First();
+
+                foreach (var bestill in last.Billetter)
                 {
                     var enBestilling = new NorWay()
                     {
-                        Epost = kunde.Epost,
+                        Epost = last.Epost,
                         AvgangersDato = bestill.AvgangersDato,
                         ReturDato = bestill.ReturDato,
                         FraSted = bestill.FraSted,
@@ -88,7 +89,6 @@ namespace Oblig1.DAL
                     };
                     alleBilletter.Add(enBestilling);
                 }
-            }
             return alleBilletter;
         }
 

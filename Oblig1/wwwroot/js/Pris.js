@@ -44,20 +44,20 @@ function antall() {
 
 //function som skal hente alle type til database.
 function hentTypeOgAntall() {
-    var cont1 = document.getElementById("typeAv").innerHTML;
-    var cont2 = document.getElementById("typeAv1").innerHTML;
-    var cont3 = document.getElementById("typeAv2").innerHTML;
-    var cont4 = document.getElementById("typeAv3").innerHTML;
-    var cont5 = document.getElementById("typeAv4").innerHTML;
-    var cont6 = document.getElementById("typeAv5").innerHTML;
-    var cont7 = document.getElementById("typeAv6").innerHTML;
-    var cont_1 = document.getElementById("tall").innerHTML;
-    var cont_2 = document.getElementById("tall1").innerHTML;
-    var cont_3 = document.getElementById("tall2").innerHTML;
-    var cont_4 = document.getElementById("tall3").innerHTML;
-    var cont_5 = document.getElementById("tall4").innerHTML;
-    var cont_6 = document.getElementById("tall5").innerHTML;
-    var cont_7 = document.getElementById("tall6").innerHTML;
+    var cont1 = $("#typeAv").html();
+    var cont2 = $("#typeAv1").html();
+    var cont3 = $("#typeAv2").html();
+    var cont4 = $("#typeAv3").html();
+    var cont5 = $("#typeAv4").html();
+    var cont6 = $("#typeAv5").html();
+    var cont7 = $("#typeAv6").html();
+    var cont_1 = $("#tall").html();
+    var cont_2 = $("#tall1").html();
+    var cont_3 = $("#tall2").html();
+    var cont_4 = $("#tall3").html();
+    var cont_5 = $("#tall4").html();
+    var cont_6 = $("#tall5").html();
+    var cont_7 = $("#tall6").html();
     if (cont1 != "" || cont2 != "" || cont3 != "" || cont4 != "" || cont5 != "" || cont6 != "" || cont7 != "") {
         var total = cont_1 + "" + cont1 + " " + cont_2 + "" + cont2 + " " + cont_3 + "" + cont3 + " " +
             cont_4 + "" + cont4 + " " + cont_5 + "" + cont5 + " " + cont_6 + "" + cont6 + " " + cont_7 + "" + cont7;
