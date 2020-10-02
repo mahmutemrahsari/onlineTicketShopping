@@ -26,31 +26,38 @@
     </style>
 </head>
 <body>
+    <div class="top"></div>
+    <datalist id="liste">
+    </datalist>
     <div class="container">
         <form>
-            <div onchange="fraStop()">
-                <div class="containerBox">
-                    <div id="fra-org" style="display:none">
-                        <div class="title">
-                            <span>Fra : </span>
-                            <a href="#fra-valg" id="endreF">Endre</a>
-                        </div>
-                        <div id="fraUt"></div>
+            <div id="MainBox">
+                <a href="" id="endreMainBox">Endre</a>
+
+                <div onchange="fraStop()">
+                    <div class="containerBox">
+                        <!--
+                <div id="fra-org" style="display:none">
+                    <div class="title">
+                        <span>Fra : </span>
                     </div>
-                    <div id="fra-valg" style="display:block">
-                        <div class="title">
-                            <span>Jeg skal reise fra</span>
-                        </div>
-                        <div>
-                            
-                                <select name="avgang" id="avgang"></select>
-                            
+                    <div id="fraUt"></div>
+                </div>
+                -->
+                        <div id="fra-valg">
+                            <div class="title">
+                                <span>Jeg skal reise fra</span>
+                            </div>
+                            <div class="blurSelect">
+                                <input name="avgang" id="avgang" list="liste" type="text" />
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div onchange="tilStop()">
-                <div class="containerBox">
+                <div id="til">
+                    <div onchange="tilStop()">
+                        <div class="containerBox">
+                            <!--
                     <div id="til-org" style="display:none">
                         <div class="title">
                             <span>Til : </span>
@@ -58,14 +65,15 @@
                         </div>
                         <div id="tilUt"></div>
                     </div>
-                    <div id="til-valg" style="display:block">
-                        <div class="title">
-                            <span>Jeg skal reise til</span>
-                        </div>
-                        <div>
-                            
-                                <select name="destinasjon" id="destinasjon"></select>
-                            
+                    -->
+                            <div id="til-valg">
+                                <div class="title">
+                                    <span>Jeg skal reise til</span>
+                                </div>
+                                <div class="blurSelect">
+                                    <input name="destinasjon" id="destinasjon" list="liste" type="text" />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -176,20 +184,22 @@
                         </div>
                     </div>
                 </div>
-                <input type="button" id="visTid" onclick="settRute()" value="Vis Tid Og Pris" class="btn btn-primary" />
+                <input type="button" id="visTid" onclick="test()" value="Vis Tid Og Pris" class="btn btn-primary" />
             </div>
-            <div class="containerBox" id="infoBox" style="display:none">
-                <div class="rute">
-                    <div id="heading"></div>
-                    <!--<div id="avganger"></div>-->
-                    <table class="table" id="ruteTB"></table>
+            <div id="ruteBox">
+                <div class="containerBox" id="infoBox" style="display:none">
+                    <div class="rute">
+                        <div id="heading"></div>
+                        <!--<div id="avganger"></div>-->
+                        <table class="table" id="ruteTB"></table>
+                    </div>
+                    <div class="rute">
+                        <div id="headingRE"></div>
+                        <table class="table" id="ruteReturnTB"></table>
+                    </div>
                 </div>
-                <div class="rute">
-                    <div id="headingRE"></div>
-                    <table class="table" id="ruteReturnTB"></table>
-                </div>
+                <input type="button" id="betal-btn" value="Betal" onclick="lagreBestilling()" class="btn btn-primary" />
             </div>
-            <input type="button" id="betal-btn" value="Betal" onclick="lagreBestilling()" class="btn btn-primary" />
         </form>
     </div>
 </body>

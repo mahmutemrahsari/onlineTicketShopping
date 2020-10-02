@@ -23,11 +23,8 @@
 
 
     //endre valges
-    $("#endreF").click(function () {
-        $("#fra-org").css("display", "none");
-        $("#fra-valg").css("display", "block");
-    });
     $("#endreT").click(function () {
+        $("#destinasjon").val("");
         $("#til-org").css("display", "none");
         $("#til-valg").css("display", "block");
     });
@@ -37,34 +34,52 @@
 
 function fraStop() {
     var fra = $("#avgang").val();
-    $("#fraUt").html("<span>" + fra + "</span>");
-    $("#avgang").val(fra);
-    $("#fra-org").css("display", "block");
-    $("#fra-valg").css("display", "none");
-    $("#til").css("display", "block");
-}
 
+    if (fra == $("#destinasjon").val()) {
+        alert("Du må velge forskjell fra stede og til sted");
+        $("#avgang").val("");
+        $("#destinasjon").val("");
+    } else {
+        $("#fraUt").html("<span>" + fra + "</span>");
+        $("#avgang").val(fra);
+        //$("#til-org").css("display", "block");
+        //$("#til-valg").css("display", "none");
+        
+    }
+}
 
 function tilStop() {
     var til = $("#destinasjon").val();
-    $("#tilUt").html("<span>" + til + "</span>");
-    $("#destinasjon").val(til);
-    $("#til-org").css("display", "block");
-    $("#til-valg").css("display", "none");
+
+    //Feilhåntering - bruker kan ikke velg sammen stop for avgang og destinasjon
+    if (til == $("#avgang").val()) {
+        alert("Du må velge forskjell fra stede og til sted");
+        $("#avgang").val("");
+        $("#destinasjon").val("");
+    } else {
+        $("#tilUt").html("<span>" + til + "</span>");
+        $("#destinasjon").val(til);
+    }
 }
 
-
-
-$(function () {
-    var liste = document.getElementById(destinasjon);
-    $("#test").autocomplete({
-        source: liste
-    });
-});
-
-function blurSelect() {
-    var element = $("destinasjon").find("option:selected").text();
-    $("#test").val(element);
+function test() {
+    fra = $("#avgang").val();
+    til = $("#destinasjon").val();
+    dato = $("#date1").val();
+    type = $("#antallType").val();
+    if (fra == null || til == null || dato == null || type == null) {
+        alert("REEEE");
+        return;
+    }
+    //Går til Rute.js og hente ut busser informasjon
+    settRute()
+    /*
+    fra = $("#avgang").val();
+    til = $("#destinasjon").val();
+    if (fra == null || til == null) {
+        alert("REEEE");
+    }*/
 }
+
 
 

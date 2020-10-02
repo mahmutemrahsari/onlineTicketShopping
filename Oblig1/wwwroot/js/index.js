@@ -1,20 +1,21 @@
 ﻿$(function () {
     //hent ut alle stops og pris i db til html
-    settStop();
     settPris();
+    liste();
 });
 
-function settStop() {
+function liste() {
     $.get("NorWay/HentStop", function (stops) {
-        formaterStop(stops);
+        formaterListe(stops);
     });
 }
 
-function formaterStop(stops) {
+function formaterListe(stops) {
     let ut = "";
     for (let stop of stops) {
-        ut += "<option>" + stop.stedNavn + "</option>";
+        ut += "<option value='" + stop.stedNavn + "'>";
     }
+    $("#liste").html(ut);
     $("#avgang").html(ut);
     $("#destinasjon").html(ut);
 }
@@ -99,6 +100,10 @@ function lagreBestilling() {
         window.location.href = "bestill.html";
     });
 };
+
+
+
+
 
 
 
