@@ -1,23 +1,21 @@
 ﻿$(function () {
     //hent ut alle stops og pris i db til html
-    settStop();
     settPris();
-
     liste();
-
 });
 
-function settStop() {
+function liste() {
     $.get("NorWay/HentStop", function (stops) {
-        formaterStop(stops);
+        formaterListe(stops);
     });
 }
 
-function formaterStop(stops) {
+function formaterListe(stops) {
     let ut = "";
     for (let stop of stops) {
-        ut += "<option>" + stop.stedNavn + "</option>";
+        ut += "<option value='" + stop.stedNavn + "'>";
     }
+    $("#liste").html(ut);
     $("#avgang").html(ut);
     $("#destinasjon").html(ut);
 }
@@ -49,15 +47,15 @@ function formaterPris(pris) {
 }
 
 
-
-
 //lagering bestilling informasjon
 function lagreBestilling() {
     hentTypeOgAntall();
     antall();
-    //var bussNr = "";
-    //var avgangstid = "";
-    //var ankomsttid = "";
+
+    if ($("#antallTicket").val() == 0) {
+        alert("Du må valge antall billett");
+        return;
+    }
 
     if ($("#ruteTB tr").hasClass("highlight")) {
         var bussNr = $(".highlight").find("td").eq(0).text();
@@ -68,7 +66,7 @@ function lagreBestilling() {
         return;
     }
 
-
+   
 
     if ($("#returnCheck").is(':checked')) {
         if ($("#ruteReturnTB tr").hasClass("returnHighlight")) {
@@ -80,6 +78,7 @@ function lagreBestilling() {
             return;
         }
     }
+    
     const reise = {
         Epost: $("#Epost").val(),
         Pris: $("#TotalPris").val(),
@@ -104,22 +103,8 @@ function lagreBestilling() {
 
 
 
-function liste() {
-    $.get("NorWay/HentStop", function (stops) {
-        formaterListe(stops);
-    });
-}
-
-function formaterListe(stops) {
-    let list = document.getElementById("#liste");
-    let ut = "";
-    for (let stop of stops) {
-        ut += "<option>" + stop.stedNavn + "</option>";
-    }
-    $("#liste").html(ut);
-}
 
 
-function blurSelect() {
 
-}
+
+

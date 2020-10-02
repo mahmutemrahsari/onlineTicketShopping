@@ -23,7 +23,6 @@ namespace Oblig1.DAL
         {
             try
             {
-
                 var bestill = new Billett()
                 {
                     AvgangersDato = BestilleBillett.AvgangersDato,
