@@ -98,6 +98,9 @@ function lagreBestilling() {
     const url = "NorWay/Lagre";
     $.post(url, reise, function () {
         window.location.href = "bestill.html";
+    })
+    .fail(function () {
+        $("#feil").html("Feil på server - prøv igjen senere");
     });
 };
 
