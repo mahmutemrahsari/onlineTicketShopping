@@ -2,6 +2,9 @@
     //hent ut alle stops og pris i db til html
     settStop();
     settPris();
+
+    liste();
+
 });
 
 function settStop() {
@@ -101,3 +104,22 @@ function lagreBestilling() {
 
 
 
+function liste() {
+    $.get("NorWay/HentStop", function (stops) {
+        formaterListe(stops);
+    });
+}
+
+function formaterListe(stops) {
+    let list = document.getElementById("#liste");
+    let ut = "";
+    for (let stop of stops) {
+        ut += "<option>" + stop.stedNavn + "</option>";
+    }
+    $("#liste").html(ut);
+}
+
+
+function blurSelect() {
+
+}

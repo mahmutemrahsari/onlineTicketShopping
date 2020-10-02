@@ -41,7 +41,7 @@ function fraStop() {
     $("#avgang").val(fra);
     $("#fra-org").css("display", "block");
     $("#fra-valg").css("display", "none");
-    $("#til").css("display", "block");
+    $(".til").css("display", "block");
 }
 
 
@@ -53,18 +53,5 @@ function tilStop() {
     $("#til-valg").css("display", "none");
 }
 
-
-
-$(function () {
-    var liste = document.getElementById(destinasjon);
-    $("#test").autocomplete({
-        source: liste
-    });
-});
-
-function blurSelect() {
-    var element = $("destinasjon").find("option:selected").text();
-    $("#test").val(element);
-}
 
 

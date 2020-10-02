@@ -26,6 +26,9 @@
     </style>
 </head>
 <body>
+    <div class="top"></div>
+    <datalist id="liste">
+    </datalist>
     <div class="container">
         <form>
         <div onchange="fraStop()">
@@ -41,35 +44,33 @@
                           <div class="title">
                                    <span>Jeg skal reise fra</span>
                               </div>
-                             <div>
-                                  <form name="formen">
-                                     <select name="avgang" id="avgang"></select>
-                             </form>
+                             <div class="blurSelect">
+                                         <input name="avgang" id="avgang" list="liste" type="text" />
                                 </div>
                              </div>
                            </div>
                          </div>
-          <div onchange="tilStop()">
-              <div class="containerBox">
-                  <div id="til-org" style="display:none">
-                      <div class="title">
-                          <span>Til : </span>
-                          <a href="#til-valg" id="endreT">Endre</a>
-                      </div>
-                      <div id="tilUt"></div>
-                  </div>
-                  <div id="til-valg" style="display:block">
-                      <div class="title">
-                          <span>Jeg skal reise til</span>
-                      </div>
-                      <div>
-                          <form name="formen">
-                              <select name="destinasjon" id="destinasjon"></select>
-                          </form>
-                      </div>
-                  </div>
-              </div>
-          </div>
+        <div class="til">
+            <div onchange="tilStop()">
+                <div class="containerBox">
+                    <div id="til-org" style="display:none">
+                        <div class="title">
+                            <span>Til : </span>
+                            <a href="#til-valg" id="endreT">Endre</a>
+                        </div>
+                        <div id="tilUt"></div>
+                    </div>
+                    <div id="til-valg" style="display:block">
+                        <div class="title">
+                            <span>Jeg skal reise til</span>
+                        </div>
+                        <div class="blurSelect">
+                            <input name="destinasjon" id="destinasjon" list="liste" type="text" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="containerBox">
             <div class="billett">
                 <div class="dato">
