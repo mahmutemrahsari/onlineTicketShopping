@@ -8,7 +8,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Oblig1.DAL;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Oblig.Controllers
 {
@@ -33,7 +32,7 @@ namespace Oblig.Controllers
         {
 
             return await _db.HentAlle();
-        } 
+        }
 
         public async Task<List<Sted>> HentStop()
         {

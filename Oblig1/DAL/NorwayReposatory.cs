@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Oblig.Models;
 using Oblig1.Models;
 using System;
@@ -17,7 +18,7 @@ namespace Oblig1.DAL
             _db = db;
         }
 
-       // [HttpPost]
+        [HttpPost]
         public async Task<bool> Lagre(NorWay BestilleBillett)
         {
             try
@@ -64,13 +65,14 @@ namespace Oblig1.DAL
             List<Kunde> alleKunder = await _db.kunder.ToListAsync();
             List<NorWay> alleBilletter = new List<NorWay>();
 
-            foreach (var kunde in alleKunder)
-            {
-                foreach (var bestill in kunde.Billetter)
+            //Hente bare den nyeste billett informasjon
+            Kunde last = alleKunder.OrderByDescending(k => k.Id).First();
+
+                foreach (var bestill in last.Billetter)
                 {
                     var enBestilling = new NorWay()
                     {
-                        Epost = kunde.Epost,
+                        Epost = last.Epost,
                         AvgangersDato = bestill.AvgangersDato,
                         ReturDato = bestill.ReturDato,
                         FraSted = bestill.FraSted,
@@ -87,7 +89,6 @@ namespace Oblig1.DAL
                     };
                     alleBilletter.Add(enBestilling);
                 }
-            }
             return alleBilletter;
         }
 
@@ -128,4 +129,3 @@ namespace Oblig1.DAL
         }
     }
 }
-

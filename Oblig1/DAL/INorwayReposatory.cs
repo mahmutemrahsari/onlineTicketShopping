@@ -20,6 +20,5 @@ namespace Oblig1.DAL
 
         Task<List<Rute>> HentRute(InfoMedRute info);
 
-
     }
 }
