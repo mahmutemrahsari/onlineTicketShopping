@@ -21,13 +21,6 @@
         $("#infoBox").toggle();
     });
 
-
-    //endre valges
-    $("#endreT").click(function () {
-        $("#destinasjon").val("");
-        $("#til-org").css("display", "none");
-        $("#til-valg").css("display", "block");
-    });
 });
 
 
@@ -39,12 +32,10 @@ function fraStop() {
         alert("Du må velge forskjell fra stede og til sted");
         $("#avgang").val("");
         $("#destinasjon").val("");
+        return;
     } else {
         $("#fraUt").html("<span>" + fra + "</span>");
         $("#avgang").val(fra);
-        //$("#til-org").css("display", "block");
-        //$("#til-valg").css("display", "none");
-        
     }
 }
 
@@ -56,6 +47,7 @@ function tilStop() {
         alert("Du må velge forskjell fra stede og til sted");
         $("#avgang").val("");
         $("#destinasjon").val("");
+        return;
     } else {
         $("#tilUt").html("<span>" + til + "</span>");
         $("#destinasjon").val(til);
@@ -63,22 +55,21 @@ function tilStop() {
 }
 
 function test() {
-    fra = $("#avgang").val();
-    til = $("#destinasjon").val();
-    dato = $("#date1").val();
-    type = $("#antallType").val();
-    if (fra == null || til == null || dato == null || type == null) {
-        alert("REEEE");
+
+    fra = $("#avgang").val()
+    til = $("#destinasjon").val()
+    datoF = $("#date1").val()
+
+    //Feilhåntering - går ikke videre hvis det er tom input
+    if (fra == "" || til == "" || datoF == "") {
+        alert("Du må fyller ut alle informasjon!!");
         return;
+    } else {
+        //Går til Rute.js og hente ut busser informasjon
+        settRute()
+        $("#ruteBox").css("display", "block");
     }
-    //Går til Rute.js og hente ut busser informasjon
-    settRute()
-    /*
-    fra = $("#avgang").val();
-    til = $("#destinasjon").val();
-    if (fra == null || til == null) {
-        alert("REEEE");
-    }*/
+
 }
 
 

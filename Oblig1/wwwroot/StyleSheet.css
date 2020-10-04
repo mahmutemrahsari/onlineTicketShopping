@@ -147,10 +147,21 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+#title, #tall, #typeAv, #tall1, #tall2, #tall3, #tall4, #tall5, #tall6, #typeAv1, #typeAv2, #typeAv3, #typeAv4, #typeAv5, #typeAv6, #Plass_1, #Plass_2 {
+    cursor: pointer;
+    padding: 5px 7px;
+    font-size: 16px;
+    color: navy;
+}
+
 .container {
-    background-color: rgba(255, 255, 255, 0.5);
-    padding: 10px 15px 10px 15px;
+    background-color: rgba(255, 255, 255, 0.67);
+    padding: 10px 25px 10px 15px;
     border-radius: 25px;
+    height: auto;
+    width: 60%;
+    margin-top:1%;
+
 }
 
 .top {
@@ -160,17 +171,30 @@
     width: 50%;
     height: 100px;
     position: relative;
-    margin-top: 17px;
+    margin-top: 2%;
     margin-left: 250px;
     margin-bottom: 10px;
     transition: opacity 2s;
 }
 
-.knapp * {
-    background-color: rgba(255, 255, 255, 0.5);
+.knapp {
+    margin-top: 1.5%;
+    background-color: rgb(0, 133, 255);
     padding: 10px 15px 10px 15px;
     border-radius: 25px;
+    color: white;
+    border-color: rgba(34, 36, 255, 0.69);
+    animation: border-color 0.7s ease-out;
+    animation: background-color 0.7s ease-out;
+    animation: color 0.7s ease-out;
+    margin-left: 5px;
 }
+
+    .knapp:hover {
+        border-color: rgb(0, 133, 255);
+        background-color: white;
+        color: navy;
+    }
 
 .calendar {
     background-color: rgba(255, 255, 255, 0.58);
@@ -181,3 +205,82 @@
     letter-spacing: 1px;
     font-weight: bold;
 }
+
+.Betaling {
+    position: relative;
+    top: 125px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 380px;
+    width: 100%;
+    background: rgba(230, 230, 230, 0.45);
+    padding: 35px;
+    border-radius: 20px
+}
+
+.kortNummer {
+    margin-bottom: 20px;
+}
+
+    .kortNummer .input {
+        width: 100%;
+        text-align: left;
+    }
+
+input[type="text"] {
+    padding: 15px;
+    border-radius: 4px;
+    font-size: 17px;
+    border: 0;
+    text-align: left;
+}
+
+.kortDato {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.utløpsDato .utløpsDatoInput {
+    width: 52px;
+    margin-right: 15px;
+}
+
+.cvv .cvvInput {
+    width: 65px;
+    margin-right: 8px;
+}
+
+.utløpsDato,
+.cvv {
+    display: flex;
+    width: 45%;
+}
+
+.cvv {
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.knapp {
+    width: 100%;
+    background: navy;
+    color: white;
+    text-align: center;
+    border-radius: 3px;
+    padding: 10px;
+    letter-spacing: 5px;
+    font-size: 18px;
+}
+
+.nyBestilngKnapp {
+    width: 145px;
+    background: navy;
+    color: white;
+    text-align: center;
+    border-radius: 3px;
+    padding: 10px;
+    letter-spacing: 5px;
+    font-size: 18px;
+}
+

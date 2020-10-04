@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/2.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="StyleSheet.css" rel="stylesheet" />
+    <!--<link href="StyleSheet1.css" rel="stylesheet" />-->
     <script src="js/index.js"></script>
     <script src="js/Pris.js"></script>
     <script src="js/Rute.js"></script>
@@ -25,182 +26,184 @@
         }
     </style>
 </head>
-<body>
-    <div class="top"></div>
-    <datalist id="liste">
-    </datalist>
-    <div class="container">
-        <form>
-            <div id="MainBox">
-                <a href="" id="endreMainBox">Endre</a>
+    <body>
+        <div class="top"></div>
+        <datalist id="liste">
+        </datalist>
+        <div class="container">
+            <form>
+                <div id="MainBox">
+                    
 
-                <div onchange="fraStop()">
-                    <div class="containerBox">
-                        <!--
-                <div id="fra-org" style="display:none">
-                    <div class="title">
-                        <span>Fra : </span>
-                    </div>
-                    <div id="fraUt"></div>
-                </div>
-                -->
-                        <div id="fra-valg">
-                            <div class="title">
-                                <span>Jeg skal reise fra</span>
-                            </div>
-                            <div class="blurSelect">
-                                <input name="avgang" id="avgang" list="liste" type="text" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="til">
-                    <div onchange="tilStop()">
+                    <div onchange="fraStop()">
                         <div class="containerBox">
-                            <!--
-                    <div id="til-org" style="display:none">
-                        <div class="title">
-                            <span>Til : </span>
-                            <a href="#til-valg" id="endreT">Endre</a>
-                        </div>
-                        <div id="tilUt"></div>
-                    </div>
-                    -->
-                            <div id="til-valg">
+                            <div id="fra-valg">
                                 <div class="title">
-                                    <span>Jeg skal reise til</span>
+                                    <span>Jeg skal reise fra</span>
                                 </div>
                                 <div class="blurSelect">
-                                    <input name="destinasjon" id="destinasjon" list="liste" type="text" />
+                                    <input name="avgang" id="avgang" list="liste" type="text" />
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="containerBox">
-                <div class="billett">
-                    <div class="dato">
-                        <div class="title">
-                            <span>Dato</span>
-                        </div>
-                        <div class="calendar">
-                            <input type="date" id="date1" name="date" />
-                        </div>
-                    </div>
-                    <div class="type">
-                        <div class="title">
-                            <span>Billettype</span>
-                        </div>
-                        <div>
-                            <span id="billett" onclick="typeBillett()">
-                                <span id="title">Velg type av billett</span>
-                                <span id="tall"></span>
-                                <span id="typeAv"></span>
-                                <span id="tall1"></span>
-                                <span id="typeAv1"></span>
-                                <span id="tall2"></span>
-                                <span id="typeAv2"></span>
-                                <span id="tall3"></span>
-                                <span id="typeAv3"></span>
-                                <span id="tall4"></span>
-                                <span id="typeAv4"></span>
-                                <span id="tall5"></span>
-                                <span id="typeAv5"></span>
-                                <span id="tall6"></span>
-                                <span id="typeAv6"></span>
-                            </span>
-                            <div id="an">
-                                <input id="antallType" />
-                                <input id="antallTicket" />
-                            </div>
-                            <div id="BillettType">
-                                <div id="Plass_1"></div>
-                                <div id="Plass_2">
-                                    <input type="button" name="minus" value="-" id="minus1" onclick="antallBillet()" />
-                                    <span id="antall1">0</span>
-                                    <input type="button" name="plus" value="+" id="plus1" onclick="antallBillet()" />
-                                    <br />
-
-                                    <input type="button" name="minus" value="-" id="minus2" onclick="antallBillet2()" />
-                                    <span id="antall2">0</span>
-                                    <input type="button" name="plus" value="+" id="plus2" onclick="antallBillet2()" />
-                                    <br />
-
-                                    <input type="button" name="minus" value="-" id="minus3" onclick="antallBillet3()" />
-                                    <span id="antall3">0</span>
-                                    <input type="button" name="plus" value="+" id="plus3" onclick="antallBillet3()" />
-                                    <br />
-
-                                    <input type="button" name="minus" value="-" id="minus4" onclick="antallBillet4()" />
-                                    <span id="antall4">0</span>
-                                    <input type="button" name="plus" value="+" id="plus4" onclick="antallBillet4()" />
-                                    <br />
-
-                                    <input type="button" name="minus" value="-" id="minus5" onclick="antallBillet5()" />
-                                    <span id="antall5">0</span>
-                                    <input type="button" name="plus" value="+" id="plus5" onclick="antallBillet5()" />
-                                    <br />
-
-                                    <input type="button" name="minus" value="-" id="minus6" onclick="antallBillet6()" />
-                                    <span id="antall6">0</span>
-                                    <input type="button" name="plus" value="+" id="plus6" onclick="antallBillet6()" />
-                                    <br />
-
-                                    <input type="button" name="minus" value="-" id="minus7" onclick="antallBillet7()" />
-                                    <span id="antall7">0</span>
-                                    <input type="button" name="plus" value="+" id="plus7" onclick="antallBillet7()" />
-                                    <br />
-                                </div>
-                                <div>
-                                    <div id="total"></div>
-                                    <div id="Voksen"></div>
-                                    <div id="Barn"></div>
-                                    <div id="Student"></div>
-                                    <div id="Ungdom"></div>
-                                    <div id="Honnor"></div>
-                                    <div id="Verneplikt"></div>
-                                    <div id="Ledsager"></div>
-                                    <input type="button" onclick="antall()" id="button1">
-                                    <div id="Pris" onclick="antall()"></div>
-                                    <div>
-                                        <input id="TotalPris" type="text" />
+                    <div id="til">
+                        <div onchange="tilStop()">
+                            <div class="containerBox">
+                                <div id="til-valg">
+                                    <div class="title">
+                                        <span>Jeg skal reise til</span>
+                                    </div>
+                                    <div class="blurSelect">
+                                        <input name="destinasjon" id="destinasjon" list="liste" type="text" />
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div>
+                    </div>
+                    <div class="containerBox">
+                        <div class="billett">
+                            <div class="dato">
+                                <div class="title">
+                                    <span>Dato</span>
+                                </div>
+                                <div class="calendar">
+                                    <input type="date" id="date1" name="date" />
+                                </div>
+                            </div>
+                            <div class="type">
+                                <div class="title">
+                                    <span>Billettype</span>
+                                </div>
+                                <div>
+                                    <span id="billett" onclick="typeBillett()">
+                                        <span id="title">Velg type av billett</span>
+                                        <span id="tall"></span>
+                                        <span id="typeAv"></span>
+                                        <span id="tall1"></span>
+                                        <span id="typeAv1"></span>
+                                        <span id="tall2"></span>
+                                        <span id="typeAv2"></span>
+                                        <span id="tall3"></span>
+                                        <span id="typeAv3"></span>
+                                        <span id="tall4"></span>
+                                        <span id="typeAv4"></span>
+                                        <span id="tall5"></span>
+                                        <span id="typeAv5"></span>
+                                        <span id="tall6"></span>
+                                        <span id="typeAv6"></span>
+                                    </span>
+                                    <div id="an">
+                                        <input id="antallType" />
+                                        <input id="antallTicket" />
+                                    </div>
+                                    <div id="BillettType">
+                                        <div id="Plass_1"></div>
+                                        <div id="Plass_2">
+                                            <input type="button" name="minus" value="-" id="minus1" onclick="antallBillet()" class="btn btn-primary" />
+                                            <span id="antall1">0</span>
+                                            <input type="button" name="plus" value="+" id="plus1" onclick="antallBillet()" class="btn btn-primary" />
+                                            <br />
+
+                                            <input type="button" name="minus" value="-" id="minus2" onclick="antallBillet2()" class="btn btn-primary" />
+                                            <span id="antall2">0</span>
+                                            <input type="button" name="plus" value="+" id="plus2" onclick="antallBillet2()" class="btn btn-primary" />
+                                            <br />
+
+                                            <input type="button" name="minus" value="-" id="minus3" onclick="antallBillet3()" class="btn btn-primary" />
+                                            <span id="antall3">0</span>
+                                            <input type="button" name="plus" value="+" id="plus3" onclick="antallBillet3()" class="btn btn-primary"/>
+                                            <br />
+
+                                            <input type="button" name="minus" value="-" id="minus4" onclick="antallBillet4()" class="btn btn-primary" />
+                                            <span id="antall4">0</span>
+                                            <input type="button" name="plus" value="+" id="plus4" onclick="antallBillet4()" class="btn btn-primary" />
+                                            <br />
+
+                                            <input type="button" name="minus" value="-" id="minus5" onclick="antallBillet5()" class="btn btn-primary" />
+                                            <span id="antall5">0</span>
+                                            <input type="button" name="plus" value="+" id="plus5" onclick="antallBillet5()" class="btn btn-primary" />
+                                            <br />
+
+                                            <input type="button" name="minus" value="-" id="minus6" onclick="antallBillet6()" class="btn btn-primary" />
+                                            <span id="antall6">0</span>
+                                            <input type="button" name="plus" value="+" id="plus6" onclick="antallBillet6()" class="btn btn-primary" />
+                                            <br />
+
+                                            <input type="button" name="minus" value="-" id="minus7" onclick="antallBillet7()" class="btn btn-primary" />
+                                            <span id="antall7">0</span>
+                                            <input type="button" name="plus" value="+" id="plus7" onclick="antallBillet7()" class="btn btn-primary" />
+                                            <br />
+                                        </div>
+                                        <div>
+                                            <div id="total"></div>
+                                            <div id="Voksen"></div>
+                                            <div id="Barn"></div>
+                                            <div id="Student"></div>
+                                            <div id="Ungdom"></div>
+                                            <div id="Honnor"></div>
+                                            <div id="Verneplikt"></div>
+                                            <div id="Ledsager"></div>
+                                            <input type="button" onclick="antall()" id="button1">
+                                            <div id="Pris" onclick="antall()"></div>
+                                            <div>
+                                                <input id="TotalPris" type="text" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="checkbox" id="returnCheck" value="return"> Jeg ønsker returreise<br>
+                        </div>
+                        <div id="returnBox" style="display:none">
+                            <div class="dato">
+                                <div class="title">
+                                    <span>Dato</span>
+                                </div>
+                                <div class="calendar">
+                                    <input type="date" id="date2" name="date" />
+                                </div>
+                            </div>
+                        </div>
+                        <input type="button" id="visTid" onclick="test()" value="Vis Tid Og Pris" class="knapp" />
+                    </div>
+                </div>
+                <div id="ruteBox" style="display:none">
+                    <div class="containerBox" id="infoBox" style="display:none">
+                        <div class="rute">
+                            <div id="heading" class="title"></div>
+                            <!--<div id="avganger"></div>-->
+                            <table class="table" id="ruteTB"></table>
+                        </div>
+                        <div class="rute">
+                            <div id="headingRE" class="title"></div>
+                            <table class="table" id="ruteReturnTB"></table>
                         </div>
                     </div>
-                    <input type="checkbox" id="returnCheck" value="return"> Jeg ønsker returreise<br>
+                    <input type="button" id="betal-btn" value="Betal" class="knapp" />
                 </div>
-                <div id="returnBox" style="display:none">
-                    <div class="dato">
-                        <div class="title">
-                            <span>Dato</span>
+                <div class="Betaling" id="Betaling">
+                    <div class="kortNummer" id="kortNummer">
+                        <h3>Kortnummer:</h3>
+                        <input type="text" class="kortNuminput" placeholder="0000 0000 0000 0000" maxlength="16" />
+                    </div>
+                    <div class="kortDato">
+
+                        <div class="utløpsDato">
+
+                            <input type="text" class="utløpsDatoInput" placeholder="00" maxlength="2" />
+                            <input type="text" class="utløpsDatoInput" placeholder="00" maxlength="2" />
                         </div>
-                        <div class="calendar">
-                            <input type="date" id="date2" name="date" />
+                        <div class="cvv">
+                            <input type="text" class="cvvInput" placeholder="000" maxlength="3" />
                         </div>
+
                     </div>
+                    <span>Epost</span>
+                    <input type="text" id="Epost" placeholder="F.eks noe@gmail.no" />
+                    <input type="button" id="betal-btn" value="Bekreft" onclick="lagreBestilling()" class="knapp" />
                 </div>
-                <input type="button" id="visTid" onclick="test()" value="Vis Tid Og Pris" class="btn btn-primary" />
-            </div>
-            <div id="ruteBox">
-                <div class="containerBox" id="infoBox" style="display:none">
-                    <div class="rute">
-                        <div id="heading"></div>
-                        <!--<div id="avganger"></div>-->
-                        <table class="table" id="ruteTB"></table>
-                    </div>
-                    <div class="rute">
-                        <div id="headingRE"></div>
-                        <table class="table" id="ruteReturnTB"></table>
-                    </div>
-                </div>
-                <input type="button" id="betal-btn" value="Betal" onclick="lagreBestilling()" class="btn btn-primary" />
-            </div>
-        </form>
+            </form>
     </div>
-</body>
+    </body>
 </html>

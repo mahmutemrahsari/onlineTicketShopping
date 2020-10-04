@@ -16,38 +16,48 @@ namespace Oblig.Controllers
     {
         private readonly INorwayReposatory _db;
 
-        public NorWayController(INorwayReposatory db)
+        private ILogger<NorWayController> _log;
+
+        public NorWayController(INorwayReposatory db, ILogger<NorWayController> log)
         {
             _db = db;
+            _log = log;
         }
 
-        public async Task<bool> Lagre(NorWay BestilleBillett)
+        public async Task<ActionResult> Lagre(NorWay BestilleBillett)
         {
 
-            return await _db.Lagre(BestilleBillett);
-
+            bool returOK = await _db.Lagre(BestilleBillett);
+            if (!returOK)
+            {
+                _log.LogInformation("Billettet ble ikke bestilt");
+                return BadRequest("Billettet ble ikke bestilt");
+            }
+            return Ok("Kunde lagret");
         }
 
-        public async Task<List<NorWay>> HentAlle()
+        public async Task<ActionResult> HentAlle()
         {
-
-            return await _db.HentAlle();
+            List<NorWay> hentAlle = await _db.HentAlle();
+            return Ok(hentAlle);// returnerer alltid OK, null ved tom DB
         }
 
-        public async Task<List<Sted>> HentStop()
+        public async Task<ActionResult> HentStop()
         {
-            return await _db.HentStop();
+            List<Sted> alleSteder = await _db.HentStop();
+            return Ok(alleSteder);// returnerer alltid OK, null ved tom DB
         }
 
-        public async Task<List<PrisType>> HentPrisType()
+        public async Task<ActionResult> HentPrisType()
         {
-            return await _db.HentPrisType();
+            List<PrisType> alleprisType = await _db.HentPrisType();
+            return Ok(alleprisType);// returnerer alltid OK, null ved tom DB
         }
 
-        public async Task<List<Rute>> HentRute(InfoMedRute info)
+        public async Task<ActionResult> HentRute(InfoMedRute info)
         {
-
-            return await _db.HentRute(info);
+            List<Rute> alleRuter = await _db.HentRute(info);
+            return Ok(alleRuter);// returnerer alltid OK, null ved tom DB
 
         }
     }

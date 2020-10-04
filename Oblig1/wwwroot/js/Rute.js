@@ -19,17 +19,25 @@ function settRute() {
 
 //Viser tilgjengelig busser informasjon til HTML, hvis det finnes noe.
 function formaterRute(rutes) {
-    let utMain = "<thead class='thead-dark'>" + "<tr>" +
-        "<th>BussNR</th><th>Avgangstid</th><th>Ankomsttid</th><th>Velge</th>" +
-        "</tr>" + "</thead>" + "<tbody>";
-    for (let rute of rutes) {
-        utMain += "<tr>" +
-            "<td>" + rute.bussNR + "</td>" +
-            "<td>" + rute.avgangsTid + "</td>" +
-            "<td>" + rute.ankomstTid + "</td>" +
-            "<td><input type='checkbox' calss='velgRute'/></td>" +
-            "</tr>";
+    let utMain;
+    if (rutes.length != 0) {
+        utMain = "<thead class='thead-dark'>" + "<tr>" +
+            "<th>BussNR</th><th>Avgangstid</th><th>Ankomsttid</th><th>Velge</th>" +
+            "</tr>" + "</thead>" + "<tbody>";
+
+
+        for (let rute of rutes) {
+            utMain += "<tr>" +
+                "<td>" + rute.bussNR + "</td>" +
+                "<td>" + rute.avgangsTid + "</td>" +
+                "<td>" + rute.ankomstTid + "</td>" +
+                "</tr>";
+        }
+    } else {
+        utMain = "Ingen avganger tilgjengelig";
     }
+
+
 
     utMain += "</tbody>";
     $("#ruteTB").html(utMain);
@@ -83,16 +91,21 @@ function settReturnRute() {
 
 //Viser tilgjengelig busser informasjon til HTML, hvis det finnes noe.
 function formaterRuteReturn(rutes) {
-    let utMain = "<thead class='thead-dark'>" + "<tr>" +
-        "<th>BussNR</th><th>Avgangstid</th><th>Ankomsttid</th><th>Velge</th>" +
-        "</tr>" + "</thead>" + "<tbody>";
-    for (let rute of rutes) {
-        utMain += "<tr>" +
-            "<td>" + rute.bussNR + "</td>" +
-            "<td>" + rute.avgangsTid + "</td>" +
-            "<td>" + rute.ankomstTid + "</td>" +
-            "<td><input type='checkbox' calss='velgReturnRute'/></td>" +
-            "</tr>";
+    let utMain;
+    if (rutes.length != 0) {
+        utMain = "<thead class='thead-dark'>" + "<tr>" +
+            "<th>BussNR</th><th>Avgangstid</th><th>Ankomsttid</th><th>Velge</th>" +
+            "</tr>" + "</thead>" + "<tbody>";
+        for (let rute of rutes) {
+            utMain += "<tr>" +
+                "<td>" + rute.bussNR + "</td>" +
+                "<td>" + rute.avgangsTid + "</td>" +
+                "<td>" + rute.ankomstTid + "</td>" +
+                "</tr>";
+        }
+
+    } else {
+        utMain = "Ingen avganger tilgjengelig";
     }
 
     utMain += "</tbody>";
@@ -115,3 +128,4 @@ $(function () {
         }
     });
 });
+
