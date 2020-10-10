@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Oblig.Models;
+using Oblig1.DAL;
 
 namespace Oblig1.Models
 {
@@ -57,6 +58,13 @@ namespace Oblig1.Models
                 context.pristype.Add(Honnor);
                 context.pristype.Add(Verneplikt);
                 context.pristype.Add(Ledsager);
+
+                //initialiserer/lag en admins konto
+                string passord = "Admin123";
+                byte[] salt = NorwayReposatory.LagSalt();
+                byte[] hash = NorwayReposatory.LagHash(passord, salt);
+                var admin = new Adminere { Brukernavn = "Admin", Passord = hash, Salt = salt };
+                context.Adminere.Add(admin);
 
                 context.SaveChanges();
 

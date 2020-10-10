@@ -19,6 +19,6 @@ namespace Oblig1.DAL
         Task<List<PrisType>> HentPrisType();
 
         Task<List<Rute>> HentRute(InfoMedRute info);
-
+        Task<bool> LoggInn(Admin admin);
     }
 }

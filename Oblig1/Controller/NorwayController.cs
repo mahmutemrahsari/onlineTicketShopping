@@ -60,5 +60,20 @@ namespace Oblig.Controllers
             return Ok(alleRuter);// returnerer alltid OK, null ved tom DB
 
         }
+
+        public async Task<ActionResult> LoggInn(Admin admin)
+        {
+            if (ModelState.IsValid)
+            {
+                bool returnOK = await _db.LoggInn(admin);
+                if (!returnOK)
+                {
+                    _log.LogInformation("Innloggingen feilet som administrator"+admin.Brukernavn);
+                    return Ok(false);
+                }return Ok(true);
+            }
+            _log.LogInformation("Feil i inputvalidering");
+            return BadRequest("Feil i inputvalidering på server");
+        }
     }
 }
