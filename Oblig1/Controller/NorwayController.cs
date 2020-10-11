@@ -15,13 +15,13 @@ namespace Oblig.Controllers
     public class NorWayController : ControllerBase
     {
         private readonly INorwayReposatory _db;
+        private ILogger<NorWayController> _Logg;
 
-        private ILogger<NorWayController> _log;
-
-        public NorWayController(INorwayReposatory db, ILogger<NorWayController> log)
+        public NorWayController(INorwayReposatory db, ILogger<NorWayController> Logg)
         {
             _db = db;
-            _log = log;
+
+            _Logg = Logg;
         }
 
         public async Task<ActionResult> Lagre(NorWay BestilleBillett)
@@ -30,50 +30,49 @@ namespace Oblig.Controllers
             bool returOK = await _db.Lagre(BestilleBillett);
             if (!returOK)
             {
-                _log.LogInformation("Billettet ble ikke bestilt");
-                return BadRequest("Billettet ble ikke bestilt");
+                _Logg.LogInformation("Kunden ble ikke lagret");
+                return BadRequest("Kunden ble ikke lagret");
             }
-            return Ok("Kunde lagret");
+            return Ok("Kunden ble lagret");
         }
 
         public async Task<ActionResult> HentAlle()
         {
-            List<NorWay> hentAlle = await _db.HentAlle();
-            return Ok(hentAlle);// returnerer alltid OK, null ved tom DB
+
+            List<NorWay> kundeInfo = await _db.HentAlle();
+            return Ok(kundeInfo);
         }
 
         public async Task<ActionResult> HentStop()
         {
-            List<Sted> alleSteder = await _db.HentStop();
-            return Ok(alleSteder);// returnerer alltid OK, null ved tom DB
+            var steder = await _db.HentStop();
+            if (steder.Count() == 0)
+            {
+                return NotFound();
+            }
+            return Ok(steder);
         }
 
         public async Task<ActionResult> HentPrisType()
         {
-            List<PrisType> alleprisType = await _db.HentPrisType();
-            return Ok(alleprisType);// returnerer alltid OK, null ved tom DB
+            var prisType = await _db.HentPrisType();
+            if (prisType.Count() == 0)
+            {
+                return NotFound();
+            }
+            return Ok(prisType);
         }
 
         public async Task<ActionResult> HentRute(InfoMedRute info)
         {
-            List<Rute> alleRuter = await _db.HentRute(info);
-            return Ok(alleRuter);// returnerer alltid OK, null ved tom DB
 
-        }
-
-        public async Task<ActionResult> LoggInn(Admin admin)
-        {
-            if (ModelState.IsValid)
+            var Rute = await _db.HentRute(info);
+            if (Rute.Count() == 0)
             {
-                bool returnOK = await _db.LoggInn(admin);
-                if (!returnOK)
-                {
-                    _log.LogInformation("Innloggingen feilet som administrator"+admin.Brukernavn);
-                    return Ok(false);
-                }return Ok(true);
+                return NotFound();
             }
-            _log.LogInformation("Feil i inputvalidering");
-            return BadRequest("Feil i inputvalidering på server");
+            return Ok(Rute);
+
         }
     }
 }
