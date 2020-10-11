@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Oblig1.DAL;
+using Microsoft.AspNetCore.Http;
 
 namespace Oblig.Controllers
 {
@@ -15,64 +16,93 @@ namespace Oblig.Controllers
     public class NorWayController : ControllerBase
     {
         private readonly INorwayReposatory _db;
-        private ILogger<NorWayController> _Logg;
 
-        public NorWayController(INorwayReposatory db, ILogger<NorWayController> Logg)
+        private ILogger<NorWayController> _log;
+
+        private const string _loggetInn = "loggetInn";
+
+        public NorWayController(INorwayReposatory db, ILogger<NorWayController> log)
         {
             _db = db;
-
-            _Logg = Logg;
+            _log = log;
         }
 
         public async Task<ActionResult> Lagre(NorWay BestilleBillett)
         {
-
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+                return Unauthorized();
+            }
             bool returOK = await _db.Lagre(BestilleBillett);
             if (!returOK)
             {
-                _Logg.LogInformation("Kunden ble ikke lagret");
-                return BadRequest("Kunden ble ikke lagret");
+                _log.LogInformation("Billettet ble ikke bestilt");
+                return BadRequest("Billettet ble ikke bestilt");
             }
-            return Ok("Kunden ble lagret");
+            return Ok("Kunde lagret");
         }
 
         public async Task<ActionResult> HentAlle()
         {
-
-            List<NorWay> kundeInfo = await _db.HentAlle();
-            return Ok(kundeInfo);
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+                return Unauthorized();
+            }
+            List<NorWay> hentAlle = await _db.HentAlle();
+            return Ok(hentAlle);// returnerer alltid OK, null ved tom DB
         }
 
         public async Task<ActionResult> HentStop()
         {
-            var steder = await _db.HentStop();
-            if (steder.Count() == 0)
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
-                return NotFound();
+                return Unauthorized();
             }
-            return Ok(steder);
+            List<Sted> alleSteder = await _db.HentStop();
+            return Ok(alleSteder);// returnerer alltid OK, null ved tom DB
         }
 
         public async Task<ActionResult> HentPrisType()
         {
-            var prisType = await _db.HentPrisType();
-            if (prisType.Count() == 0)
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
-                return NotFound();
+                return Unauthorized();
             }
-            return Ok(prisType);
+            List<PrisType> alleprisType = await _db.HentPrisType();
+            return Ok(alleprisType);// returnerer alltid OK, null ved tom DB
         }
 
         public async Task<ActionResult> HentRute(InfoMedRute info)
         {
-
-            var Rute = await _db.HentRute(info);
-            if (Rute.Count() == 0)
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
-                return NotFound();
+                return Unauthorized();
             }
-            return Ok(Rute);
+            List<Rute> alleRuter = await _db.HentRute(info);
+            return Ok(alleRuter);// returnerer alltid OK, null ved tom DB
 
+        }
+
+        public async Task<ActionResult> LoggInn(Admin admin)
+        {
+            if (ModelState.IsValid)
+            {
+                bool returnOK = await _db.LoggInn(admin);
+                if (!returnOK)
+                {
+                    _log.LogInformation("Innloggingen feilet som administrator"+admin.Brukernavn);
+                    return Ok(false);
+                }
+                HttpContext.Session.SetString(_loggetInn, "LoggetInn");
+                return Ok(true);
+            }
+            _log.LogInformation("Feil i inputvalidering");
+            return BadRequest("Feil i inputvalidering på server");
+        }
+
+        public void LoggUt()
+        {
+            HttpContext.Session.SetString(_loggetInn, "");
         }
     }
 }
