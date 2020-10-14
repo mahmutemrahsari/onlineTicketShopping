@@ -13,6 +13,7 @@
     <script src="js/webRun.js"></script>
     <script src="js/loggin.js"></script>
     <script src="js/loggUt.js"></script>
+    <script src="js/validering.js"></script>
 
     <style>
         .highlight {
@@ -50,7 +51,8 @@
                                 <span>Jeg skal reise fra</span>
                             </div>
                             <div class="blurSelect">
-                                <input name="avgang" id="avgang" list="liste" type="text" />
+                                <input name="avgang" id="avgang" list="liste" type="text" onchange="validerFraSted(this.value)" />
+                                <span id="feilFraSted" style="color: red"></span>
                             </div>
                         </div>
                     </div>
@@ -63,7 +65,8 @@
                                     <span>Jeg skal reise til</span>
                                 </div>
                                 <div class="blurSelect">
-                                    <input name="destinasjon" id="destinasjon" list="liste" type="text" />
+                                    <input name="destinasjon" id="destinasjon" list="liste" type="text" onchange="validerTilSted(this.value)"/>
+                                    <span id="feilTilSted" style="color:red"></span>
                                 </div>
                             </div>
                         </div>

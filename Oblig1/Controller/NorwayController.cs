@@ -33,13 +33,20 @@ namespace Oblig.Controllers
             {
                 return Unauthorized();
             }
+
             bool returOK = await _db.Lagre(BestilleBillett);
-            if (!returOK)
+            if (ModelState.IsValid)
             {
-                _log.LogInformation("Billettet ble ikke bestilt");
-                return BadRequest("Billettet ble ikke bestilt");
+                if (!returOK)
+                {
+                    _log.LogInformation("Billettet ble ikke bestilt");
+                    return BadRequest("Billettet ble ikke bestilt");
+                }
+                return Ok("Kunde lagret");
             }
-            return Ok("Kunde lagret");
+            _log.LogInformation("Feil inputvalidering");
+            return BadRequest("Feil i inputvalidering");
+
         }
 
         public async Task<ActionResult> HentAlle()
