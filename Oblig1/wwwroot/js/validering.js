@@ -21,3 +21,28 @@ function validerPassord(passord) {
         return true;
     }
 }
+
+function validerFraSted(avgang) {
+    const regxp = /^[a-zA-ZæøåÆØÅ\.\ \-]{4,15}$/;
+    const ok = regxp.test(avgang);
+    if (!ok) {
+        $("#feilFraSted").html("Stedet du reiser fra er skrevet feil, må bestå av 4 til 20 bokstaver");
+        return false;
+    } else {
+        $("#feilFraSted").html("");
+        return true;
+    }
+}
+
+function validerTilSted(destinasjon) {
+    const regxp = /^[a-zA-ZæøåÆØÅ\.\ \-]{4,20}$/;
+    const ok = regxp.test(destinasjon);
+    if (!ok) {
+        $("#feilTilSted").html("Stedet du reiser fra er skrevet feil, må bestå av 4 til 20 bokstaver");
+        return false;
+    } else {
+        $("#feilTilSted").html("");
+        return true;
+    }
+}
+

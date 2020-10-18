@@ -81,7 +81,7 @@ function settReturnRute() {
 
     const url = "NorWay/HentEnRute";
 
-    let utHeading = "<span>" + info.fSted + "-->" + info.tSted + "<span>" + "<br>" +
+    let utHeading = "<span>" + info.fSted + " → " + info.tSted + "<span>" + "<br>" +
         "<span>" + info.dato + "<span>";
     $("#headingRE").html(utHeading);
 
