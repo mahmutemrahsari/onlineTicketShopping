@@ -26,6 +26,14 @@ namespace Oblig
             services.AddDbContext<BillettContext>(options =>
                             options.UseSqlite("Data Source=Billett.db"));
             services.AddScoped<INorwayReposatory, NorwayReposatory>();
+
+            services.AddSession(options =>
+            {
+                options.Cookie.Name = ".AdventureWorks.Session";
+                options.IdleTimeout = TimeSpan.FromSeconds(18000); // 30 minutter
+                options.Cookie.IsEssential = true;
+            });
+            services.AddDistributedMemoryCache();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,9 +44,9 @@ namespace Oblig
                 app.UseDeveloperExceptionPage();
                 loggerFactory.AddFile("Logs/KundeLog.txt");
                 //fjernes deresom vi vil beholde dataene i db og ikke initialisere
-                Dbinit.Initialize(app);
+                //Dbinit.Initialize(app);
             }
-
+            app.UseSession();
             app.UseRouting();
             app.UseStaticFiles();
             app.UseHttpsRedirection();

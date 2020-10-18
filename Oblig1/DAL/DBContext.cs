@@ -19,10 +19,19 @@ namespace Oblig.Models
         //public virtual List<Sted> Steder { get; set; }
     }
 
+    public class Adminere
+    {
+        [Key]
+        public int AId { get; set; }
+        public string Brukernavn { get; set; }
+        public byte[] Passord { get; set; }
+        public byte[] Salt { get; set; }
+    }
+
     public class Billett
     {
         [Key]
-        public int BID { get; set; }
+        public int BId { get; set; }
         public string FraSted { get; set; }
         public string AvgangersDato { get; set; }
         public string TilSted { get; set; }
@@ -81,6 +90,7 @@ namespace Oblig.Models
         public DbSet<Sted> steder { get; set; }
         public DbSet<Rute> ruter { get; set; }
         public DbSet<PrisType> pristype { get; set; }
+        public DbSet<Adminere> Adminere { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseLazyLoadingProxies();

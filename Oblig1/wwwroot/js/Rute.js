@@ -6,7 +6,7 @@ function settRute() {
         tSted: $("#destinasjon").val()
     }
 
-    const url = "NorWay/HentRute";
+    const url = "NorWay/HentEnRute";
 
     let utHeading = "<span>" + info.fSted + "-->" + info.tSted + "<span>" + "<br>" +
         "<span>" + info.dato + "<span>";
@@ -31,6 +31,7 @@ function formaterRute(rutes) {
                 "<td>" + rute.bussNR + "</td>" +
                 "<td>" + rute.avgangsTid + "</td>" +
                 "<td>" + rute.ankomstTid + "</td>" +
+                "<td><input type='checkbox' calss='velgRute'/></td>" +
                 "</tr>";
         }
     } else {
@@ -78,9 +79,9 @@ function settReturnRute() {
         fSted: $("#destinasjon").val()
     }
 
-    const url = "NorWay/HentRute";
+    const url = "NorWay/HentEnRute";
 
-    let utHeading = "<span>" + info.fSted + "-->" + info.tSted + "<span>" + "<br>" +
+    let utHeading = "<span>" + info.fSted + " → " + info.tSted + "<span>" + "<br>" +
         "<span>" + info.dato + "<span>";
     $("#headingRE").html(utHeading);
 
@@ -101,6 +102,7 @@ function formaterRuteReturn(rutes) {
                 "<td>" + rute.bussNR + "</td>" +
                 "<td>" + rute.avgangsTid + "</td>" +
                 "<td>" + rute.ankomstTid + "</td>" +
+                "<td><input type='checkbox' calss='velgReturnRute'/></td>" +
                 "</tr>";
         }
 
