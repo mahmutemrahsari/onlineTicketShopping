@@ -2,32 +2,175 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Logginn</title>
+    <title>Admin</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/2.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
     <script src="js/admin.js"></script>
-    <script src="js/Pris.js"></script>
-    <script src="js/Rute.js"></script>
-    <script src="js/webRun.js"></script>
-    <script src="js/validering.js"></script>
     <script src="js/loggUt.js"></script>
+    <script src="js/endre.js"></script>
+    <style>
+        #endreRute{
+            text-align:center;
+        }
+        #nyRute {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
+    <div class="top"></div>
+    <datalist id="liste"> </datalist>
     <div class="container">
         <h1>NorWay Admin Panel</h1>
         <form class="form">
-            <div id="Plass_1">Her kommer alle billetter og priser!</div>
-            <div id="Plass_2">Her kommer alle billetter og priser!</div>
-            <div id="Pris">Her kommer alle billetter og priser!</div>
             <div class="form-group">
-                <span><button class="btn btn-primary" onclick="loggUt()">Logg ut</button></span>
+                <span><button class="btn btn-info" onclick="loggUt()">Logg ut</button></span>
+            </div>
+            <div class="form-group">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <td>Avgenger</td>
+                            <td><input type="button" class="btn btn-primary" id="avgangES" value="Endre/Slett" onclick="endling(this.id)"></td>
+                            <td><input type="button" class="btn btn-primary" id="avgangNy" value="Legg til ny" onclick="leggNy(this.id)"></td>
+                        </tr>
+                        <tr>
+                            <td>Pris Og Pris typer</td>
+                            <td><input type="button" class="btn btn-primary" id="prisES" value="Endre/Slett" onclick="endling(this.id)"></td>
+                            <td><input type="button" class="btn btn-primary" id="prisNy" value="Legg til ny" onclick="leggNy(this.id)"></td>
+                        </tr>
+                        <tr>
+                            <td>Ruter</td>
+                            <td><input type="button" class="btn btn-primary" id="ruteES" value="Endre/Slett" onclick="endling(this.id)"></td>
+                            <td><input type="button" class="btn btn-primary" id="ruteNy" value="Legg til ny" onclick="leggNy(this.id)"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="form-group">
+                <div class="well" id="showInfo" style="display:none"></div>
 
+                <!-- input/layout form av alle endre og slett funksjon -->
+                <div class="well" id="endreSted" style="display:none">
+                    <input type="hidden" id="sid" />
+                    <h4>Endre sted til : </h4>
+                    <!--Mangler inoutvaliderling til sted-->
+                    <p2 id="sNr"></p2>
+                    <input type="text" id="sted" />
+                    <input type="button" value="Endre" class="btn btn-primary" onclick="endreSted()" />
+                    <span id="feilSted" style="color:red"></span>
+                </div>
+                <div class="well" id="endrePris" style="display:none">
+                    <input type="hidden" id="tid" />
+                    <h4>Endre pris og billettype til : </h4>
+                    <!--Mangler inoutvaliderling til sted-->
+                    <input type="text" id="type" />
+                    <input type="text" id="pris" />
+                    <input type="button" value="Endre" class="btn btn-primary" onclick="endrePris()" />
+                    <span id="feilPris" style="color:red"></span>
+                </div>
+                <div class="well" id="endreRute" style="display:none">
+                    <input type="hidden" id="rid" />
+                    <h4>Endre rute til : </h4>
+                    <!--Mangler inoutvaliderling til sted-->
+                    <div class="form-group">
+                        <lable>BussNr : </lable><br>
+                        <input type="text" id="bussNr" />
+                        <span id="feilBussNr" style="color: red"></span>
+                    </div>
+                    <div class="form-group">
+                        <lable>Fra : </lable><br>
+                        <input type="text" id="fSted" />
+                        <span id="feilFra" style="color: red"></span>
+                    </div>
+                    <div class="form-group">
+                        <lable>Til : </lable><br>
+                        <input type="text" id="tSted" />
+                        <span id="feilTil" style="color: red"></span>
+                    </div>
+                    <div class="form-group">
+                        <lable>Dato : </lable><br>
+                        <input type="text" id="dato" />
+                        <span id="feilDato" style="color: red"></span>
+                    </div>
+                    <div class="form-group">
+                        <lable>Avgangstid : </lable><br>
+                        <input type="text" id="avTid" />
+                        <span id="feilAvTid" style="color: red"></span>
+                    </div>
+                    <div class="form-group">
+                        <lable>Ankomsttid : </lable><br>
+                        <input type="text" id="anTid" />
+                        <span id="feilAnTid" style="color: red"></span>
+                    </div>
+                    <input type="button" value="Endre" class="btn btn-primary" onclick="endreRute()" />
+                    <span id="feilRute" style="color:red"></span>
+                </div>
             </div>
 
+            <!-- input/layout form av alle lagreNy funksjon -->
+
+            <div class="form-group">
+                <div class="well" id="nySted" style="display:none">
+                    <h4>Lagre ny sted : </h4>
+                    <!--Mangler inoutvaliderling til sted-->
+                    <input type="text" id="nysted" />
+                    <input type="button" value="Lagre" class="btn btn-primary" onclick="lagreSted()" />
+                    <span id="feilLagreSted" style="color:red"></span>
+                </div>
+                <div class="well" id="nyPris" style="display:none">
+                    <h4>Lagre ny pris og billettype : </h4>
+                    <!--Mangler inoutvaliderling til sted-->
+                    <div>
+                        <lable>Billettype : </lable><br>
+                        <input type="text" id="nytype" />
+                    </div>
+                    <div>
+                        <lable>Pris : </lable><br>
+                        <input type="text" id="nypris" />
+                    </div>
+                    <input type="button" value="Lagre" class="btn btn-primary" onclick="lagrePris()" />
+                    <span id="feilLagrePris" style="color:red"></span>
+                </div>
+                <div class="well" id="nyRute" style="display:none">
+                    <h4>Lagre ny rute : </h4>
+                    <!--Mangler inoutvaliderling til sted-->
+                    <div class="form-group">
+                        <lable>BussNr : </lable><br>
+                        <input type="text" id="nybussNr" />
+                        <span id="feilBussNr" style="color: red"></span>
+                    </div>
+                    <div class="form-group">
+                        <lable>Fra : </lable><br>
+                        <input type="text" id="nyfSted" />
+                        <span id="feilFra" style="color: red"></span>
+                    </div>
+                    <div class="form-group">
+                        <lable>Til : </lable><br>
+                        <input type="text" id="nytSted" />
+                        <span id="feilTil" style="color: red"></span>
+                    </div>
+                    <div class="form-group">
+                        <lable>Dato : </lable><br>
+                        <input type="text" id="nydato" />
+                        <span id="feilDato" style="color: red"></span>
+                    </div>
+                    <div class="form-group">
+                        <lable>Avgangstid : </lable><br>
+                        <input type="text" id="nyavTid" />
+                        <span id="feilAvTid" style="color: red"></span>
+                    </div>
+                    <div class="form-group">
+                        <lable>Ankomsttid : </lable><br>
+                        <input type="text" id="nyanTid" />
+                        <span id="feilAnTid" style="color: red"></span>
+                    </div>
+                    <input type="button" value="Lagre" class="btn btn-primary" onclick="lagreRute()" />
+                    <span id="feilLagreRute" style="color:red"></span>
+                </div>
+            </div>
             <div id="feil" style="color:red"></div>
-
-
-        </form>
+        </form> 
     </div>
 </body>
 </html>
