@@ -39,6 +39,14 @@ function fraStop() {
     }
 }
 
+
+    
+
+
+
+
+
+
 function tilStop() {
     var til = $("#destinasjon").val();
 
@@ -53,6 +61,11 @@ function tilStop() {
         $("#destinasjon").val(til);
     }
 }
+
+
+
+
+
 
 function test() {
 
