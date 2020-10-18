@@ -31,6 +31,7 @@ function formaterRute(rutes) {
                 "<td>" + rute.bussNR + "</td>" +
                 "<td>" + rute.avgangsTid + "</td>" +
                 "<td>" + rute.ankomstTid + "</td>" +
+                "<td><input type='checkbox' calss='velgRute'/></td>" +
                 "</tr>";
         }
     } else {
@@ -101,6 +102,7 @@ function formaterRuteReturn(rutes) {
                 "<td>" + rute.bussNR + "</td>" +
                 "<td>" + rute.avgangsTid + "</td>" +
                 "<td>" + rute.ankomstTid + "</td>" +
+                "<td><input type='checkbox' calss='velgReturnRute'/></td>" +
                 "</tr>";
         }
 
