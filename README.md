@@ -1,41 +1,6 @@
-# WebApp
-WebApp_Innlevering 1
-
-Grupper:
-
-Oppgaven skal løses i grupper med maks 5 studenter i hver gruppe. Opprett grupper under "Personer" i menyen til venstre. Gruppeoppgavene kan også løses individuelt, men vurderingen vil ikke reflektere dette. Registrer dere på en gruppe som opprettes av dere under Gruppeoppgave1.
-
-Mål:
-
-* Lage en komplett løsning med mulighet for å foreta kjøp av billetter for oppgraderte sider for NOR_WAY.
-* Løsningen skal lages i .NET Core.
-* Vise forståelse for NET Core, Javascript/JQuery og Entity Framework.
-
-Funksjonalitet
-Løsningen bør blant annet inneholde:
-
-* Applikasjonen skal ha en forside hvor man kan velge hvilken strekning man ønsker og når man ønsker å reise.
-* Det skal bare være mulig å kjøpe billetter uten å måtte registrere seg som kunde. Dvs. at det ikke er nødvendig å lage innloggingsfunksjonalitet. I oppgave 2 skal det lages   en innlogging for å administrere løsningen.
-* Det skal ikke lages «backend» funksjonalitet som gjør det mulig å vedlikeholde , strekninger,  avganger og priser etc. Dette vil være en del av oppgave 2 og vil bli           forventet implementert på en spesiell måte.
-
-Ved evaluering av oppgaven vil det bla. bli vektlagt:
-
-* Design / layout
-* Funksjonalitet
-* Ryddig og forståelig kode (JavaScript og c#)
-* Databasestruktur bruk av Entity Framework code first
-* Validering
-* Løsningen skal implementeres i ASP.Core med en Web-klient basert på JavaScript (Jquery). Det betyr at det ikke kreves avansert «single page application» funksjonalitet (vil   kunne vises i oppgave 3).
-* Forsøk å gjøre nettsidene så brukervennlige som mulig. Det gir ingen ekstrapoeng å gjøre løsningen så lik NOR-WAY sin som mulig.  Bra design vil også bli vektlagt.
-  
-Hva skal leveres:
-
-En zip. fil som inneholder hele Visual Studio prosjektet i Canvas. Dersom det er noe spesielt ved løsningen som dere vil fremheve kan dette gjøres via en kort tekstlig       beskrives i løsningen f.eks kalt Readme.txt. Der kan det også refereres til evt. kode som ikke er egenutviklet eller laget av fagansvarlig.
-
-Det skal ikke leveres en komplett administrasjonsløsning for strekninger, avganger,  priser, etc. Dette er en del av neste oppgave.
-
-Dersom løsningen kjøres på en skyløsning må URL'en oppgis i Readme.txt filen.
-
- 
-
-Oppgaven teller med 1/3 av totalen. Det vil blir satt foreløpige karakterer på oppgavene, men sluttkarakter vil skje etter en totalvurdering til slutt.
+I databasen vår Dbinit har vi fire ulike reiseruter. Når det kommer til de tilgjengelige reisedestinasjonene har vi fra eller til Oslo, Lillehamme og Sandvika. De ulike bussnummerene er 230, 150, 100 og 230. Avgangstidene rommer 15:00, 17:00, 13.00 og 09:30, der ankomsttidene strekker seg fra 15:00, 19:30 og 16:00. I tillegg har vi datoene for tilgjengelige ruter 05/10, 30/11 og 20/10, der de ulike rutene består av:
+1: BussNR = "230", FraRute = "Oslo", TilRute = "Sandvika", AvgangsTid = "14:00", AnkomstTid = "15:00", Dato = "2020-10-05"
+2:BussNR = "150", FraRute = "Oslo", TilRute = "Sandvika", AvgangsTid = "17:00", AnkomstTid = "19:30", Dato = "2020-10-05"
+3: BussNR = "100", FraRute = "Sandvika", TilRute = "Lillehamme", AvgangsTid = "13:00", AnkomstTid = "16:00", Dato = "2020-11-30"
+4: BussNR = "230", FraRute = "Sandvika", TilRute = "Oslo", AvgangsTid = "09:30", AnkomstTid = "15:00", Dato = "2020-10-20".
+ Vi har også forutsett at det går greit å bruke datalist da det ikke er spesifisert noe om verken det eller select.
