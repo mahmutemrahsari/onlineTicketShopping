@@ -41,6 +41,7 @@ function endreSted() {
         stedNavn: $("#sted").val()
     };
     $.post("NorWay/EndreStop", sted, function () {
+        alert("Stasjonen ble endret");
         window.location.href = 'admin.html';
     })
         .fail(function (feil) {
@@ -58,7 +59,7 @@ function slettSted(sid) {
     const url = "NorWay/SlettSted?sid=" + sid;
 
     $.get(url, function () {
-        alert("Steden har sletted");
+        alert("Stasjonen ble slettet");
         window.location.href = 'admin.html';
     })
         .fail(function (feil) {
@@ -110,6 +111,7 @@ function endrePris() {
         pris: $("#pris").val()
     };
     $.post("NorWay/EndrePris", pris, function () {
+        alert("Prisen ble endret");
         window.location.href = 'admin.html';
     })
         .fail(function (feil) {
@@ -126,7 +128,7 @@ function slettPris(tid) {
     const url = "NorWay/SlettPris?tid=" + tid;
 
     $.get(url, function () {
-        alert("Prisen har sletted");
+        alert("Prisen ble slettet");
         window.location.href = 'admin.html';
     })
         .fail(function (feil) {
@@ -203,6 +205,7 @@ function endreRute() {
         ankomstTid: $("#anTid").val()
     };
     $.post("NorWay/EndreRute", rute, function () {
+        alert("Ruten ble endret");
         window.location.href = 'admin.html';
     })
         .fail(function (feil) {
@@ -219,7 +222,7 @@ function slettRute(rid) {
     const url = "NorWay/SlettRute?rid=" + rid;
 
     $.get(url, function () {
-        alert("Ruten har sletted");
+        alert("Ruten ble sletted");
         window.location.href = 'admin.html';
     })
         .fail(function (feil) {

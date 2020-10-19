@@ -2,16 +2,17 @@
     const sted = { stedNavn: $("#nysted").val() };
 
     $.post("NorWay/LagreSted", sted, function () {
-        window.location.href = 'loggInn.html';
+        alert("Stasjonen er lagt inn");
+        window.location.href = 'admin.html';
     })
-        .fail(function (feil) {
-            if (feil.status == 401) {
-                indow.location.href = 'loggInn.html'; // ikke logget inn, redirect til loggInn.html
-            }
-            else {
-                $("#feil").html("Feil - Avgangen kunne ikke lagres");
-            }
-        });
+    .fail(function (feil) {
+        if (feil.status == 401) {
+            indow.location.href = 'loggInn.html'; // ikke logget inn, redirect til loggInn.html
+        }
+        else {
+            $("#feil").html("Feil - Avgangen kunne ikke lagres");
+        }
+    });
 }
 
 function lagrePris() {
@@ -21,7 +22,8 @@ function lagrePris() {
     };
 
     $.post("NorWay/LagrePris", pris, function () {
-        window.location.href = 'loggInn.html';
+        alert("Prisen er lagt inn");
+        window.location.href = 'admin.html';
     })
         .fail(function (feil) {
             if (feil.status == 401) {
@@ -44,7 +46,8 @@ function lagreRute() {
     };
 
     $.post("NorWay/LagreRute", rute, function () {
-        window.location.href = 'loggInn.html';
+        alert("Ruten er lagt inn");
+        window.location.href = 'admin.html';
     })
         .fail(function (feil) {
             if (feil.status == 401) {

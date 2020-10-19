@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Oblig1.Models
+namespace Oblig.Models
 {
 
     public class Kunde
@@ -77,7 +77,7 @@ namespace Oblig1.Models
         public string type { get; set; }
     }
 
-   
+
 
     public class BillettContext : DbContext
     {

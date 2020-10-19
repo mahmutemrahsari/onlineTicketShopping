@@ -1,6 +1,4 @@
-﻿
-
-function antall() {
+﻿function antall() {
     //Hente pris fra database
     var pris = document.getElementsByClassName("pris");
     var antall = document.getElementsByClassName("a1");
@@ -13,7 +11,7 @@ function antall() {
             ut += Number(Billett[i].innerHTML);
         }
     }
-        $("#TotalPris").val(ut);
+    $("#TotalPris").val(ut);
 }
 
 function getElementsById(ids) {
@@ -37,7 +35,7 @@ function hentTypeOgAntall() {
     var tall = document.getElementsByClassName("tall");
     let antallB = tallB = "";
     let antallTall = 0;
-    
+
 
     for (var i = 0; i < type.length; i++) {
         tallB += Number(tall[i].innerHTML);
@@ -46,12 +44,12 @@ function hentTypeOgAntall() {
             antallB += Number(tall[i].innerHTML) + type[i].innerHTML + "";
         }
     }
-    
+
     if (tallB != 0) {
         $("#antallType").val(antallB);
         $("#antallTicket").val(antallTall);
     }
- 
+
 }
 
 //Sett BillettType
@@ -99,7 +97,7 @@ function antallBillet() {
     }
 }
 
-function plusminus(pl, antall, tall, type,mi,typebillet) {
+function plusminus(pl, antall, tall, type, mi, typebillet) {
     let an = parseInt($(antall).html());
     $(pl).click(function () {
         an += 1;
@@ -129,5 +127,5 @@ function hentypefeilhåntering() {
     if (type[0].innerHTML == 0 && type[1].innerHTML == 0 && type[2].innerHTML == 0 && type[3].innerHTML == 0 &&
         type[4].innerHTML == 0 && type[5].innerHTML == 0 && type[6].innerHTML == 0) {
         $("#title").html("Velg type av billett");
-    } 
+    }
 }

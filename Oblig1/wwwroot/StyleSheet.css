@@ -18,23 +18,25 @@
 
 #BillettType {
     height: 100%;
-    width: 200px;
+    width: 100%;
 }
 
 #minus1, #plus1, #minus2, #plus2, #minus3, #plus3, #minus4, #plus4, #minus5, #plus5, #minus6, #plus6, #minus7, #plus7 {
     font-size: 16px;
-    color: navy;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     height: 17px;
     width: 17px;
+    padding:2%;
 }
 
 #Plass_1 {
     display: inline-block;
+    padding: 2%;
+    height: auto;
 }
 
 #Plass_2 {
     display: inline-block;
+    height:auto;
 }
 
 #Pris, #Voksen, #Barn, #Student, #Honnor, #Verneplikt, #Ledsager, #button1, #TotalPris, #an {
@@ -49,7 +51,7 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-#title, #tall, #typeAv, #tall1, #tall2, #tall3, #tall4, #tall5, #tall6, #typeAv1, #typeAv2, #typeAv3, #typeAv4, #typeAv5, #typeAv6, #Plass_1, #Plass_2 {
+#title, #tall0, #typeAv0, #tall1, #tall2, #tall3, #tall4, #tall5, #tall6, #typeAv1, #typeAv2, #typeAv3, #typeAv4, #typeAv5, #typeAv6, #Plass_1, #Plass_2 {
     cursor: pointer;
     font-size: 16px;
     color: navy;

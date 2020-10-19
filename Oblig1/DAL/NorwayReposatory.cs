@@ -74,27 +74,27 @@ namespace Oblig1.DAL
             //Hente bare den nyeste billett informasjon
             Kunde last = alleKunder.OrderByDescending(k => k.Id).First();
 
-                foreach (var bestill in last.Billetter)
+            foreach (var bestill in last.Billetter)
+            {
+                var enBestilling = new NorWay()
                 {
-                    var enBestilling = new NorWay()
-                    {
-                        Epost = last.Epost,
-                        AvgangersDato = bestill.AvgangersDato,
-                        ReturDato = bestill.ReturDato,
-                        FraSted = bestill.FraSted,
-                        TilSted = bestill.TilSted,
-                        Pris = bestill.Pris,
-                        Billettype = bestill.Billettype,
-                        Antall = bestill.Antall,
-                        Avgangstid = bestill.Avgangstid,
-                        Ankomsttid = bestill.Ankomsttid,
-                        BussNr = bestill.BussNr,
-                        AvgangstidR = bestill.AvgangstidR,
-                        AnkomsttidR = bestill.AnkomsttidR,
-                        BussNrR = bestill.BussNrR
-                    };
-                    alleBilletter.Add(enBestilling);
-                }
+                    Epost = last.Epost,
+                    AvgangersDato = bestill.AvgangersDato,
+                    ReturDato = bestill.ReturDato,
+                    FraSted = bestill.FraSted,
+                    TilSted = bestill.TilSted,
+                    Pris = bestill.Pris,
+                    Billettype = bestill.Billettype,
+                    Antall = bestill.Antall,
+                    Avgangstid = bestill.Avgangstid,
+                    Ankomsttid = bestill.Ankomsttid,
+                    BussNr = bestill.BussNr,
+                    AvgangstidR = bestill.AvgangstidR,
+                    AnkomsttidR = bestill.AnkomsttidR,
+                    BussNrR = bestill.BussNrR
+                };
+                alleBilletter.Add(enBestilling);
+            }
             return alleBilletter;
         }
 
@@ -161,7 +161,7 @@ namespace Oblig1.DAL
                 Adminere funnetAdmin = await _db.Adminere.FirstOrDefaultAsync(a => a.Brukernavn == admin.Brukernavn);
 
                 //hvis finner ikke den brukernavn
-                if(funnetAdmin == null)
+                if (funnetAdmin == null)
                 {
                     return false;
                 }
@@ -191,9 +191,6 @@ namespace Oblig1.DAL
         {
             try
             {
-                /*
-                List<Rute> alleRuter = await _db.ruter.ToListAsync();
-                List<Rute> enRute = await _db.ruter.FindAsync(rid);*/
                 Rute enRute = await _db.ruter.FindAsync(rid);
 
                 var hentetRute = new Rute()
@@ -286,7 +283,7 @@ namespace Oblig1.DAL
                 endreObjekt.StedNavn = endreSted.StedNavn;
                 await _db.SaveChangesAsync();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 _log.LogInformation(e.Message);
                 return false;
@@ -314,8 +311,8 @@ namespace Oblig1.DAL
         {
             try
             {
-                var sjekkSted = await _db.steder.FindAsync(innSted.StedNavn);
-                if(sjekkSted == null)
+                var sjekkSted = await _db.steder.FirstOrDefaultAsync(s => s.StedNavn == innSted.StedNavn);
+                if (sjekkSted == null)
                 {
                     var nySted = new Sted { StedNavn = innSted.StedNavn };
 
@@ -372,7 +369,7 @@ namespace Oblig1.DAL
         {
             try
             {
-                var sjekkPrisType = await _db.pristype.FindAsync(innPris.type);
+                var sjekkPrisType = await _db.pristype.FirstOrDefaultAsync(t => t.type == innPris.type);
                 if (sjekkPrisType == null)
                 {
                     var nyPris = new PrisType()
@@ -388,7 +385,7 @@ namespace Oblig1.DAL
                 else
                 {
                     return false;
-                } 
+                }
             }
             catch
             {
