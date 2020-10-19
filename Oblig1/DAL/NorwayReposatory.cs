@@ -314,11 +314,19 @@ namespace Oblig1.DAL
         {
             try
             {
-                var nySted = new Sted { StedNavn = innSted.StedNavn};
+                var sjekkSted = await _db.steder.FindAsync(innSted.StedNavn);
+                if(sjekkSted == null)
+                {
+                    var nySted = new Sted { StedNavn = innSted.StedNavn };
 
-                _db.steder.Add(nySted);
-                await _db.SaveChangesAsync();
-                return true;
+                    _db.steder.Add(nySted);
+                    await _db.SaveChangesAsync();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch
             {
@@ -364,14 +372,23 @@ namespace Oblig1.DAL
         {
             try
             {
-                var nyPris = new PrisType() {
-                    type = innPris.type,
-                    pris = innPris.pris
-                };
+                var sjekkPrisType = await _db.pristype.FindAsync(innPris.type);
+                if (sjekkPrisType == null)
+                {
+                    var nyPris = new PrisType()
+                    {
+                        type = innPris.type,
+                        pris = innPris.pris
+                    };
 
-                _db.pristype.Add(nyPris);
-                await _db.SaveChangesAsync();
-                return true;
+                    _db.pristype.Add(nyPris);
+                    await _db.SaveChangesAsync();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                } 
             }
             catch
             {

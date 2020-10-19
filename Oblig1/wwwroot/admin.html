@@ -6,12 +6,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
     <script src="js/admin.js"></script>
-    <script src="js/loggUt.js"></script>
-    <script src="js/endre.js"></script>
+    <script src="js/LeggNy.js"></script>
+    <script src="js/endreOgSlett.js"></script>
+    <script src="js/LeggNy.js"></script>
+    <script src="js/validering.js"></script>
     <style>
-        #endreRute{
-            text-align:center;
+        #endreRute {
+            text-align: center;
         }
+
         #nyRute {
             text-align: center;
         }
@@ -24,7 +27,7 @@
         <h1>NorWay Admin Panel</h1>
         <form class="form">
             <div class="form-group">
-                <span><button class="btn btn-info" onclick="loggUt()">Logg ut</button></span>
+                <input type="button" class="btn btn-info" onclick="loggUt()" value="Logg Ut">
             </div>
             <div class="form-group">
                 <table class="table table-hover">
@@ -47,18 +50,16 @@
                     </tbody>
                 </table>
             </div>
-            <div class="form-group">
-                <div class="well" id="showInfo" style="display:none"></div>
-
+            <div id="form-group-change" style="display:none">
+                <div class="well" id="showInfo"></div>
                 <!-- input/layout form av alle endre og slett funksjon -->
                 <div class="well" id="endreSted" style="display:none">
                     <input type="hidden" id="sid" />
                     <h4>Endre sted til : </h4>
                     <!--Mangler inoutvaliderling til sted-->
-                    <p2 id="sNr"></p2>
-                    <input type="text" id="sted" />
+                    <input type="text" id="sted" onchange="validerFraSted(this.value)"/>
                     <input type="button" value="Endre" class="btn btn-primary" onclick="endreSted()" />
-                    <span id="feilSted" style="color:red"></span>
+                    <span id="feilFraSted" style="color:red"></span>
                 </div>
                 <div class="well" id="endrePris" style="display:none">
                     <input type="hidden" id="tid" />
@@ -80,17 +81,17 @@
                     </div>
                     <div class="form-group">
                         <lable>Fra : </lable><br>
-                        <input type="text" id="fSted" />
-                        <span id="feilFra" style="color: red"></span>
+                        <input type="text" id="fSted" onchange="validerFraSted(this.value)"/>
+                        <span id="feilFraSted" style="color: red"></span>
                     </div>
                     <div class="form-group">
                         <lable>Til : </lable><br>
-                        <input type="text" id="tSted" />
-                        <span id="feilTil" style="color: red"></span>
+                        <input type="text" id="tSted" onchange="validerTilSted(this.value)"/>
+                        <span id="feilTilSted" style="color: red"></span>
                     </div>
                     <div class="form-group">
                         <lable>Dato : </lable><br>
-                        <input type="text" id="dato" />
+                        <input type="date" id="dato" style="width: 180px"/>
                         <span id="feilDato" style="color: red"></span>
                     </div>
                     <div class="form-group">
@@ -110,13 +111,13 @@
 
             <!-- input/layout form av alle lagreNy funksjon -->
 
-            <div class="form-group">
+            <div id="form-group-new" style="display:none">
                 <div class="well" id="nySted" style="display:none">
                     <h4>Lagre ny sted : </h4>
                     <!--Mangler inoutvaliderling til sted-->
-                    <input type="text" id="nysted" />
+                    <input type="text" id="nysted" onchange="validerFraSted(this.value)"/>
                     <input type="button" value="Lagre" class="btn btn-primary" onclick="lagreSted()" />
-                    <span id="feilLagreSted" style="color:red"></span>
+                    <span id="feilFraSted" style="color:red"></span>
                 </div>
                 <div class="well" id="nyPris" style="display:none">
                     <h4>Lagre ny pris og billettype : </h4>
@@ -142,17 +143,17 @@
                     </div>
                     <div class="form-group">
                         <lable>Fra : </lable><br>
-                        <input type="text" id="nyfSted" />
-                        <span id="feilFra" style="color: red"></span>
+                        <input type="text" id="nyfSted" onchange="validerFraSted(this.value)"/>
+                        <span id="feilFraSted" style="color: red"></span>
                     </div>
                     <div class="form-group">
                         <lable>Til : </lable><br>
-                        <input type="text" id="nytSted" />
-                        <span id="feilTil" style="color: red"></span>
+                        <input type="text" id="nytSted" onchange="validerTilSted(this.value)"/>
+                        <span id="feilTilSted" style="color: red"></span>
                     </div>
                     <div class="form-group">
                         <lable>Dato : </lable><br>
-                        <input type="text" id="nydato" />
+                        <input type="date" id="nydato" style="width: 180px"/>
                         <span id="feilDato" style="color: red"></span>
                     </div>
                     <div class="form-group">

@@ -111,7 +111,15 @@ namespace Oblig.Controllers
             HttpContext.Session.SetString(_loggetInn,_ikkeLoggetInn);
         }
 
-       
+        public IActionResult Sjekk()
+        {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+                return Unauthorized();
+            }
+            return Ok(true);
+        }
+
         public async Task<ActionResult> HentRute()
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))

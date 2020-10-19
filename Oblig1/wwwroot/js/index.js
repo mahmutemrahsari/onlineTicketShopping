@@ -1,20 +1,4 @@
-﻿
-
-$(document).ready(function () {
-    $("#Betaling").hide();
-    $("#betal-btn").click(function () {
-        hentTypeOgAntall();
-        antall();
-        if ($("#antallTicket").val() == 0) {
-            alert("Du må valge antall billett");
-            return;
-        } else {
-            $("#Betaling").show();
-        }
-    });
-});
-
-$(function () {
+﻿$(function () {
     //hent ut alle stops og pris i db til html
     settPris();
     liste();
