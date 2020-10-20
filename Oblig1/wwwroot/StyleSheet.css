@@ -51,7 +51,7 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-#title, #tall0, #typeAv0, #tall1, #tall2, #tall3, #tall4, #tall5, #tall6, #typeAv1, #typeAv2, #typeAv3, #typeAv4, #typeAv5, #typeAv6, #Plass_1, #Plass_2 {
+#title, #tall0, #typeAv0, #tall1, #tall2, #tall3, #tall4, #tall5, #tall6, #typeAv1, #typeAv2, #typeAv3, #typeAv4, #typeAv5, #typeAv6 {
     cursor: pointer;
     font-size: 16px;
     color: navy;

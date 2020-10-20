@@ -1,4 +1,6 @@
-﻿function antall() {
+﻿
+
+function antall() {
     //Hente pris fra database
     var pris = document.getElementsByClassName("pris");
     var antall = document.getElementsByClassName("a1");
@@ -11,7 +13,7 @@
             ut += Number(Billett[i].innerHTML);
         }
     }
-    $("#TotalPris").val(ut);
+        $("#TotalPris").val(ut);
 }
 
 function getElementsById(ids) {
@@ -35,7 +37,7 @@ function hentTypeOgAntall() {
     var tall = document.getElementsByClassName("tall");
     let antallB = tallB = "";
     let antallTall = 0;
-
+    
 
     for (var i = 0; i < type.length; i++) {
         tallB += Number(tall[i].innerHTML);
@@ -44,12 +46,12 @@ function hentTypeOgAntall() {
             antallB += Number(tall[i].innerHTML) + type[i].innerHTML + "";
         }
     }
-
+    
     if (tallB != 0) {
         $("#antallType").val(antallB);
         $("#antallTicket").val(antallTall);
     }
-
+ 
 }
 
 //Sett BillettType
@@ -73,31 +75,38 @@ function typeBillett() {
 function antallBillet() {
     //var a = antallB(antall[0]);
     let p = document.getElementsByClassName("pristype");
+    let plus = antall = tall = type = minus = "";
     //let Voksen = p[0].innerHTML;
-    if (p[0].innerHTML == "Voksen") {
-        plusminus("#plus1", "#antall1", "#tall0", "#typeAv0", "#minus1", p[0].innerHTML);
-    }
-    if (p[1].innerHTML == "Barn") {
-        plusminus("#plus2", "#antall2", "#tall1", "#typeAv1", "#minus2", p[1].innerHTML);
-    }
-    if (p[2].innerHTML == "Student") {
-        plusminus("#plus3", "#antall3", "#tall2", "#typeAv2", "#minus3", p[2].innerHTML);
-    }
-    if (p[3].innerHTML == "Ungdom") {
-        plusminus("#plus4", "#antall4", "#tall3", "#typeAv3", "#minus4", p[3].innerHTML);
-    }
-    if (p[4].innerHTML == "Honnor") {
-        plusminus("#plus5", "#antall5", "#tall4", "#typeAv4", "#minus5", p[4].innerHTML);
-    }
-    if (p[5].innerHTML == "Verneplikt") {
-        plusminus("#plus6", "#antall6", "#tall5", "#typeAv5", "#minus6", p[5].innerHTML);
-    }
-    if (p[6].innerHTML == "Ledsager") {
-        plusminus("#plus7", "#antall7", "#tall6", "#typeAv6", "#minus7", p[6].innerHTML);
+    for (var i = 0; i < p.length; i++) {
+        
+            plusminus("#plus" + i, "#antall" + i, "#tall"+i, "#typeAv"+i, "#minus"+i, p[i].innerHTML);
+        
     }
 }
 
-function plusminus(pl, antall, tall, type, mi, typebillet) {
+function formateAn() {
+    let p = document.getElementsByClassName("pristype");
+    let ut = ut1 = "";
+    let ut2 = "";
+    for (var i = 0; i < p.length; i++) {
+        ut +="<input type=" + '"' + "button" + '"' + "value=" + '"' + "-" + '"' + "id=" + '"' + "minus" + i + '"' + " " +
+            "onclick=" + '"' + "antallBillet()" + '"' + "/> " + "<span id=" + '"' + "antall" + i + '"' + "class="+'"'+"a1"+'"'+">" + 0
+            + "</span>" + "<input type=" + '"' +
+            "button" + '"' + "value=" + '"' + "+" + '"' + "id=" + '"' + "plus" + i + '"' + " " +
+            "onclick=" + '"' + "antallBillet()" + '"' + "/> " + "<br />"
+
+        ut2 += "<span id=" + '"' + "tall" + i + '"' + "class=" + '"' + "tall" + '"' + "></span>"
+            + "<span id=" + '"' + "typeAv" + i + '"' + "class=" + '"' + "typeAv" + '"' + "></span>";
+    }
+    $("#Plass_2").html(ut);
+    for (var i = 0; i < p.length; i++) {
+        ut1 += "<div class=" + '"' + "pristype" + '"' + "></div>"
+    }
+    $("#Total").html(ut1);
+    $("#b1").html(ut2);
+}
+
+function plusminus(pl, antall, tall, type,mi,typebillet) {
     let an = parseInt($(antall).html());
     $(pl).click(function () {
         an += 1;
@@ -127,5 +136,5 @@ function hentypefeilhåntering() {
     if (type[0].innerHTML == 0 && type[1].innerHTML == 0 && type[2].innerHTML == 0 && type[3].innerHTML == 0 &&
         type[4].innerHTML == 0 && type[5].innerHTML == 0 && type[6].innerHTML == 0) {
         $("#title").html("Velg type av billett");
-    }
+    } 
 }
