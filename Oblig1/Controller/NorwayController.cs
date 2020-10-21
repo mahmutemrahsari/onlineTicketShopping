@@ -79,7 +79,7 @@ namespace Oblig.Controllers
                 bool returnOK = await _db.LoggInn(admin);
                 if (!returnOK)
                 {
-                    _log.LogInformation("Innloggingen feilet som administrator" + admin.Brukernavn);
+                    _log.LogInformation("Innloggingen feilet som administrator");
                     return Ok(false);
                 }
                 HttpContext.Session.SetString(_loggetInn, "LoggetInn");
