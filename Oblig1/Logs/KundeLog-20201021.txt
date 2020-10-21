@@ -144,3 +144,12 @@
 2020-10-21T16:35:32.7866408+02:00  [INF] Hosting environment: "Development" (c3307c92)
 2020-10-21T16:35:32.7908624+02:00  [INF] Content root path: "C:\Users\lcz\Desktop\WebApp-master\Oblig1" (b5d60022)
 
+2020-10-21T19:13:10.5418698+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-10-21T19:13:10.5648174+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2020-10-21T19:13:10.5664112+02:00  [INF] Content root path: "C:\Users\Bruker\Documents\WebApp\WebApp\Oblig1" (b5d60022)
+2020-10-21T19:17:57.4927018+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-10-21T19:17:57.5032336+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2020-10-21T19:17:57.5050687+02:00  [INF] Content root path: "C:\Users\Bruker\Documents\WebApp\WebApp\Oblig1" (b5d60022)
+2020-10-21T19:19:58.9819423+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-10-21T19:19:58.9945413+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2020-10-21T19:19:58.9976780+02:00  [INF] Content root path: "C:\Users\Bruker\Documents\WebApp\WebApp\Oblig1" (b5d60022)

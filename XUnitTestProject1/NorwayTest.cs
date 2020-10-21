@@ -17,7 +17,7 @@ namespace XUnitTestProject1
     public class NorwayTest
     {
 
-        private const string _loggetInn = "Logget inn";
+        private const string _loggetInn = "loggetInn";
         private const string _ikkeLoggetInn = "";
 
         private readonly Mock<INorwayReposatory> mockRep = new Mock<INorwayReposatory>();
@@ -207,7 +207,7 @@ namespace XUnitTestProject1
             Assert.Equal(_ikkeLoggetInn, mockSession[_loggetInn]);
         }
 
-        [Fact]
+      /*  [Fact]
         public async Task Endrerute()
         {
 
@@ -227,7 +227,7 @@ namespace XUnitTestProject1
             // Assert 
             Assert.Equal((int)HttpStatusCode.OK, resultat.StatusCode);
             Assert.Equal("Kunde endret", resultat.Value);
-        }
+        }*/
 
         [Fact]
         public async Task SlettRuten()

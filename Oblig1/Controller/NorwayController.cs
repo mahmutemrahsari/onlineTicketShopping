@@ -138,7 +138,7 @@ namespace Oblig.Controllers
         }
 
 
-        public async Task<ActionResult> EndreRute(Rute endreRute)
+        public async Task<ActionResult> EndreRute(RuteInn endreRute)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
@@ -173,7 +173,7 @@ namespace Oblig.Controllers
             return Ok("ruten slettet");
         }
 
-        public async Task<ActionResult> LagreRute(Rute innRute)
+        public async Task<ActionResult> LagreRute(RuteInn innRute)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
@@ -193,7 +193,7 @@ namespace Oblig.Controllers
             return BadRequest("Feil i inputvalidering på server");
         }
 
-        public async Task<ActionResult> EndreStop(Sted endreSted)
+        public async Task<ActionResult> EndreStop(StedInn endreSted)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
@@ -228,7 +228,7 @@ namespace Oblig.Controllers
             return Ok("Avgangen slettet");
         }
 
-        public async Task<ActionResult> LagreSted(Sted innSted)
+        public async Task<ActionResult> LagreSted(StedInn innSted)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
@@ -248,7 +248,7 @@ namespace Oblig.Controllers
             return BadRequest("Feil i inputvalidering på server");
         }
 
-        public async Task<ActionResult> EndrePris(PrisType endrePris)
+        public async Task<ActionResult> EndrePris(PrisInn endrePris)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
@@ -283,7 +283,7 @@ namespace Oblig.Controllers
             return Ok("Prisen slettet");
         }
 
-        public async Task<ActionResult> LagrePris(PrisType innPris)
+        public async Task<ActionResult> LagrePris(PrisInn innPris)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {

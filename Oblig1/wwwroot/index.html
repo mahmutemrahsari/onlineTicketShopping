@@ -46,7 +46,7 @@
                                 <span>Jeg skal reise fra</span>
                             </div>
                             <div class="blurSelect">
-                                <input name="avgang" id="avgang" list="liste" type="text" onchange="validerFraSted(this.value)"/>
+                                <input name="avgang" id="avgang" list="liste" type="text" onchange="validerFraSted(this.value)" />
                                 <span id="feilFraSted" style="color:red"></span>
                             </div>
                         </div>
@@ -141,30 +141,10 @@
                     <h3>Betalingsinformasjon:</h3>
                     <span class="kort">Kortnummer:</span>
                     <input type="text" class="kortNuminput" placeholder="0000 0000 0000 0000" maxlength="16" />
-                    <span id="feilKortnummer" style="color:red"></span>
                 </div>
                 <div class="kortDato">
 
                     <div class="utløpsDato">
-
-
-                        <input type="text" class="utløpsDatoInput" placeholder="00" maxlength="2" id="måned"/>
-                        <span id="feilMåned" style="color: red"></span>
-
-                        <input type="text" class="utløpsDatoInput" placeholder="00" maxlength="2" id="år"/>
-                        <span id="feilÅr" style="color:red"></span>
-
-                    </div>
-                    <div class="cvv">
-                        <input type="text" class="cvvInput" placeholder="000" maxlength="3" id="cvvInput" />
-                        <span id="feilcvv" style="color:red"></span>
-                    </div>
-
-                </div>
-                <span>Epost</span>
-                <input type="text" id="Epost" placeholder="F.eks noe@gmail.no" />
-                <span id="feilEpost" style="color:red"></span>
-
                         <span class="kort">Måned</span>
                         <input type="text" class="utløpsDatoInput" placeholder="00" maxlength="2" />
                         <span class="kort">År</span>
@@ -178,7 +158,6 @@
                 </div>
                 <span class="kort">Epost:</span>
                 <input class="epostInput" type="text" id="Epost" placeholder="F.eks noe@gmail.no" />
-
                 <input type="button" id="betal-btn" value="Bekreft" onclick="lagreBestilling()" class="knapp" />
             </div>
         </form>

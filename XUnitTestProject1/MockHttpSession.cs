@@ -24,14 +24,15 @@ namespace XUnitTestProject1
 
         bool ISession.TryGetValue(string key, out byte[] value)
         {
-            switch (sessionStorage[key])
+            if (sessionStorage[key] != null)
             {
-                case null:
-                    value = null;
-                    return false;
-                default:
-                    value = Encoding.ASCII.GetBytes(sessionStorage[key].ToString());
-                    return true;
+                value = Encoding.ASCII.GetBytes(sessionStorage[key].ToString());
+                return true;
+            }
+            else
+            {
+                value = null;
+                return false;
             }
         }
 
