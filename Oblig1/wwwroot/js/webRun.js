@@ -13,19 +13,6 @@
     var maxDate = year + '-' + month + '-' + day;
 
     $('#date1').attr('min', maxDate);
-
-    $("#Betaling").hide();
-    $("#betal-btn").click(function () {
-        hentTypeOgAntall();
-        antall();
-        if ($("#antallTicket").val() == 0) {
-            alert("Du må valge antall billett");
-            return;
-        } else {
-            $("#Betaling").show();
-        }
-    });
-
     //Layout
     $("#bekreft").click(function () {
         window.location.href = "bestill.html";
@@ -89,11 +76,6 @@ function tilStop() {
     }
 }
 
-
-
-
-
-
 function test() {
 
     fra = $("#avgang").val()
@@ -112,5 +94,25 @@ function test() {
 
 }
 
+
+function visBetalBox() {
+    /*
+    hentTypeOgAntall();
+
+    if ($("#antallTicket").val() == 0) {
+        alert("Du må valge antall billett");
+        return;
+    } else if (!($("#ruteTB tr").hasClass("highlight"))) {
+        alert("Du må velge en buss ! ");
+        return;
+    } else if($("#returnCheck").is(':checked')) {
+        if (!($("#ruteReturnTB tr").hasClass("returnHighlight"))) {
+            alert("Du må velge en return buss ! ");
+            return;
+        }
+    }*/
+    $("#Betaling").css("display", "block");
+    
+}
 
 

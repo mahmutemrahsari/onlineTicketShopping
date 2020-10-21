@@ -89,78 +89,25 @@
                                 </div>
                             </div>
                             <div class="type">
-                                <div class="titleBillett">
-                                    <span>Billettype</span>
+                                <div class="title">
+                                    <span>BillettType</span>
                                 </div>
                                 <div>
-                                    <span id="billett" onclick="typeBillett()">
-                                        <span id="title">Velg type av billett</span>
-                                        <span id="tall0" class="tall"></span>
-                                        <span id="typeAv0" class="typeAv"></span>
-                                        <span id="tall1" class="tall"></span>
-                                        <span id="typeAv1" class="typeAv"></span>
-                                        <span id="tall2" class="tall"></span>
-                                        <span id="typeAv2" class="typeAv"></span>
-                                        <span id="tall3" class="tall"></span>
-                                        <span id="typeAv3" class="typeAv"></span>
-                                        <span id="tall4" class="tall"></span>
-                                        <span id="typeAv4" class="typeAv"></span>
-                                        <span id="tall5" class="tall"></span>
-                                        <span id="typeAv5" class="typeAv"></span>
-                                        <span id="tall6" class="tall"></span>
-                                        <span id="typeAv6" class="typeAv"></span>
-                                    </span>
-                                    <div id="an">
-                                        <input id="antallType" />
-                                        <input id="antallTicket" />
-                                    </div>
                                     <div id="BillettType">
+                                        <div>
+                                            <span id="title">Velg type av billett</span>
+                                            <span id="b1"></span>
+                                        </div>
+                                        <div id="an">
+                                            <input id="antallType" />
+                                            <input id="antallTicket" />
+                                        </div>
                                         <div id="Plass_1"></div>
                                         <div id="Plass_2">
-                                            <input type="button" name="minus" value="-" id="minus1" onclick="antallBillet()" />
-                                            <span id="antall1">0</span>
-                                            <input type="button" name="plus" value="+" id="plus1" onclick="antallBillet()" />
-                                            <br />
-
-                                            <input type="button" name="minus" value="-" id="minus2" onclick="antallBillet()"/>
-                                            <span id="antall2">0</span>
-                                            <input type="button" name="plus" value="+" id="plus2" onclick="antallBillet()"/>
-                                            <br />
-
-                                            <input type="button" name="minus" value="-" id="minus3" onclick="antallBillet()" />
-                                            <span id="antall3">0</span>
-                                            <input type="button" name="plus" value="+" id="plus3" onclick="antallBillet()" />
-                                            <br />
-
-                                            <input type="button" name="minus" value="-" id="minus4" onclick="antallBillet()" />
-                                            <span id="antall4">0</span>
-                                            <input type="button" name="plus" value="+" id="plus4" onclick="antallBillet()" />
-                                            <br />
-
-                                            <input type="button" name="minus" value="-" id="minus5" onclick="antallBillet()" />
-                                            <span id="antall5">0</span>
-                                            <input type="button" name="plus" value="+" id="plus5" onclick="antallBillet()" />
-                                            <br />
-
-                                            <input type="button" name="minus" value="-" id="minus6" onclick="antallBillet()" />
-                                            <span id="antall6">0</span>
-                                            <input type="button" name="plus" value="+" id="plus6" onclick="antallBillet()" />
-                                            <br />
-
-                                            <input type="button" name="minus" value="-" id="minus7" onclick="antallBillet()" />
-                                            <span id="antall7">0</span>
-                                            <input type="button" name="plus" value="+" id="plus7" onclick="antallBillet()" />
-                                            <br />
                                         </div>
                                         <div>
                                             <div id="total"></div>
-                                            <div id="Voksen" class="typeBillett"></div>
-                                            <div id="Barn" class="typeBillett"></div>
-                                            <div id="Student" class="typeBillett"></div>
-                                            <div id="Ungdom" class="typeBillett"></div>
-                                            <div id="Honnor" class="typeBillett"></div>
-                                            <div id="Verneplikt" class="typeBillett"></div>
-                                            <div id="Ledsager" class="typeBillett"></div>
+                                            <div id="Total"></div>
                                             <div id="Pris"></div>
                                             <input id="TotalPris" type="text" />
                                         </div>
@@ -168,7 +115,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
                     <input type="button" id="visTid" onclick="test()" value="Vis Tid Og Pris" class="knapp1" />
@@ -188,9 +134,9 @@
                         <div class="ruten"><table class="table" id="ruteReturnTB"></table></div>
                     </div>
                 </div>
-                <input type="button" id="betal-btn" value="Betal" class="knapp" />
+                <input type="button" id="betal-btn" onclick="visBetalBox()" value="Betal" class="knapp" />
             </div>
-            <div class="Betaling" id="Betaling">
+            <div class="Betaling" id="Betaling" style="display:none">
                 <div class="kortNummer" id="kortNummer">
                     <h3>Betalingsinformasjon:</h3>
                     <span class="kort">Kortnummer:</span>

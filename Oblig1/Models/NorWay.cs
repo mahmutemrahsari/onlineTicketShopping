@@ -12,9 +12,11 @@ namespace Oblig.Models
         
         [EmailAddress(ErrorMessage = "Ikke riktig Epost former")]
         public string Epost { get; set; }
-        
+
+        [Required]
         public string Billettype { get; set; }
-        
+
+        [Required]
         public int Pris { get; set; }
 
         [RegularExpression(@"[a-zA-ZæøåÆØÅ. \-]{4,20}")]
@@ -29,19 +31,25 @@ namespace Oblig.Models
         [Required]
         public string ReturDato { get; set; }
 
-        [Required]
+        [RegularExpression(@"^\+?[1-9][0-9]*$")]
         public int Antall { get; set; }
-        // [RegularExpression(@"\d{2}:\d{2}$")]
+
+        [Required]
         public string Avgangstid { get; set; }
-        // [RegularExpression(@"\d{2}:\d{2}$")]
+
+        [Required]
         public string Ankomsttid { get; set; }
-        [RegularExpression(@"[0-9. \-]{2,20}$")]
+
+        [Required]
         public string BussNr { get; set; }
-        // [RegularExpression(@"\d{2}:\d{2}$")]
+
+        [Required]
         public string AvgangstidR { get; set; }
-        // [RegularExpression(@"\d{2}:\d{2}$")]
+
+        [Required]
         public string AnkomsttidR { get; set; }
 
+        [Required]
         public string BussNrR { get; set; }
     }
 

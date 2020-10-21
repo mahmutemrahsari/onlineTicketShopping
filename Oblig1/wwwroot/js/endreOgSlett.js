@@ -49,7 +49,7 @@ function endreSted() {
                 window.location.href = 'loggInn.html';  // ikke logget inn, redirect til loggInn.html
             }
             else {
-                $("#feil").html("Feil på server - prøv igjen senere");
+                $("#feilSted").html("Feil på server - prøv igjen senere");
             }
         });
 }
@@ -67,7 +67,7 @@ function slettSted(sid) {
                 window.location.href = 'loggInn.html'; // ikke logget inn, redirect til loggInn.html
             }
             else {
-                $("#feil").html("Feil på server - prøv igjen senere");
+                $("#feilSted").html("Feil på server - prøv igjen senere");
             }
         });
 }
@@ -119,7 +119,7 @@ function endrePris() {
                 window.location.href = 'loggInn.html';  // ikke logget inn, redirect til loggInn.html
             }
             else {
-                $("#feil").html("Feil på server - prøv igjen senere");
+                $("#feilPris").html("Feil på server - prøv igjen senere");
             }
         });
 }
@@ -136,7 +136,7 @@ function slettPris(tid) {
                 window.location.href = 'loggInn.html'; // ikke logget inn, redirect til loggInn.html
             }
             else {
-                $("#feil").html("Feil på server - prøv igjen senere");
+                $("#feilPris").html("Feil på server - prøv igjen senere");
             }
         });
 }
@@ -213,7 +213,7 @@ function endreRute() {
                 window.location.href = 'loggInn.html';  // ikke logget inn, redirect til loggInn.html
             }
             else {
-                $("#feil").html("Feil på server - prøv igjen senere");
+                $("#feilRute").html("Feil på server - prøv igjen senere");
             }
         });
 }
@@ -230,7 +230,7 @@ function slettRute(rid) {
                 indow.location.href = 'loggInn.html'; // ikke logget inn, redirect til loggInn.html
             }
             else {
-                $("#feil").html("Feil på server - prøv igjen senere");
+                $("#feilRute").html("Feil på server - prøv igjen senere");
             }
         });
 }

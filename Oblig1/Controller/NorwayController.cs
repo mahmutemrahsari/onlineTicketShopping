@@ -30,63 +30,46 @@ namespace Oblig.Controllers
 
         public async Task<ActionResult> Lagre(NorWay BestilleBillett)
         {
-            /*
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            if (ModelState.IsValid)
             {
-                return Unauthorized();
-            }*/
-            bool returOK = await _db.Lagre(BestilleBillett);
-            if (!returOK)
-            {
-                _log.LogInformation("Billettet ble ikke bestilt");
-                return BadRequest("Billettet ble ikke bestilt");
+                bool returOK = await _db.Lagre(BestilleBillett);
+                if (!returOK)
+                {
+                    _log.LogInformation("Billettet ble ikke bestilt");
+                    return BadRequest("Billettet ble ikke bestilt");
+                }
+                return Ok("Kunde lagret");
             }
-            return Ok("Kunde lagret");
+            _log.LogInformation("Feil i inputvalidering");
+            return BadRequest("Feil i inputvalidering på server");
         }
 
         public async Task<ActionResult> HentAlle()
         {
-            /*
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
-            {
-                return Unauthorized();
-            }*/
             List<NorWay> hentAlle = await _db.HentAlle();
             return Ok(hentAlle);// returnerer alltid OK, null ved tom DB
         }
 
         public async Task<ActionResult> HentStop()
         {
-            /*
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
-            {
-                return Unauthorized();
-            }*/
             List<Sted> alleSteder = await _db.HentStop();
             return Ok(alleSteder);// returnerer alltid OK, null ved tom DB
         }
 
         public async Task<ActionResult> HentPrisType()
         {
-            /*
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
-            {
-                return Unauthorized();
-            }*/
             List<PrisType> alleprisType = await _db.HentPrisType();
             return Ok(alleprisType);// returnerer alltid OK, null ved tom DB
         }
 
         public async Task<ActionResult> HentTilpasseRute(InfoMedRute info)
         {
-
             var Rute = await _db.HentTilpasseRute(info);
             if (Rute.Count() == 0)
             {
                 return NotFound();
             }
             return Ok(Rute);
-
         }
 
         public async Task<ActionResult> LoggInn(Admin admin)
@@ -111,6 +94,7 @@ namespace Oblig.Controllers
             HttpContext.Session.SetString(_loggetInn, _ikkeLoggetInn);
         }
 
+        //sjekk metoden til admin.html, sikker at man kan ikke gå inn til admin siden uten logginn
         public IActionResult Sjekk()
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
@@ -146,7 +130,7 @@ namespace Oblig.Controllers
         }
 
 
-        public async Task<ActionResult> EndreRute(Rute endreRute)
+        public async Task<ActionResult> EndreRute(RuteInn endreRute)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
@@ -181,7 +165,7 @@ namespace Oblig.Controllers
             return Ok("ruten slettet");
         }
 
-        public async Task<ActionResult> LagreRute(Rute innRute)
+        public async Task<ActionResult> LagreRute(RuteInn innRute)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
@@ -201,7 +185,7 @@ namespace Oblig.Controllers
             return BadRequest("Feil i inputvalidering på server");
         }
 
-        public async Task<ActionResult> EndreStop(Sted endreSted)
+        public async Task<ActionResult> EndreStop(StedInn endreSted)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
@@ -236,7 +220,7 @@ namespace Oblig.Controllers
             return Ok("Avgangen slettet");
         }
 
-        public async Task<ActionResult> LagreSted(Sted innSted)
+        public async Task<ActionResult> LagreSted(StedInn innSted)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
@@ -256,7 +240,7 @@ namespace Oblig.Controllers
             return BadRequest("Feil i inputvalidering på server");
         }
 
-        public async Task<ActionResult> EndrePris(PrisType endrePris)
+        public async Task<ActionResult> EndrePris(PrisInn endrePris)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
@@ -291,7 +275,7 @@ namespace Oblig.Controllers
             return Ok("Prisen slettet");
         }
 
-        public async Task<ActionResult> LagrePris(PrisType innPris)
+        public async Task<ActionResult> LagrePris(PrisInn innPris)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {

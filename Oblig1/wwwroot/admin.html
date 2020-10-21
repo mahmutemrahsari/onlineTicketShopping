@@ -57,9 +57,9 @@
                     <input type="hidden" id="sid" />
                     <h4>Endre sted til : </h4>
                     <!--Mangler inoutvaliderling til sted-->
-                    <input type="text" id="sted" onchange="validerFraSted(this.value)"/>
+                    <input type="text" id="sted" onchange="validerAdminSted(this.value,'#feilSted')" />
+                    <span id="feilSted" style="color:red"></span><br>
                     <input type="button" value="Endre" class="btn btn-primary" onclick="endreSted()" />
-                    <span id="feilFraSted" style="color:red"></span>
                 </div>
                 <div class="well" id="endrePris" style="display:none">
                     <input type="hidden" id="tid" />
@@ -81,12 +81,12 @@
                     </div>
                     <div class="form-group">
                         <lable>Fra : </lable><br>
-                        <input type="text" id="fSted" onchange="validerFraSted(this.value)"/>
+                        <input type="text" id="fSted"  onchange="validerAdminSted(this.value,'#feilFraSted')"/><br>
                         <span id="feilFraSted" style="color: red"></span>
                     </div>
                     <div class="form-group">
                         <lable>Til : </lable><br>
-                        <input type="text" id="tSted" onchange="validerTilSted(this.value)"/>
+                        <input type="text" id="tSted" onchange="validerAdminSted(this.value,'#feilTilSted')"/><br>
                         <span id="feilTilSted" style="color: red"></span>
                     </div>
                     <div class="form-group">
@@ -96,12 +96,12 @@
                     </div>
                     <div class="form-group">
                         <lable>Avgangstid : </lable><br>
-                        <input type="text" id="avTid" />
+                        <input type="time" id="avTid" style="width: 180px"/>
                         <span id="feilAvTid" style="color: red"></span>
                     </div>
                     <div class="form-group">
                         <lable>Ankomsttid : </lable><br>
-                        <input type="text" id="anTid" />
+                        <input type="time" id="anTid" style="width: 180px"/>
                         <span id="feilAnTid" style="color: red"></span>
                     </div>
                     <input type="button" value="Endre" class="btn btn-primary" onclick="endreRute()" />
@@ -115,9 +115,9 @@
                 <div class="well" id="nySted" style="display:none">
                     <h4>Lagre ny sted : </h4>
                     <!--Mangler inoutvaliderling til sted-->
-                    <input type="text" id="nysted" onchange="validerFraSted(this.value)"/>
+                    <input type="text" id="nysted" onchange="validerAdminSted(this.value,'#feilLagreSted')" />
+                    <span id="feilLagreSted" style="color:red"></span><br>
                     <input type="button" value="Lagre" class="btn btn-primary" onclick="lagreSted()" />
-                    <span id="feilFraSted" style="color:red"></span>
                 </div>
                 <div class="well" id="nyPris" style="display:none">
                     <h4>Lagre ny pris og billettype : </h4>
@@ -143,13 +143,13 @@
                     </div>
                     <div class="form-group">
                         <lable>Fra : </lable><br>
-                        <input type="text" id="nyfSted" onchange="validerFraSted(this.value)"/>
-                        <span id="feilFraSted" style="color: red"></span>
+                        <input type="text" id="nyfSted" onchange="validerAdminSted(this.value,'#feilRuteFSted')"/><br>
+                        <span id="feilRuteFSted" style="color: red"></span>
                     </div>
                     <div class="form-group">
                         <lable>Til : </lable><br>
-                        <input type="text" id="nytSted" onchange="validerTilSted(this.value)"/>
-                        <span id="feilTilSted" style="color: red"></span>
+                        <input type="text" id="nytSted" onchange="validerAdminSted(this.value,'#feilRuteTSted')"/><br>
+                        <span id="feilRuteTSted" style="color: red"></span>
                     </div>
                     <div class="form-group">
                         <lable>Dato : </lable><br>
@@ -158,12 +158,12 @@
                     </div>
                     <div class="form-group">
                         <lable>Avgangstid : </lable><br>
-                        <input type="text" id="nyavTid" />
+                        <input type="time" id="nyavTid" style="width: 180px"/>
                         <span id="feilAvTid" style="color: red"></span>
                     </div>
                     <div class="form-group">
                         <lable>Ankomsttid : </lable><br>
-                        <input type="text" id="nyanTid" />
+                        <input type="time" id="nyanTid" style="width: 180px"/>
                         <span id="feilAnTid" style="color: red"></span>
                     </div>
                     <input type="button" value="Lagre" class="btn btn-primary" onclick="lagreRute()" />

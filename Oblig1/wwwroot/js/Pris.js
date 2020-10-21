@@ -1,4 +1,4 @@
-﻿function antall() {
+﻿function an() {
     //Hente pris fra database
     var pris = document.getElementsByClassName("pris");
     var antall = document.getElementsByClassName("a1");
@@ -52,49 +52,62 @@ function hentTypeOgAntall() {
 
 }
 
-//Sett BillettType
-function typeBillett() {
-    $("#billett").on("click", function (e) {
-        $("#BillettType").show();
 
-        $(document).one("click", function () {
-            $("#BillettType").hide();
-        });
-
-        e.stopPropagation();
-    });
-    $("#BillettType").on("click", function (e) {
-        e.stopPropagation();
-    });
-}
 
 //Antall billet kan endres + og - buttonner
 
 function antallBillet() {
     //var a = antallB(antall[0]);
     let p = document.getElementsByClassName("pristype");
-    //let Voksen = p[0].innerHTML;
-    if (p[0].innerHTML == "Voksen") {
-        plusminus("#plus1", "#antall1", "#tall0", "#typeAv0", "#minus1", p[0].innerHTML);
+    let plus = antall = tall = type = minus = "";
+    for (var i = 0; i < p.length; i++) {
+
+        plusminus("#plus" + i, "#antall" + i, "#tall" + i, "#typeAv" + i, "#minus" + i, p[i].innerHTML);
+
     }
-    if (p[1].innerHTML == "Barn") {
-        plusminus("#plus2", "#antall2", "#tall1", "#typeAv1", "#minus2", p[1].innerHTML);
+}
+
+
+
+
+function docReady(fn) {
+    // see if DOM is already available
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+        // call on next available tick
+        setTimeout(fn, 1);
+    } else {
+        document.addEventListener("DOMContentLoaded", fn);
     }
-    if (p[2].innerHTML == "Student") {
-        plusminus("#plus3", "#antall3", "#tall2", "#typeAv2", "#minus3", p[2].innerHTML);
-    }
-    if (p[3].innerHTML == "Ungdom") {
-        plusminus("#plus4", "#antall4", "#tall3", "#typeAv3", "#minus4", p[3].innerHTML);
-    }
-    if (p[4].innerHTML == "Honnor") {
-        plusminus("#plus5", "#antall5", "#tall4", "#typeAv4", "#minus5", p[4].innerHTML);
-    }
-    if (p[5].innerHTML == "Verneplikt") {
-        plusminus("#plus6", "#antall6", "#tall5", "#typeAv5", "#minus6", p[5].innerHTML);
-    }
-    if (p[6].innerHTML == "Ledsager") {
-        plusminus("#plus7", "#antall7", "#tall6", "#typeAv6", "#minus7", p[6].innerHTML);
-    }
+}
+
+docReady(function () {
+    var ek = [];
+    $('.pristype').each(function () { ek.push($(this).val()); });
+    $("#Plass_2").html(ek);
+});
+
+
+function formateAn() {
+    $.get("Norway/HentPrisType", function (pris) {
+        let ut = ut1 = "";
+        let ut2 = "";
+        for (var i = 0; i < pris.length; i++) {
+            ut += "<input type=" + '"' + "button" + '"' + "value=" + '"' + "-" + '"' + "id=" + '"' + "minus" + i + '"' + " " +
+                "onclick=" + '"' + "antallBillet()" + '"' + "/> " + "<span id=" + '"' + "antall" + i + '"' + "class=" + '"' + "a1" + '"' + ">" + 0
+                + "</span>" + "<input type=" + '"' +
+                "button" + '"' + "value=" + '"' + "+" + '"' + "id=" + '"' + "plus" + i + '"' + " " +
+                "onclick=" + '"' + "antallBillet()" + '"' + "/> " + "<br />"
+
+            ut2 += "<span id=" + '"' + "tall" + i + '"' + "class=" + '"' + "tall" + '"' + "></span>"
+                + "<span id=" + '"' + "typeAv" + i + '"' + "class=" + '"' + "typeAv" + '"' + "></span>";
+        }
+        $("#Plass_2").html(ut);
+        for (var i = 0; i < p.length; i++) {
+            ut1 += "<div class=" + '"' + "typeBillett" + '"' + "></div>"
+        }
+        $("#Total").html(ut1);
+        $("#b1").html(ut2);
+    });
 }
 
 function plusminus(pl, antall, tall, type, mi, typebillet) {

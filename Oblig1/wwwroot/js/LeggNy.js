@@ -10,7 +10,7 @@
             indow.location.href = 'loggInn.html'; // ikke logget inn, redirect til loggInn.html
         }
         else {
-            $("#feil").html("Feil - Avgangen kunne ikke lagres");
+            $("#feilLagreSted").html("Feil - Avgangen kunne ikke lagres, prøv igjen senere eller med andre input");
         }
     });
 }
@@ -30,7 +30,7 @@ function lagrePris() {
                 indow.location.href = 'loggInn.html'; // ikke logget inn, redirect til loggInn.html
             }
             else {
-                $("#feil").html("Feil - BillettType kunne ikke lagres");
+                $("#feilLagrePris").html("Feil - BillettType kunne ikke lagres, prøv igjen senere eller med andre input");
             }
         });
 }
@@ -54,7 +54,7 @@ function lagreRute() {
                 indow.location.href = 'loggInn.html'; // ikke logget inn, redirect til loggInn.html
             }
             else {
-                $("#feil").html("Feil på server - prøv igjen senere");
+                $("#feilLagreRute").html("Feil på server - prøv igjen senere");
             }
         });
 }
