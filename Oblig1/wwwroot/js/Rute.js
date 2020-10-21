@@ -6,7 +6,7 @@ function settRute() {
         tSted: $("#destinasjon").val()
     }
 
-    const url = "NorWay/HentEnRute";
+    const url = "NorWay/HentTilpasseRute";
 
     let utHeading = "<span>" + info.fSted + "-->" + info.tSted + "<span>" + "<br>" +
         "<span>" + info.dato + "<span>";
@@ -79,7 +79,7 @@ function settReturnRute() {
         fSted: $("#destinasjon").val()
     }
 
-    const url = "NorWay/HentEnRute";
+    const url = "NorWay/HentTilpasseRute";
 
     let utHeading = "<span>" + info.fSted + " → " + info.tSted + "<span>" + "<br>" +
         "<span>" + info.dato + "<span>";

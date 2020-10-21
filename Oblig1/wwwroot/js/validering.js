@@ -1,4 +1,5 @@
-﻿function validerBrukernavn(brukernavn) {
+﻿//regex/inputvalidering for loggInn 
+function validerBrukernavn(brukernavn) {
     const regexp = /^[a-zA-ZæøåÆØÅ\.\ \-]{2,10}$/;
     const ok = regexp.test(brukernavn);
     if (!ok) {
@@ -22,6 +23,7 @@ function validerPassord(passord) {
     }
 }
 
+//regex/inputvalidering for index.html, som sjekker hva kunder skrives inn
 function validerFraSted(avgang) {
     const regxp = /^[a-zA-ZæøåÆØÅ\.\ \-]{4,15}$/;
     const ok = regxp.test(avgang);
@@ -45,6 +47,7 @@ function validerTilSted(destinasjon) {
         return true;
     }
 }
+
 
 $("#Epost").click(function () {
     //hva som skjer når elementet blir klikket 
@@ -115,5 +118,34 @@ $("#år").click(function () {
 
 
 
+
+
+
+//regex/inputvalidering for admin.html, som sjekker hva adminer skrives inn
+function validerAdminSted(destinasjon,id) {
+    const regxp = /^[a-zA-ZæøåÆØÅ\.\ \-]{4,20}$/;
+    const ok = regxp.test(destinasjon);
+    const utId = id;
+    if (!ok) {
+        $(utId).html("Stedet du reiser fra er skrevet feil, må bestå av 4 til 20 bokstaver");
+        return false;
+    } else {
+        $(utId).html("");
+        return true;
+    }
+}
+
+function validerAdminPris(destinasjon, id) {
+    const regxp = /^[0-9]{2,3}$/;
+    const ok = regxp.test(destinasjon);
+    const utId = id;
+    if (!ok) {
+        $(utId).html("Stedet du reiser fra er skrevet feil, må bestå av 4 til 20 bokstaver");
+        return false;
+    } else {
+        $(utId).html("");
+        return true;
+    }
+}
 
 

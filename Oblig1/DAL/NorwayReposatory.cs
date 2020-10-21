@@ -54,7 +54,7 @@ namespace Oblig1.DAL
 
                 kunde.Billetter = new List<Billett>();
                 kunde.Billetter.Add(bestill);
-                _db.kunder.Add(kunde);
+                _db.Kunder.Add(kunde);
                 await _db.SaveChangesAsync();
                 return true;
 
@@ -68,33 +68,33 @@ namespace Oblig1.DAL
         public async Task<List<NorWay>> HentAlle()
         {
 
-            List<Kunde> alleKunder = await _db.kunder.ToListAsync();
+            List<Kunde> alleKunder = await _db.Kunder.ToListAsync();
             List<NorWay> alleBilletter = new List<NorWay>();
 
             //Hente bare den nyeste billett informasjon
             Kunde last = alleKunder.OrderByDescending(k => k.Id).First();
 
-                foreach (var bestill in last.Billetter)
+            foreach (var bestill in last.Billetter)
+            {
+                var enBestilling = new NorWay()
                 {
-                    var enBestilling = new NorWay()
-                    {
-                        Epost = last.Epost,
-                        AvgangersDato = bestill.AvgangersDato,
-                        ReturDato = bestill.ReturDato,
-                        FraSted = bestill.FraSted,
-                        TilSted = bestill.TilSted,
-                        Pris = bestill.Pris,
-                        Billettype = bestill.Billettype,
-                        Antall = bestill.Antall,
-                        Avgangstid = bestill.Avgangstid,
-                        Ankomsttid = bestill.Ankomsttid,
-                        BussNr = bestill.BussNr,
-                        AvgangstidR = bestill.AvgangstidR,
-                        AnkomsttidR = bestill.AnkomsttidR,
-                        BussNrR = bestill.BussNrR
-                    };
-                    alleBilletter.Add(enBestilling);
-                }
+                    Epost = last.Epost,
+                    AvgangersDato = bestill.AvgangersDato,
+                    ReturDato = bestill.ReturDato,
+                    FraSted = bestill.FraSted,
+                    TilSted = bestill.TilSted,
+                    Pris = bestill.Pris,
+                    Billettype = bestill.Billettype,
+                    Antall = bestill.Antall,
+                    Avgangstid = bestill.Avgangstid,
+                    Ankomsttid = bestill.Ankomsttid,
+                    BussNr = bestill.BussNr,
+                    AvgangstidR = bestill.AvgangstidR,
+                    AnkomsttidR = bestill.AnkomsttidR,
+                    BussNrR = bestill.BussNrR
+                };
+                alleBilletter.Add(enBestilling);
+            }
             return alleBilletter;
         }
 
@@ -102,14 +102,14 @@ namespace Oblig1.DAL
         //Hente ut til og fra stedene
         public async Task<List<Sted>> HentStop()
         {
-            List<Sted> alleSteder = await _db.steder.ToListAsync();
+            List<Sted> alleSteder = await _db.Steder.ToListAsync();
             return alleSteder;
         }
 
         public async Task<List<PrisType>> HentPrisType()
         {
 
-            List<PrisType> allePrisType = await _db.pristype.ToListAsync();
+            List<PrisType> allePrisType = await _db.Pristype.ToListAsync();
             return allePrisType;
         }
 
@@ -119,7 +119,7 @@ namespace Oblig1.DAL
         {
             try
             {
-                List<Rute> alleRuter = await _db.ruter.ToListAsync();
+                List<Rute> alleRuter = await _db.Ruter.ToListAsync();
 
                 //Finn tilpasset rute som har sammen dato og stedene ved bruk av LINQ
                 var finnRute = (from passRute in alleRuter
@@ -161,7 +161,7 @@ namespace Oblig1.DAL
                 Adminere funnetAdmin = await _db.Adminere.FirstOrDefaultAsync(a => a.Brukernavn == admin.Brukernavn);
 
                 //hvis finner ikke den brukernavn
-                if(funnetAdmin == null)
+                if (funnetAdmin == null)
                 {
                     return false;
                 }
@@ -183,7 +183,7 @@ namespace Oblig1.DAL
 
         public async Task<List<Rute>> HentRute()
         {
-            List<Rute> alleRuter = await _db.ruter.ToListAsync();
+            List<Rute> alleRuter = await _db.Ruter.ToListAsync();
             return alleRuter;
         }
 
@@ -191,10 +191,7 @@ namespace Oblig1.DAL
         {
             try
             {
-                /*
-                List<Rute> alleRuter = await _db.ruter.ToListAsync();
-                List<Rute> enRute = await _db.ruter.FindAsync(rid);*/
-                Rute enRute = await _db.ruter.FindAsync(rid);
+                Rute enRute = await _db.Ruter.FindAsync(rid);
 
                 var hentetRute = new Rute()
                 {
@@ -215,11 +212,11 @@ namespace Oblig1.DAL
             }
         }
 
-        public async Task<bool> EndreRute(Rute endreRute)
+        public async Task<bool> EndreRute(RuteInn endreRute)
         {
             try
             {
-                var endreObjekt = await _db.ruter.FindAsync(endreRute.RId);
+                var endreObjekt = await _db.Ruter.FindAsync(endreRute.RId);
                 endreObjekt.BussNR = endreRute.BussNR;
                 endreObjekt.FraRute = endreRute.FraRute;
                 endreObjekt.TilRute = endreRute.TilRute;
@@ -242,8 +239,8 @@ namespace Oblig1.DAL
         {
             try
             {
-                Rute ruten = await _db.ruter.FindAsync(rid);
-                _db.ruter.Remove(ruten);
+                Rute ruten = await _db.Ruter.FindAsync(rid);
+                _db.Ruter.Remove(ruten);
                 await _db.SaveChangesAsync();
                 return true;
             }
@@ -254,7 +251,7 @@ namespace Oblig1.DAL
             }
         }
 
-        public async Task<bool> LagreRute(Rute innRute)
+        public async Task<bool> LagreRute(RuteInn innRute)
         {
             try
             {
@@ -268,7 +265,7 @@ namespace Oblig1.DAL
                     AnkomstTid = innRute.AnkomstTid
                 };
 
-                _db.ruter.Add(nyRute);
+                _db.Ruter.Add(nyRute);
                 await _db.SaveChangesAsync();
                 return true;
             }
@@ -278,15 +275,15 @@ namespace Oblig1.DAL
             }
         }
 
-        public async Task<bool> EndreStop(Sted endreSted)
+        public async Task<bool> EndreStop(StedInn endreSted)
         {
             try
             {
-                var endreObjekt = await _db.steder.FindAsync(endreSted.SId);
+                var endreObjekt = await _db.Steder.FindAsync(endreSted.SId);
                 endreObjekt.StedNavn = endreSted.StedNavn;
                 await _db.SaveChangesAsync();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 _log.LogInformation(e.Message);
                 return false;
@@ -298,8 +295,8 @@ namespace Oblig1.DAL
         {
             try
             {
-                Sted steden = await _db.steder.FindAsync(sid);
-                _db.steder.Remove(steden);
+                Sted steden = await _db.Steder.FindAsync(sid);
+                _db.Steder.Remove(steden);
                 await _db.SaveChangesAsync();
                 return true;
             }
@@ -310,15 +307,23 @@ namespace Oblig1.DAL
             }
         }
 
-        public async Task<bool> LagreSted(Sted innSted)
+        public async Task<bool> LagreSted(StedInn innSted)
         {
             try
             {
-                var nySted = new Sted { StedNavn = innSted.StedNavn};
+                var sjekkSted = await _db.Steder.FirstOrDefaultAsync(s => s.StedNavn == innSted.StedNavn);
+                if (sjekkSted == null)
+                {
+                    var nySted = new Sted { StedNavn = innSted.StedNavn };
 
-                _db.steder.Add(nySted);
-                await _db.SaveChangesAsync();
-                return true;
+                    _db.Steder.Add(nySted);
+                    await _db.SaveChangesAsync();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch
             {
@@ -326,13 +331,13 @@ namespace Oblig1.DAL
             }
         }
 
-        public async Task<bool> EndrePris(PrisType endrePris)
+        public async Task<bool> EndrePris(PrisInn endrePris)
         {
             try
             {
-                var endreObjekt = await _db.pristype.FindAsync(endrePris.TId);
-                endreObjekt.pris = endrePris.pris;
-                endreObjekt.type = endrePris.type;
+                var endreObjekt = await _db.Pristype.FindAsync(endrePris.TId);
+                endreObjekt.Pris = endrePris.Pris;
+                endreObjekt.Type = endrePris.Type;
                 await _db.SaveChangesAsync();
             }
             catch (Exception e)
@@ -348,8 +353,8 @@ namespace Oblig1.DAL
         {
             try
             {
-                PrisType prisen = await _db.pristype.FindAsync(tid);
-                _db.pristype.Remove(prisen);
+                PrisType prisen = await _db.Pristype.FindAsync(tid);
+                _db.Pristype.Remove(prisen);
                 await _db.SaveChangesAsync();
                 return true;
             }
@@ -360,18 +365,27 @@ namespace Oblig1.DAL
             }
         }
 
-        public async Task<bool> LagrePris(PrisType innPris)
+        public async Task<bool> LagrePris(PrisInn innPris)
         {
             try
             {
-                var nyPris = new PrisType() {
-                    type = innPris.type,
-                    pris = innPris.pris
-                };
+                var sjekkPrisType = await _db.Pristype.FirstOrDefaultAsync(t => t.Type == innPris.Type);
+                if (sjekkPrisType == null)
+                {
+                    var nyPris = new PrisType()
+                    {
+                        Type = innPris.Type,
+                        Pris = innPris.Pris
+                    };
 
-                _db.pristype.Add(nyPris);
-                await _db.SaveChangesAsync();
-                return true;
+                    _db.Pristype.Add(nyPris);
+                    await _db.SaveChangesAsync();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch
             {

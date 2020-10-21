@@ -26,22 +26,22 @@ namespace Oblig1.DAL
 
         Task<Rute> HentEnRute(int rid);
 
-        Task<bool> EndreRute(Rute endreRute);
+        Task<bool> EndreRute(RuteInn endreRute);
 
         Task<bool> SlettRute(int rid);
 
-        Task<bool> LagreRute(Rute innRute);
+        Task<bool> LagreRute(RuteInn innRute);
 
-        Task<bool> EndreStop(Sted endreSted);
+        Task<bool> EndreStop(StedInn endreSted);
 
         Task<bool> SlettSted(int sid);
 
-        Task<bool> LagreSted(Sted innSted);
+        Task<bool> LagreSted(StedInn innSted);
 
-        Task<bool> EndrePris(PrisType endrePris);
+        Task<bool> EndrePris(PrisInn endrePris);
 
         Task<bool> SlettPris(int tid);
 
-        Task<bool> LagrePris(PrisType innPris);
+        Task<bool> LagrePris(PrisInn innPris);
     }
 }

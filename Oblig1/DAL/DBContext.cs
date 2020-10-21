@@ -73,11 +73,11 @@ namespace Oblig.Models
     {
         [Key]
         public int TId { get; set; }
-        public int pris { get; set; }
-        public string type { get; set; }
+        public int Pris { get; set; }
+        public string Type { get; set; }
     }
 
-   
+
 
     public class BillettContext : DbContext
     {
@@ -85,11 +85,11 @@ namespace Oblig.Models
         {
             Database.EnsureCreated();
         }
-        public DbSet<Kunde> kunder { get; set; }
+        public DbSet<Kunde> Kunder { get; set; }
         public DbSet<Billett> Billetter { get; set; }
-        public DbSet<Sted> steder { get; set; }
-        public DbSet<Rute> ruter { get; set; }
-        public DbSet<PrisType> pristype { get; set; }
+        public DbSet<Sted> Steder { get; set; }
+        public DbSet<Rute> Ruter { get; set; }
+        public DbSet<PrisType> Pristype { get; set; }
         public DbSet<Adminere> Adminere { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

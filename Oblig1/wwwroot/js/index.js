@@ -1,23 +1,8 @@
-﻿
-
-$(document).ready(function () {
-    $("#Betaling").hide();
-    $("#betal-btn").click(function () {
-        hentTypeOgAntall();
-        antall();
-        if ($("#antallTicket").val() == 0) {
-            alert("Du må valge antall billett");
-            return;
-        } else {
-            $("#Betaling").show();
-        }
-    });
-});
-
-$(function () {
+﻿$(function () {
     //hent ut alle stops og pris i db til html
     settPris();
     liste();
+    formateAn();
 });
 
 function liste() {
@@ -66,12 +51,13 @@ function formaterPris(pris) {
 //lagering bestilling informasjon
 function lagreBestilling() {
     hentTypeOgAntall();
-    antall();
+    an();
 
+    /*
     if ($("#antallTicket").val() == 0) {
         alert("Du må valge antall billett");
         return;
-    }
+    }*/
 
     if ($("#ruteTB tr").hasClass("highlight")) {
         var bussNr = $(".highlight").find("td").eq(0).text();
@@ -120,7 +106,7 @@ function lagreBestilling() {
     });
 };
 
-
+/*
 $(document).ready(function () {
     $(function () {
         var dtToday = new Date();
@@ -138,7 +124,7 @@ $(document).ready(function () {
 
         $('#date1').attr('min', maxDate);
     });
-})
+})*/
 
 
 
