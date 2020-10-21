@@ -44,7 +44,7 @@ namespace Oblig
                 app.UseDeveloperExceptionPage();
                 loggerFactory.AddFile("Logs/KundeLog.txt");
                 //fjernes deresom vi vil beholde dataene i db og ikke initialisere
-                //Dbinit.Initialize(app);
+                Dbinit.Initialize(app);
             }
             app.UseSession();
             app.UseRouting();
