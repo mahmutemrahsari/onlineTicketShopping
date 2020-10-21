@@ -72,6 +72,8 @@ namespace Oblig.Controllers
             return Ok(Rute);
         }
 
+        //Fra her er metoder til oblig2
+
         public async Task<ActionResult> LoggInn(Admin admin)
         {
             if (ModelState.IsValid)
@@ -99,16 +101,16 @@ namespace Oblig.Controllers
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
-                return Unauthorized();
+                return Unauthorized("Ikke logget inn");
             }
-            return Ok(true);
+            return Ok("Admin er logget inn");
         }
 
         public async Task<ActionResult> HentRute()
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
-                return Unauthorized();
+                return Unauthorized("Ikke logget inn");
             }
             List<Rute> alleRuter = await _db.HentRute();
             return Ok(alleRuter);// returnerer alltid OK, null ved tom DB

@@ -20,6 +20,8 @@ namespace Oblig1.DAL
 
         Task<List<Rute>> HentTilpasseRute(InfoMedRute info);
 
+        //Fra her er metoden for oblig2
+
         Task<bool> LoggInn(Admin admin);
 
         Task<List<Rute>> HentRute();
