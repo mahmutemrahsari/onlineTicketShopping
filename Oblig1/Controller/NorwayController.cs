@@ -79,7 +79,6 @@ namespace Oblig.Controllers
 
         public async Task<ActionResult> HentTilpasseRute(InfoMedRute info)
         {
-
             var Rute = await _db.HentTilpasseRute(info);
             if (Rute.Count() == 0)
             {
@@ -90,13 +89,14 @@ namespace Oblig.Controllers
         }
 
         public async Task<ActionResult> LoggInn(Admin admin)
-        {
+        {           
+            
             if (ModelState.IsValid)
             {
                 bool returnOK = await _db.LoggInn(admin);
                 if (!returnOK)
                 {
-                    _log.LogInformation("Innloggingen feilet som administrator"+admin.Brukernavn);
+                    _log.LogInformation("Innloggingen feilet som administrator"/*+admin.Brukernavn*/);
                     return Ok(false);
                 }
                 HttpContext.Session.SetString(_loggetInn, "LoggetInn");
@@ -160,6 +160,7 @@ namespace Oblig.Controllers
 
         public async Task<ActionResult> SlettRute(int rid)
         {
+           
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
                 return Unauthorized("Ikke logget inn");
@@ -167,10 +168,10 @@ namespace Oblig.Controllers
             bool returOK = await _db.SlettRute(rid);
             if (!returOK)
             {
-                _log.LogInformation("Sletting av ruten ble ikke utført");
-                return NotFound("Sletting av ruten ble ikke utført");
+                _log.LogInformation("Sletting av Kunden ble ikke utført");
+                return NotFound("Sletting av Kunden ble ikke utført");
             }
-            return Ok("ruten slettet");
+            return Ok("Kunde slettet");
         }
 
         public async Task<ActionResult> LagreRute(Rute innRute)

@@ -1,0 +1,6 @@
+2020-10-21T12:18:43.9474435+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-10-21T12:18:43.9595509+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2020-10-21T12:18:43.9618451+02:00  [INF] Content root path: "C:\Users\Bruker\Documents\WebApp\WebApp\Oblig1" (b5d60022)
+2020-10-21T15:08:08.2514256+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-10-21T15:08:08.2599929+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2020-10-21T15:08:08.2617240+02:00  [INF] Content root path: "C:\Users\Bruker\Documents\WebApp\WebApp\Oblig1" (b5d60022)
