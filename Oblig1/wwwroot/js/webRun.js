@@ -96,7 +96,7 @@ function test() {
 
 
 function visBetalBox() {
-    /*
+    
     hentTypeOgAntall();
 
     if ($("#antallTicket").val() == 0) {
@@ -105,13 +105,15 @@ function visBetalBox() {
     } else if (!($("#ruteTB tr").hasClass("highlight"))) {
         alert("Du må velge en buss ! ");
         return;
-    } else if($("#returnCheck").is(':checked')) {
+    } else if ($("#returnCheck").is(':checked')) {
         if (!($("#ruteReturnTB tr").hasClass("returnHighlight"))) {
             alert("Du må velge en return buss ! ");
             return;
         }
-    }*/
+    }
+        window.location.hash = "#Betaling";
     $("#Betaling").css("display", "block");
+
     
 }
 

@@ -48,6 +48,10 @@ function validerTilSted(destinasjon) {
     }
 }
 
+/*
+function validerEpost(epost) {
+     
+}*/
 
 $("#Epost").click(function () {
     //hva som skjer når elementet blir klikket 
@@ -80,7 +84,7 @@ $("#cvvInput").click(function () {
     const regxp = /^[1-9\.\ \-]{3}/;
     const ok = regxp.test(destinasjon);
     if (!ok) {
-        $("#feilcvv").html("Skriv in de tre tallene bak på kortet ditt ved signaturen din");
+        $("#feilcvv").html("Skriv in de tre tallene bak på kortet ditt ved signaturen din, det må være 3 tall");
         return false;
     } else {
         $("#feilcvv").html("");

@@ -9,8 +9,8 @@ namespace Oblig.Models
     public class NorWay
     {
         public int Id { get; set; }
-        
-        [EmailAddress(ErrorMessage = "Ikke riktig Epost former")]
+
+        [RegularExpression(@"^[ÆØÅæøåA-Za-z0-9._%+-]+@(?:[ÆØÅæøåA-Za-z0-9-]+.)+[A-Za-z]{2,6}$")]
         public string Epost { get; set; }
 
         [Required]

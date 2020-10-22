@@ -1,4 +1,4 @@
-﻿﻿body {
+﻿body {
     background-image: url("../bilder/bg2.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -15,17 +15,16 @@
     vertical-align: middle;
 }
 
-
 #BillettType {
     height: 100%;
     width: 100%;
 }
 
-#minus1, #plus1, #minus2, #plus2, #minus3, #plus3, #minus4, #plus4, #minus5, #plus5, #minus6, #plus6, #minus7, #plus7 {
+#minus0, #plus0, #minus1, #plus1, #minus2, #plus2, #minus3, #plus3, #minus4, #plus4, #minus5, #plus5, #minus6, #plus6, #minus7, #plus7 {
     font-size: 16px;
     height: 17px;
     width: 17px;
-    padding:2%;
+    padding: 2%;
 }
 
 #Plass_1 {
@@ -36,7 +35,7 @@
 
 #Plass_2 {
     display: inline-block;
-    height:auto;
+    height: auto;
 }
 
 #Pris, #Voksen, #Barn, #Student, #Honnor, #Verneplikt, #Ledsager, #button1, #TotalPris, #an {
@@ -62,7 +61,7 @@
     padding: 10px 25px 10px 15px;
     border-radius: 25px;
     height: auto;
-    width: 60%;
+    width: 70%;
     margin-top: 1%;
 }
 
@@ -77,9 +76,6 @@
     margin-bottom: 1%;
     opacity: 0.9;
 }
-
-
-
 
 
 .knapp {
@@ -203,7 +199,6 @@ input[type="text"] {
 }
 
     input[type="text"]:hover {
-        
         height: 39px;
         border-color: aquamarine;
     }
@@ -265,7 +260,6 @@ input[type="date"] {
 }
 
     input[type="date"]:hover {
-        
         height: 39px;
         border-color: aquamarine;
     }
@@ -276,6 +270,13 @@ input[type="date"] {
 
 .type {
     margin-top: 2%;
+    width: 40%;
+    height: auto;
+    font-size: 16px;
+    color: navy;
+    margin-left: 8%;
+    margin-bottom: 3%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 
@@ -333,9 +334,10 @@ input[type="date"] {
     text-align: center;
 }
 
+
 #ruteBox2 {
     padding-top: 0.5%;
-    background-color: rgba(255, 255, 255, 0.67);
+    background-color: rgba(255, 255, 255, 0.80);
     border-radius: 25px;
     height: auto;
     width: 80%;

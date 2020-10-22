@@ -63,6 +63,7 @@ function lagreBestilling() {
         var bussNr = $(".highlight").find("td").eq(0).text();
         var avgangstid = $(".highlight").find("td").eq(1).text();
         var ankomsttid = $(".highlight").find("td").eq(2).text();
+        var dato = $("#date1").val();
     } else {
         alert("Du må velge en buss ! ");
         return;
@@ -75,10 +76,16 @@ function lagreBestilling() {
             var bussNrR = $(".returnHighlight").find("td").eq(0).text();
             var avgangstidR = $(".returnHighlight").find("td").eq(1).text();
             var ankomsttidR = $(".returnHighlight").find("td").eq(2).text();
+            var returnDato = $("#date2").val();
         } else {
             alert("Du må velge en return buss ! ");
             return;
         }
+    } else {
+        var bussNrR = "NO";
+        var avgangstidR = "NO";
+        var ankomsttidR = "NO";
+        var returnDato = "NO";
     }
     
     const reise = {
@@ -87,8 +94,8 @@ function lagreBestilling() {
         Billettype: $("#antallType").val(),
         FraSted: $("#avgang").val(),
         TilSted: $("#destinasjon").val(),
-        AvgangersDato: $("#date1").val(),
-        ReturDato: $("#date2").val(),
+        AvgangersDato: dato,
+        ReturDato: returnDato,
         Antall: $("#antallTicket").val(),
         BussNr: bussNr,
         Avgangstid: avgangstid,
@@ -106,25 +113,7 @@ function lagreBestilling() {
     });
 };
 
-/*
-$(document).ready(function () {
-    $(function () {
-        var dtToday = new Date();
 
-        var month = dtToday.getMonth() + 1;
-        var day = dtToday.getDate();
-        var year = dtToday.getFullYear();
-
-        if (month < 10)
-            month = '0' + month.toString();
-        if (day < 10)
-            day = '0' + day.toString();
-
-        var maxDate = year + '-' + month + '-' + day;
-
-        $('#date1').attr('min', maxDate);
-    });
-})*/
 
 
 

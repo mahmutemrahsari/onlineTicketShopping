@@ -18,17 +18,46 @@
         #nyRute {
             text-align: center;
         }
+
+        .topAdmin {
+            background-image: url("../bilder/lastned.png");
+            background-repeat: no-repeat;
+            background-size: 60%;
+            width: 50%;
+            height: 80px;
+            margin-left: 50%;
+            margin-bottom: 1%;
+            margin-top: 0.33%;
+        }
+
+        .knappUt {
+            margin-top: 1.5%;
+            background-color: crimson;
+            padding: 10px 20px 10px 20px;
+            border-radius: 25px;
+            color: white;
+            border-color: #dc143c;
+            transition: border-color 1s ease-out;
+            transition: background-color 1s ease-out;
+            transition: color 1s ease-out;
+            margin-left: 62%;
+            margin-bottom: 2%;
+        }
+
+            .knappUt:hover {
+                border-color: crimson;
+                background-color: white;
+                color: crimson;
+            }
     </style>
 </head>
 <body>
-    <div class="top"></div>
-    <datalist id="liste"> </datalist>
+    <div class="topAdmin">
+    <input type="button" class="knappUt" onclick="loggUt()" value="Logg Ut">
+    </div>
     <div class="container">
         <h1>NorWay Admin Panel</h1>
         <form class="form">
-            <div class="form-group">
-                <input type="button" class="btn btn-info" onclick="loggUt()" value="Logg Ut">
-            </div>
             <div class="form-group">
                 <table class="table table-hover">
                     <tbody>
@@ -81,27 +110,27 @@
                     </div>
                     <div class="form-group">
                         <lable>Fra : </lable><br>
-                        <input type="text" id="fSted"  onchange="validerAdminSted(this.value,'#feilFraSted')"/><br>
+                        <input type="text" id="fSted" onchange="validerAdminSted(this.value,'#feilFraSted')" /><br>
                         <span id="feilFraSted" style="color: red"></span>
                     </div>
                     <div class="form-group">
                         <lable>Til : </lable><br>
-                        <input type="text" id="tSted" onchange="validerAdminSted(this.value,'#feilTilSted')"/><br>
+                        <input type="text" id="tSted" onchange="validerAdminSted(this.value,'#feilTilSted')" /><br>
                         <span id="feilTilSted" style="color: red"></span>
                     </div>
                     <div class="form-group">
                         <lable>Dato : </lable><br>
-                        <input type="date" id="dato" style="width: 180px"/>
+                        <input type="date" id="dato" style="width: 180px" />
                         <span id="feilDato" style="color: red"></span>
                     </div>
                     <div class="form-group">
                         <lable>Avgangstid : </lable><br>
-                        <input type="time" id="avTid" style="width: 180px"/>
+                        <input type="time" id="avTid" style="width: 180px" />
                         <span id="feilAvTid" style="color: red"></span>
                     </div>
                     <div class="form-group">
                         <lable>Ankomsttid : </lable><br>
-                        <input type="time" id="anTid" style="width: 180px"/>
+                        <input type="time" id="anTid" style="width: 180px" />
                         <span id="feilAnTid" style="color: red"></span>
                     </div>
                     <input type="button" value="Endre" class="btn btn-primary" onclick="endreRute()" />
@@ -143,27 +172,27 @@
                     </div>
                     <div class="form-group">
                         <lable>Fra : </lable><br>
-                        <input type="text" id="nyfSted" onchange="validerAdminSted(this.value,'#feilRuteFSted')"/><br>
+                        <input type="text" id="nyfSted" onchange="validerAdminSted(this.value,'#feilRuteFSted')" /><br>
                         <span id="feilRuteFSted" style="color: red"></span>
                     </div>
                     <div class="form-group">
                         <lable>Til : </lable><br>
-                        <input type="text" id="nytSted" onchange="validerAdminSted(this.value,'#feilRuteTSted')"/><br>
+                        <input type="text" id="nytSted" onchange="validerAdminSted(this.value,'#feilRuteTSted')" /><br>
                         <span id="feilRuteTSted" style="color: red"></span>
                     </div>
                     <div class="form-group">
                         <lable>Dato : </lable><br>
-                        <input type="date" id="nydato" style="width: 180px"/>
+                        <input type="date" id="nydato" style="width: 180px" />
                         <span id="feilDato" style="color: red"></span>
                     </div>
                     <div class="form-group">
                         <lable>Avgangstid : </lable><br>
-                        <input type="time" id="nyavTid" style="width: 180px"/>
+                        <input type="time" id="nyavTid" style="width: 180px" />
                         <span id="feilAvTid" style="color: red"></span>
                     </div>
                     <div class="form-group">
                         <lable>Ankomsttid : </lable><br>
-                        <input type="time" id="nyanTid" style="width: 180px"/>
+                        <input type="time" id="nyanTid" style="width: 180px" />
                         <span id="feilAnTid" style="color: red"></span>
                     </div>
                     <input type="button" value="Lagre" class="btn btn-primary" onclick="lagreRute()" />
@@ -171,7 +200,7 @@
                 </div>
             </div>
             <div id="feil" style="color:red"></div>
-        </form> 
+        </form>
     </div>
 </body>
 </html>

@@ -28,7 +28,7 @@ function formaterBestillinger(bestillinger) {
             "<td>" + bestilling.ankomsttid + "</td>" +
             "</tr>";
 
-        if ((bestilling.returDato) != null) {
+        if ((bestilling.returDato) != null && (bestilling.returDato) != "NO") {
             formaterReturnBestillinger(bestillinger);
         }
     }

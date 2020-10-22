@@ -102,7 +102,7 @@ function formateAn() {
                 + "<span id=" + '"' + "typeAv" + i + '"' + "class=" + '"' + "typeAv" + '"' + "></span>";
         }
         $("#Plass_2").html(ut);
-        for (var i = 0; i < p.length; i++) {
+        for (var i = 0; i < pris.length; i++) {
             ut1 += "<div class=" + '"' + "typeBillett" + '"' + "></div>"
         }
         $("#Total").html(ut1);
