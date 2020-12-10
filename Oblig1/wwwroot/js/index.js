@@ -47,17 +47,28 @@ function formaterPris(pris) {
     $("#Pris").html(ut);
 }
 
+function validerBilletInfo() {
+    const fraStedOK = validerFraSted($("#avgang").val());
+    const tilStedOK = validerTilSted($("#destinasjon").val());
+    const kortnummerOK = valideKortNummer($("#kortNr").val());
+    const cvvOK = validercvv($("#cvv").val());
+    const epostOK = validerepost($("#Epost").val());
+    if (fraStedOK && tilStedOK && kortnummerOK && cvvOK && epostOK) {
+        lagreBestilling();
+    } else {
+        $("#feil").html("Betaling er feil, skjekk alle input er riktig");
+    }
+}
 
 //lagering bestilling informasjon
 function lagreBestilling() {
     hentTypeOgAntall();
     an();
 
-    /*
     if ($("#antallTicket").val() == 0) {
         alert("Du må valge antall billett");
         return;
-    }*/
+    }
 
     if ($("#ruteTB tr").hasClass("highlight")) {
         var bussNr = $(".highlight").find("td").eq(0).text();

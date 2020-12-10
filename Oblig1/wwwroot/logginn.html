@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Logginn</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js%22%3E"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
     <script src="js/validering.js"></script>
     <script src="js/loggin.js"></script>
@@ -14,22 +14,24 @@
         <span><button class="knappHjem" onclick="window.location.href='index.html'">Hjem</button></span>
     </div>
     <div class="container">
-        <h1 class="overskrift">Logg inn som administrator</h1>
+        <h1 class="overskrift">Logg Inn Som Administrator</h1>
         <form class="form">
-            <div class="form-group">
-                <label class="title">Brukernavn</label>
-                <input class="loggIn" type="text" id="brukernavn" onchange="validerBrukernavn(this.value)" />
-                <span id="feilBrukernavn" style="color:red"></span>
+            <div class="well">
+                <div class="form-group">
+                    <label class="title">Brukernavn</label><br>
+                    <input class="loggIn" type="text" id="brukernavn" onchange="validerBrukernavn(this.value)" />
+                    <span id="feilBrukernavn" style="color:red"></span>
+                </div>
+                <div class="form-group">
+                    <label class="title">Passord</label><br>
+                    <input class="loggIn" type="password" id="passord" onchange="validerPassord(this.value)" />
+                    <span id="feilPassord" style="color:red"></span>
+                </div>
+                <div class="form-group">
+                    <input type="button" value="Logg Inn" onclick="loggInn()" class="btn btn-primary" />
+                </div>
+                <div id="feil" style="color:red"></div>
             </div>
-            <div class="form-group">
-                <label class="title">Passord</label>
-                <input class="loggIn" type="password" id="passord" onchange="validerPassord(this.value)" />
-                <span id="feilPassord" style="color:red"></span>
-            </div>
-            <div class="form-group">
-                <input type="button" value="Logg Inn" onclick="loggInn()" class="knapp" />
-            </div>
-            <div id="feil" style="color:red"></div>
         </form>
     </div>
 </body>

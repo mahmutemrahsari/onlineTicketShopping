@@ -118,6 +118,8 @@ function plusminus(pl, antall, tall, type, mi, typebillet) {
         $(tall).html(an);
         $(type).html(" " + typebillet);
         $('#title').html("");
+        document.getElementById("b1").style.display = 'block';
+        document.getElementById("title").style.display = 'none';
     });
     $(mi).click(function () {
         if (an > 0) {
@@ -136,9 +138,11 @@ function plusminus(pl, antall, tall, type, mi, typebillet) {
 }
 
 function hentypefeilhåntering() {
-    var type = document.getElementsByClassName("tall");
+    var type = document.getElementsByClassName("a1");
     if (type[0].innerHTML == 0 && type[1].innerHTML == 0 && type[2].innerHTML == 0 && type[3].innerHTML == 0 &&
         type[4].innerHTML == 0 && type[5].innerHTML == 0 && type[6].innerHTML == 0) {
+        document.getElementById('b1').style.display = 'none';
+        document.getElementById("title").style.display = 'block';
         $("#title").html("Velg type av billett");
     }
 }

@@ -9,7 +9,8 @@ function henteAlleBillett() {
 }
 
 function formaterBestillinger(bestillinger) {
-    let ut = "<table class='table table-striped'>" +
+    let ut = "<h4>Her er billett informasjonen</h4>" +
+        "<table class='table table-striped'>" +
         "<tr>" +
         "<th>Epost</th><th>Billettype</th><th>Pris</th><th>Fra</th><th>Til</th>" +
         "<th>Dato</th><th>BussNr</th><th>Avgangstid</th><th>Ankomsttid</th>" +
@@ -38,7 +39,8 @@ function formaterBestillinger(bestillinger) {
 
 function formaterReturnBestillinger(bestillinger) {
 
-    let utReturn = "<table class='table table-striped'>" +
+    let utReturn = "<h4>Her er return billett informasjonen</h4>" +
+        "<table class='table table-striped'>" +
         "<tr>" +
         "<th>Dato</th><th>BussNr</th><th>Avgangstid</th><th>Ankomsttid</th>" +
         "</tr>";

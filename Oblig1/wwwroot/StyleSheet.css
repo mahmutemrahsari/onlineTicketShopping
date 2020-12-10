@@ -6,6 +6,16 @@
     max-height: 100%;
 }
 
+#b1 {
+    background-color: white;
+    padding: 10px;
+    font-family: auto;
+    border-radius: 25px;
+    border-style: solid;
+    border-color: navy;
+    display: none;
+}
+
 #total {
     height: 100%;
     width: 100%;
@@ -22,8 +32,8 @@
 
 #minus0, #plus0, #minus1, #plus1, #minus2, #plus2, #minus3, #plus3, #minus4, #plus4, #minus5, #plus5, #minus6, #plus6, #minus7, #plus7 {
     font-size: 16px;
-    height: 17px;
-    width: 17px;
+    height: 20px;
+    width: 20px;
     padding: 2%;
 }
 
@@ -50,11 +60,30 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+#b1 {
+    background-color: white;
+    padding: 10px;
+    font-family: auto;
+    border-radius: 25px;
+    border-style:solid;
+    border-color: navy;
+}
+
 #title, #tall0, #typeAv0, #tall1, #tall2, #tall3, #tall4, #tall5, #tall6, #typeAv1, #typeAv2, #typeAv3, #typeAv4, #typeAv5, #typeAv6 {
     cursor: pointer;
-    font-size: 16px;
+    font-size: 16px; 
     color: navy;
 }
+
+/*
+#title {
+    background-color: white;
+    padding: 10px;
+    font-family: auto;
+    border-radius: 25px;
+    border-style: solid;
+    border-color: navy;
+}*/
 
 .container {
     background-color: rgba(255, 255, 255, 0.75);
@@ -356,3 +385,23 @@ input[type="date"] {
     max-height: 4%;
     max-width: 4%;
 }
+
+.knappHjem {
+    margin-top: 1.5%;
+    background-color: rgba(0, 0, 128, 0.45);
+    padding: 10px 20px 10px 20px;
+    border-radius: 25px;
+    color: white;
+    border-color: rgba(34, 36, 255, 0.69);
+    transition: border-color 1s ease-out;
+    transition: background-color 1s ease-out;
+    transition: color 1s ease-out;
+    margin-left: 62%;
+    margin-bottom: 2%;
+}
+
+    .knappHjem:hover {
+        border-color: rgb(0, 133, 255);
+        background-color: white;
+        color: navy;
+    }

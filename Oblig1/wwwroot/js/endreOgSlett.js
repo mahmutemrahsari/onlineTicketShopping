@@ -33,7 +33,17 @@ function skrivEndretSted(sid, sted) {
     $("#sNr").html(sid);
     $("#sted").val(sted);
     $("#sid").val(sid);
+
+    $(".feilMelding").html("");
 }
+
+function validerOgEndreSted() {
+    const stedOK = validerFraSted($("#sted").val());
+    if (stedOK) {
+        endreSted();
+    }
+}
+
 
 function endreSted() {
     const sted = {
@@ -72,6 +82,15 @@ function slettSted(sid) {
         });
 }
 
+function validerOgEndreType() {
+    const typeOK = validerAdminType($("#type").val());
+    const prisOK = validerAdminPris($("#pris").val());
+    if (typeOK && prisOK) {
+        endrePris();
+    }
+}
+
+
 function hentPris() {
     $.get("NorWay/HentPrisType", function (priser) {
         formaterPris(priser);
@@ -102,6 +121,8 @@ function skrivEndretPris(tid, type, pris) {
     $("#pris").val(pris);
     $("#type").val(type);
     $("#tid").val(tid);
+
+    $(".feilMelding").html("");
 }
 
 function endrePris() {
@@ -192,6 +213,20 @@ function skrivEndretRute(rid) {
         $("#avTid").val(ruter.avgangsTid);
         $("#anTid").val(ruter.ankomstTid);
     });
+
+    $(".feilMelding").html("");
+}
+
+function validerOgEndreRute() {
+    const BussNrOK = validerAdminBusNr($("#bussNr").val());
+    const fStedOK = validerFraSted($("#fSted").val());
+    const tStedOK = validerTilSted($("#tSted").val());
+    const datoOK = validerAdminDato($("#dato").val());
+    const avTidOK = validerAdminAvgangstid($("#avTid").val());
+    const anTidOK = validerAdminAnkomsttid($("#anTid").val());
+    if (BussNrOK && fStedOK && tStedOK && datoOK && avTidOK && anTidOK) {
+        endreRute();
+    }
 }
 
 function endreRute() {
@@ -234,4 +269,3 @@ function slettRute(rid) {
             }
         });
 }
-

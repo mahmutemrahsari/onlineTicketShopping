@@ -288,22 +288,33 @@ namespace XUnitTestProject1
             Assert.Equal("Endringen av ruten kunne ikke utføres", resultat.Value);
         }
 
+        
         [Fact]
         public async Task EndreRuteLoggetInnFeilModel()
-        {     
-            // Arrange
-            mockRep.Setup(k => k.EndreRute(It.IsAny<RuteInn>())).ReturnsAsync(true);
+        {
+            var rute1 = new RuteInn
+            {
+                RId = 1,
+                BussNR = "2",
+                FraRute = "Oslo",
+                TilRute = "Sandvika",
+                Dato = "2020-10-05",
+                AvgangsTid = "12:00",
+                AnkomstTid = "15:50"
+            };
+
+            mockRep.Setup(k => k.EndreRute(rute1)).ReturnsAsync(true);
 
             var norwayController = new NorWayController(mockRep.Object, mockLog.Object);
 
-            //norwayController.ModelState.AddModelError("Fornavn", "Feil i inputvalidering på server");
+            norwayController.ModelState.AddModelError("BussNR", "Feil i inputvalidering på server");
 
             mockSession[_loggetInn] = _loggetInn;
             mockHttpContext.Setup(s => s.Session).Returns(mockSession);
             norwayController.ControllerContext.HttpContext = mockHttpContext.Object;
 
             // Act
-            var resultat = await norwayController.EndreRute(It.IsAny<RuteInn>()) as BadRequestObjectResult;
+            var resultat = await norwayController.EndreRute(rute1) as BadRequestObjectResult;
 
             // Assert 
             Assert.Equal((int)HttpStatusCode.BadRequest, resultat.StatusCode);
@@ -739,9 +750,6 @@ namespace XUnitTestProject1
         public async Task LagreStedLoggetInnFeilModel()
         {
             // Arrange
-            // Kunden er indikert feil med tomt fornavn her.
-            // det har ikke noe å si, det er introduksjonen med ModelError under som tvinger frem feilen
-            // kunnde også her brukt It.IsAny<Kunde>
             var sted1 = new StedInn
             {
                 SId = 1,
@@ -829,7 +837,7 @@ namespace XUnitTestProject1
             Assert.Equal("Ruten kunne ikke lagres", resultat.Value);
         }
 
-        /*
+        
         [Fact]
         public async Task LagreRuteLoggetInnFeilModel()
         {
@@ -839,14 +847,19 @@ namespace XUnitTestProject1
             // kunnde også her brukt It.IsAny<Kunde>
             var rute1 = new RuteInn
             {
-                
+                RId = 1,
+                BussNR = "2",
+                FraRute = "Oslo",
+                TilRute = "Sandvika",
+                Dato = "2020-10-05",
+                AvgangsTid = "12:00",
+                AnkomstTid = "15:50"
             };
-
             mockRep.Setup(k => k.LagreRute(rute1)).ReturnsAsync(true);
 
             var norwayController = new NorWayController(mockRep.Object, mockLog.Object);
 
-            norwayController.ModelState.AddModelError("StedNavn", "Feil i inputvalidering på server");
+            norwayController.ModelState.AddModelError("BussNR", "Feil i inputvalidering på server");
 
             mockSession[_loggetInn] = _loggetInn;
             mockHttpContext.Setup(s => s.Session).Returns(mockSession);
@@ -858,7 +871,7 @@ namespace XUnitTestProject1
             // Assert 
             Assert.Equal((int)HttpStatusCode.BadRequest, resultat.StatusCode);
             Assert.Equal("Feil i inputvalidering på server", resultat.Value);
-        }*/
+        }
 
         [Fact]
         public async Task LagreRuteIkkeLoggetInn()
@@ -925,9 +938,6 @@ namespace XUnitTestProject1
         public async Task LagrePrisLoggetInnFeilModel()
         {
             // Arrange
-            // Kunden er indikert feil med tomt fornavn her.
-            // det har ikke noe å si, det er introduksjonen med ModelError under som tvinger frem feilen
-            // kunnde også her brukt It.IsAny<Kunde>
             var pris1 = new PrisInn
             {
                 TId = 1,
@@ -1034,8 +1044,6 @@ namespace XUnitTestProject1
         public async Task HentRuteIkkeLoggetInn()
         {
             // Arrange
-
-            //var tomListe = new List<Kunde>();
 
             mockRep.Setup(k => k.HentRute()).ReturnsAsync(It.IsAny<List<Rute>>());
 

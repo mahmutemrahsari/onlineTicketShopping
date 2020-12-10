@@ -85,56 +85,53 @@
                 <div class="well" id="endreSted" style="display:none">
                     <input type="hidden" id="sid" />
                     <h4>Endre sted til : </h4>
-                    <!--Mangler inoutvaliderling til sted-->
                     <input type="text" id="sted" onchange="validerAdminSted(this.value,'#feilSted')" />
-                    <span id="feilSted" style="color:red"></span><br>
-                    <input type="button" value="Endre" class="btn btn-primary" onclick="endreSted()" />
+                    <span id="feilSted" style="color:red" class="feilMelding"></span><br>
+                    <input type="button" value="Endre" class="btn btn-primary" onclick="validerOgEndreSted()" />
                 </div>
                 <div class="well" id="endrePris" style="display:none">
                     <input type="hidden" id="tid" />
                     <h4>Endre pris og billettype til : </h4>
-                    <!--Mangler inoutvaliderling til sted-->
-                    <input type="text" id="type" />
-                    <input type="text" id="pris" />
-                    <input type="button" value="Endre" class="btn btn-primary" onclick="endrePris()" />
-                    <span id="feilPris" style="color:red"></span>
+                    <input type="text" id="type" onchange="validerAdminType(this.value,'#feilType')" />
+                    <input type="text" id="pris" onchange="validerAdminPris(this.value,'#feilPris')" />
+                    <input type="button" value="Endre" class="btn btn-primary" onclick="validerOgEndreType()" />
+                    <span id="feilPris" style="color:red" class="feilMelding"></span><span id="feilType" style="color:red" class="feilMelding"></span>
                 </div>
                 <div class="well" id="endreRute" style="display:none">
                     <input type="hidden" id="rid" />
                     <h4>Endre rute til : </h4>
-                    <!--Mangler inoutvaliderling til sted-->
                     <div class="form-group">
                         <lable>BussNr : </lable><br>
-                        <input type="text" id="bussNr" />
-                        <span id="feilBussNr" style="color: red"></span>
+                        <input type="text" id="bussNr" onchange="validerAdminBusNr(this.value,'#feilBussNr')" /><br>
+                        <span id="feilBussNr" style="color: red" class="feilMelding"></span>
                     </div>
                     <div class="form-group">
                         <lable>Fra : </lable><br>
                         <input type="text" id="fSted" onchange="validerAdminSted(this.value,'#feilFraSted')" /><br>
-                        <span id="feilFraSted" style="color: red"></span>
+                        <span id="feilFraSted" style="color: red" class="feilMelding"></span>
                     </div>
                     <div class="form-group">
                         <lable>Til : </lable><br>
                         <input type="text" id="tSted" onchange="validerAdminSted(this.value,'#feilTilSted')" /><br>
-                        <span id="feilTilSted" style="color: red"></span>
+                        <span id="feilTilSted" style="color: red" class="feilMelding"></span>
                     </div>
                     <div class="form-group">
                         <lable>Dato : </lable><br>
-                        <input type="date" id="dato" style="width: 180px" />
-                        <span id="feilDato" style="color: red"></span>
+                        <input type="date" id="dato" style="width: 180px" onchange="validerAdminDato(this.value,'#feilDato')" /><br>
+                        <span id="feilDato" style="color: red" class="feilMelding"></span>
                     </div>
                     <div class="form-group">
                         <lable>Avgangstid : </lable><br>
-                        <input type="time" id="avTid" style="width: 180px" />
-                        <span id="feilAvTid" style="color: red"></span>
+                        <input type="time" id="avTid" style="width: 180px" onchange="validerAdminAvgangstid(this.value,'#feilAvTid')" /><br>
+                        <span id="feilAvTid" style="color: red" class="feilMelding"></span>
                     </div>
                     <div class="form-group">
                         <lable>Ankomsttid : </lable><br>
-                        <input type="time" id="anTid" style="width: 180px" />
-                        <span id="feilAnTid" style="color: red"></span>
+                        <input type="time" id="anTid" style="width: 180px" onchange="validerAdminAnkomsttid(this.value,'#feilAnTid')" /><br>
+                        <span id="feilAnTid" style="color: red" class="feilMelding"></span>
                     </div>
-                    <input type="button" value="Endre" class="btn btn-primary" onclick="endreRute()" />
-                    <span id="feilRute" style="color:red"></span>
+                    <input type="button" value="Endre" class="btn btn-primary" onclick="validerOgEndreRute()" /><br>
+                    <span id="feilRute" style="color:red" class="feilMelding"></span>
                 </div>
             </div>
 
@@ -143,63 +140,63 @@
             <div id="form-group-new" style="display:none">
                 <div class="well" id="nySted" style="display:none">
                     <h4>Lagre ny sted : </h4>
-                    <!--Mangler inoutvaliderling til sted-->
                     <input type="text" id="nysted" onchange="validerAdminSted(this.value,'#feilLagreSted')" />
-                    <span id="feilLagreSted" style="color:red"></span><br>
-                    <input type="button" value="Lagre" class="btn btn-primary" onclick="lagreSted()" />
+                    <span id="feilLagreSted" style="color:red" class="feilMelding"></span><br>
+                    <input type="button" value="Lagre" class="btn btn-primary" onclick="validerLagreSted()" />
                 </div>
                 <div class="well" id="nyPris" style="display:none">
                     <h4>Lagre ny pris og billettype : </h4>
-                    <!--Mangler inoutvaliderling til sted-->
                     <div>
                         <lable>Billettype : </lable><br>
-                        <input type="text" id="nytype" />
+                        <input type="text" id="nytype" onchange="validerAdminType(this.value,'#feilNyType')" />
+                        <span id="feilNyType" style="color:red" class="feilMelding"></span><br>
                     </div>
                     <div>
                         <lable>Pris : </lable><br>
-                        <input type="text" id="nypris" />
+                        <input type="text" id="nypris" onchange="validerAdminPris(this.value,'#feilNyPris')" />
+                        <span id="feilNyPris" style="color:red" class="feilMelding"></span><br>
                     </div>
-                    <input type="button" value="Lagre" class="btn btn-primary" onclick="lagrePris()" />
-                    <span id="feilLagrePris" style="color:red"></span>
+                    <input type="button" value="Lagre" class="btn btn-primary" onclick="validerLagrePris()" />
+                    <span id="feilLagrePris" style="color:red" class="feilMelding"></span>
                 </div>
                 <div class="well" id="nyRute" style="display:none">
                     <h4>Lagre ny rute : </h4>
                     <!--Mangler inoutvaliderling til sted-->
                     <div class="form-group">
                         <lable>BussNr : </lable><br>
-                        <input type="text" id="nybussNr" />
-                        <span id="feilBussNr" style="color: red"></span>
+                        <input type="text" id="nybussNr" onchange="validerAdminBusNr(this.value,'#feilNyBussNr')"/><br>
+                        <span id="feilNyBussNr" style="color: red" class="feilMelding"></span>
                     </div>
                     <div class="form-group">
                         <lable>Fra : </lable><br>
                         <input type="text" id="nyfSted" onchange="validerAdminSted(this.value,'#feilRuteFSted')" /><br>
-                        <span id="feilRuteFSted" style="color: red"></span>
+                        <span id="feilRuteFSted" style="color: red" class="feilMelding"></span>
                     </div>
                     <div class="form-group">
                         <lable>Til : </lable><br>
                         <input type="text" id="nytSted" onchange="validerAdminSted(this.value,'#feilRuteTSted')" /><br>
-                        <span id="feilRuteTSted" style="color: red"></span>
+                        <span id="feilRuteTSted" style="color: red" class="feilMelding"></span>
                     </div>
                     <div class="form-group">
                         <lable>Dato : </lable><br>
-                        <input type="date" id="nydato" style="width: 180px" />
-                        <span id="feilDato" style="color: red"></span>
+                        <input type="date" id="nydato" style="width: 180px" onchange="validerAdminDato(this.value,'#feilNyDato')" /><br>
+                        <span id="feilNyDato" style="color: red" class="feilMelding"></span>
                     </div>
                     <div class="form-group">
                         <lable>Avgangstid : </lable><br>
-                        <input type="time" id="nyavTid" style="width: 180px" />
-                        <span id="feilAvTid" style="color: red"></span>
+                        <input type="time" id="nyavTid" style="width: 180px" onchange="validerAdminAvgangstid(this.value,'#feilNyAvTid')"/><br>
+                        <span id="feilNyAvTid" style="color: red" class="feilMelding"></span>
                     </div>
                     <div class="form-group">
                         <lable>Ankomsttid : </lable><br>
-                        <input type="time" id="nyanTid" style="width: 180px" />
-                        <span id="feilAnTid" style="color: red"></span>
+                        <input type="time" id="nyanTid" style="width: 180px" onchange="validerAdminAnkomsttid(this.value,'#feilNyAnTid')"/><br>
+                        <span id="feilNyAnTid" style="color: red" class="feilMelding"></span>
                     </div>
-                    <input type="button" value="Lagre" class="btn btn-primary" onclick="lagreRute()" />
-                    <span id="feilLagreRute" style="color:red"></span>
+                    <input type="button" value="Lagre" class="btn btn-primary" onclick="validerLagreRute()" /><br>
+                    <span id="feilLagreRute" style="color:red" class="feilMelding"></span>
                 </div>
             </div>
-            <div id="feil" style="color:red"></div>
+            <div id="feil" style="color:red" class="feilMelding"></div>
         </form>
     </div>
 </body>

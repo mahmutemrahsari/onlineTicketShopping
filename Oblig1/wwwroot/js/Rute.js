@@ -22,7 +22,7 @@ function formaterRute(rutes) {
     let utMain;
     if (rutes.length != 0) {
         utMain = "<thead class='thead-dark'>" + "<tr>" +
-            "<th>BussNR</th><th>Avgangstid</th><th>Ankomsttid</th><th>Velge</th>" +
+            "<th>BussNR</th><th>Avgangstid</th><th>Ankomsttid</th>" +
             "</tr>" + "</thead>" + "<tbody>";
 
 
@@ -31,7 +31,6 @@ function formaterRute(rutes) {
                 "<td>" + rute.bussNR + "</td>" +
                 "<td>" + rute.avgangsTid + "</td>" +
                 "<td>" + rute.ankomstTid + "</td>" +
-                "<td><input type='checkbox' calss='velgRute'/></td>" +
                 "</tr>";
         }
     } else {
@@ -48,18 +47,8 @@ function formaterRute(rutes) {
 $(function () {
     //når bruker kliker en rad i tbody
     $('#ruteTB').on('click', 'tbody tr', function () {
-        //alert($(this).html());
         $("#ruteTB tr").removeClass("highlight");
         $(this).toggleClass("highlight");
-
-        //hvis det finnes ingen checkbox er checked(ingen bussen er velgte)
-        //så sett checkBox i denne raden til checked
-        if ($("#ruteTB td :checkbox:checked").length == 0) {
-            $(this).closest('tr').find('input').prop('checked', true);
-        } else {
-            $("td :checkbox:checked").prop("checked", false);
-            $(this).closest('tr').find('input').prop('checked', true);
-        }
 
         //sjekk hvis bruker skal ha return reise (return reise checkbox er checked)
         //hvis det er checked, så viser tilgjengelig return busser informasjon
@@ -95,14 +84,13 @@ function formaterRuteReturn(rutes) {
     let utMain;
     if (rutes.length != 0) {
         utMain = "<thead class='thead-dark'>" + "<tr>" +
-            "<th>BussNR</th><th>Avgangstid</th><th>Ankomsttid</th><th>Velge</th>" +
+            "<th>BussNR</th><th>Avgangstid</th><th>Ankomsttid</th>" +
             "</tr>" + "</thead>" + "<tbody>";
         for (let rute of rutes) {
             utMain += "<tr>" +
                 "<td>" + rute.bussNR + "</td>" +
                 "<td>" + rute.avgangsTid + "</td>" +
                 "<td>" + rute.ankomstTid + "</td>" +
-                "<td><input type='checkbox' calss='velgReturnRute'/></td>" +
                 "</tr>";
         }
 
@@ -119,15 +107,6 @@ $(function () {
     $('#ruteReturnTB').on('click', 'tbody tr', function () {
         $("#ruteReturnTB tr").removeClass("returnHighlight");
         $(this).toggleClass("returnHighlight");
-
-        //hvis det finnes ingen checkbox er checked(ingen bussen er velgte)
-        //så sett checkBox i denne raden til checked
-        if ($("#ruteTB td :checkbox:checked").length == 0) {
-            $(this).closest('tr').find('input').prop('checked', true);
-        } else {
-            $("td :checkbox:checked").prop("checked", false);
-            $(this).closest('tr').find('input').prop('checked', true);
-        }
     });
 });
 

@@ -30,7 +30,7 @@
     <div class="linje">
         <div class="top">
             <div>
-                <span><button class="btn btn-primary" onclick="window.location.href='logginn.html'">Logg inn</button></span>
+                <span><button class="knappHjem" onclick="window.location.href='logginn.html'">Admin</button></span>
             </div>
         </div>
     </div>
@@ -74,7 +74,8 @@
                                     <span>Dato</span>
                                 </div>
                                 <div class="calendar">
-                                    <input type="date" id="date1" name="date" />
+                                    <input type="date" id="date1" name="date" onchange="validerAdminDato(this.value,'#dateFra')"/>
+                                    <span id="dateFra" style="color:red"></span>
                                 </div>
                                 <div id="check"> <input type="checkbox" id="returnCheck" value="return"> Jeg ønsker returreise</div>
                                 <div id="returnBox" style="display:none">
@@ -83,7 +84,8 @@
                                             <span>Dato for returreise</span>
                                         </div>
                                         <div class="calendar">
-                                            <input type="date" id="date2" name="date" />
+                                            <input type="date" id="date2" name="date" onchange="validerAdminDato(this.value,'#dateTil')" />
+                                            <span id="dateTil" style="color:red"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -124,7 +126,6 @@
                 <div class="containerBox" id="infoBox" style="display:none">
                     <div class="rute">
                         <div id="heading" class="titleRute"></div>
-                        <!--<div id="avganger"></div>-->
                         <div class="ruten">
                             <table class="table" id="ruteTB"></table>
                         </div>
@@ -140,25 +141,28 @@
                 <div class="kortNummer" id="kortNummer">
                     <h3>Betalingsinformasjon:</h3>
                     <span class="kort">Kortnummer:</span>
-                    <input type="text" class="kortNuminput" placeholder="0000 0000 0000 0000" maxlength="16" />
+                    <input type="text" id="kortNr" class="kortNuminput" placeholder="0000 0000 0000 0000" maxlength="16" onchange="valideKortNummer(this.value)" />
+                    <span id="feilKortnummer" style="color: red"></span>
                 </div>
                 <div class="kortDato">
 
-                    <div class="utløpsDato">
-                        <span class="kort">Måned</span>
-                        <input type="text" class="utløpsDatoInput" placeholder="00" maxlength="2" />
-                        <span class="kort">År</span>
-                        <input type="text" class="utløpsDatoInput" placeholder="00" maxlength="2" />
-                    </div>
-                    <div class="cvv">
-                        <span class="kort">CVV</span>
-                        <input type="text" class="cvvInput" placeholder="000" maxlength="3" />
-                    </div>
-
+                <div class="utløpsDato" id="utløpsDatoen">
+                    <label id="tittelDato">Utløps Dato</label>
+                    <input type="month" id="utløpsDatoen" name="utløpsDatoen">
                 </div>
-                <span class="kort">Epost:</span>
-                <input class="epostInput" type="text" id="Epost" placeholder="F.eks noe@gmail.no" />
-                <input type="button" id="betal-btn" value="Bekreft" onclick="lagreBestilling()" class="knapp" />
+                <div class="cvv" id="inncvv">
+                    <span class="kort" id="tittelcv">CVV</span>
+                    <input type="text" id="cvv"class="cvvInput" placeholder="000" maxlength="3" onchange="validercvv(this.value)" />
+                    <span id="feilcvv" style="color: red"></span>
+                </div>
+                </div>
+                <div class="Epost">
+                    <span class="kort" id="innEpost">Epost:</span>
+                    <input class="epostInput" type="text" id="Epost" placeholder="F.eks noe@gmail.no" onchange="validerepost(this.value)" />
+                    <span id="feilepost" style="color:red"></span>
+                </div>
+
+                <input type="button" id="betal-btn" value="Bekreft" onclick="validerBilletInfo()" class="knapp" />
                 <div id="feil" style="color: red"></div>
             </div>
         </form>

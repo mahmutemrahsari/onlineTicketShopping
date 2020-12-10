@@ -25,7 +25,7 @@ namespace Oblig1.Models
                 //initialiserer fra og til steder
                 var sted1 = new Sted {StedNavn = "Oslo"};
                 var sted2 = new Sted { StedNavn = "Sandvika"};
-                var sted3 = new Sted { StedNavn = "Lillehamme" };
+                var sted3 = new Sted { StedNavn = "Lillehammer" };
                 var sted4 = new Sted { StedNavn = "Lysaker" };
 
                 context.Steder.Add(sted1);
@@ -34,14 +34,16 @@ namespace Oblig1.Models
                 context.Steder.Add(sted4);
 
                 //initialiserer rute 
-                var rute1 = new Rute { BussNR = "230", FraRute = "Oslo", TilRute = "Sandvika", AvgangsTid = "14:00", AnkomstTid = "15:00", Dato = "2020-10-05"};
-                var rute2 = new Rute { BussNR = "150", FraRute = "Oslo", TilRute = "Sandvika", AvgangsTid = "17:00", AnkomstTid = "19:30", Dato = "2020-10-05" };
-                var rute3 = new Rute { BussNR = "100", FraRute = "Sandvika", TilRute = "Lillehamme", AvgangsTid = "13:00", AnkomstTid = "16:00", Dato = "2020-11-30" };
-                var rute4 = new Rute { BussNR = "230", FraRute = "Sandvika", TilRute = "Oslo", AvgangsTid = "09:30", AnkomstTid = "15:00", Dato = "2020-10-20" };
+                var rute1 = new Rute { BussNR = "230", FraRute = "Oslo", TilRute = "Sandvika", AvgangsTid = "14:00", AnkomstTid = "15:00", Dato = "2020-12-05" };
+                var rute2 = new Rute { BussNR = "150", FraRute = "Oslo", TilRute = "Sandvika", AvgangsTid = "17:00", AnkomstTid = "19:30", Dato = "2020-12-05" };
+                var rute3 = new Rute { BussNR = "100", FraRute = "Sandvika", TilRute = "Lillehammer", AvgangsTid = "13:00", AnkomstTid = "16:00", Dato = "2020-11-30" };
+                var rute4 = new Rute { BussNR = "230", FraRute = "Sandvika", TilRute = "Oslo", AvgangsTid = "09:30", AnkomstTid = "15:00", Dato = "2020-12-20" };
+                var rute5 = new Rute { BussNR = "230", FraRute = "Lysaker", TilRute = "Oslo", AvgangsTid = "17:00", AnkomstTid = "19:00", Dato = "2020-11-30" };
                 context.Ruter.Add(rute1);
                 context.Ruter.Add(rute2);
                 context.Ruter.Add(rute3);
                 context.Ruter.Add(rute4);
+                context.Ruter.Add(rute5);
 
                 //initialiserer pris
                 var Voksen = new PrisType { Type = "Voksen", Pris = 50 };

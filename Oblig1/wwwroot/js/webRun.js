@@ -111,7 +111,7 @@ function visBetalBox() {
             return;
         }
     }
-        window.location.hash = "#Betaling";
+    window.location.hash = "#Betaling";
     $("#Betaling").css("display", "block");
 
     
